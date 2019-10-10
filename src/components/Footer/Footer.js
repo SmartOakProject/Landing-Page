@@ -11,6 +11,16 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+const Row = styled.div`
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+`
+
+
 export default function Footer() {
-  return <Container>Footer</Container>
+  return (
+    <Container></Container>
+  )
 }
