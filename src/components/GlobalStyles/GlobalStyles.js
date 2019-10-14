@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,800,900');
+@import url('https://fonts.googleapis.com/css?family=Muli:300|Source+Sans+Pro:300');
 
 :root{
     --color-white: #fff;
@@ -38,8 +38,10 @@ html {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  overflow-x: hidden;
+    font-family: 'Muli', sans-serif ;
+  font-size: 13px ;
+  font-weight: 300 ;
+  overflow-x: hidden;   
 }
 
 /* responsive image */
