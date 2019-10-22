@@ -1,29 +1,18 @@
-// BASIC
 import React from 'react'
 import styled from 'styled-components'
 
 const CardElement = styled.div`
-	/* width: calc(100vw / 6 - 24px); */
-	/* width: 100%; */
-	/* height: 30vh; */
-	margin: 0 1.2rem 2.4rem 1.2rem;
-	/* border: 0.1rem solid red; */
+	margin: 0 1.5rem 3rem 1.5rem;
 	overflow: hidden;
 	border-radius: 3rem;
-	@media screen and (max-width: 1200px) {
-		/* height: 60vh; */
-	}
 	box-shadow: 0 0.8rem 1.6rem rgba(214, 197, 246, 0.5);
-
 `
 
 const ImageWrapper = styled.div`
 	background-color: var(--color-black);
 	overflow: hidden;
-	/* padding: 10px; */
 	margin: 0;
 	border: 0;
-	/* opacity: 0.5; */
 `
 
 const Image = styled.img`
@@ -44,12 +33,11 @@ const Title = styled.h2`
 	margin: 1.6rem 0;
 	font-weight: normal;
 	font-size: 1.6rem;
-	/* color: red; */
 	color: #0e196e;
 `
 
 const Description = styled.p`
-	padding: 0 0.4rem;
+	padding: 0 1rem;
 	margin-bottom: 1.2rem;
 	font-size: 1.3rem;
 	text-align: justify;
