@@ -1,7 +1,7 @@
 import React from "react"
 
 import Header from "../components/Header/Header"
-import Nav from "../components/Nav/Nav"
+import Nav from "../components/Nav"
 import Footer from "../components/Footer/Footer"
 import Content from "../components/Content/Content"
 import Section from "../components/Section/Section"
@@ -9,27 +9,27 @@ import Section from "../components/Section/Section"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 
 const IndexPage = () => {
-  return (
-    <>
-      <GlobalStyle />
-      <Nav />
-      <Header />
-      <Content
-        text="
+    return (
+        <>
+            <GlobalStyle />
+            <Nav />
+            <Header />
+            <Content
+                text="
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique asperiores est aliquam placeat accusantium molestiae eius aspernatur autem officiis ipsam sequi numquam ea amet, a"
-      />
-      <Content
-        text="
+            />
+            <Content
+                text="
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique asperiores est aliquam placeat accusantium molestiae eius aspernatur autem officiis ipsam sequi numquam ea amet, a"
-      />
-      <Content
-        text="
+            />
+            <Content
+                text="
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique asperiores est aliquam placeat accusantium molestiae eius aspernatur autem officiis ipsam sequi numquam ea amet, a"
-      />
-      <Section />
-      <Footer />
-    </>
-  )
+            />
+            <Section />
+            <Footer />
+        </>
+    )
 }
 
 export default IndexPage
