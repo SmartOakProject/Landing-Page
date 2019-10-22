@@ -9,11 +9,9 @@ const Container = styled.div`
     line-height: 1.5;
     display: flex;
     justify-content: center;
-    position: sticky;
-    top: 4rem;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    position: sticky;
+    top: 0;
     height: 100%;
 
     @media screen and (max-width: 900px) {

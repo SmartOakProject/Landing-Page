@@ -5,7 +5,7 @@ const MobileListWrapper = styled.ul`
     position: fixed;
     top: 0;
     width: 100vw;
-    display: flex;
+    display: none;
     flex-direction: column;
     background: #0e0e0e;
     color: var(--color-white);
@@ -14,6 +14,9 @@ const MobileListWrapper = styled.ul`
     padding-top: 5rem;
     @media only screen and (orientation: landscape) {
         padding-top: 1.5rem;
+    }
+    @media screen and (max-width: 900px) {
+        display: flex;
     }
 `
 
