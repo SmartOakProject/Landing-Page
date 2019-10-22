@@ -5,7 +5,7 @@ import Nav from "../components/Nav"
 import MobileNav from "../components/MobileNav"
 import Footer from "../components/Footer/Footer"
 import Content from "../components/Content/Content"
-import Section from "../components/Section/Section"
+import Cards from "../components/Cards"
 
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 
@@ -28,7 +28,7 @@ const IndexPage = () => {
                 text="
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique asperiores est aliquam placeat accusantium molestiae eius aspernatur autem officiis ipsam sequi numquam ea amet, a"
             />
-            <Section />
+            <Cards />
             <Footer />
         </>
     )
