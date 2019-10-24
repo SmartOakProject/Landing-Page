@@ -4,7 +4,7 @@ import { FaApple, FaGoogle, FaTwitter, FaInstagram, FaLinkedin, FaYoutube, FaFac
 
 
 const Container = styled.div`
-  background-color: #ccc;
+  background-color: #fff;
   width: 100vw;
   color: var(--color-white);
   font-size: 30px;
@@ -27,7 +27,7 @@ const Row = styled.div`
     padding-bottom: 3rem;
   }
   @media screen and (max-width: 900px) {
-    justify-content: ${props => props.justifyEnd ? 'flex-start' : 'flex-start'};
+    justify-content: ${props => props.justifyEnd ? 'center' : 'flex-start'};
     &.pb3 {
       padding-bottom: 1.5rem;
     }
@@ -61,11 +61,19 @@ const Col = styled.div`
   @media screen and (max-width: 900px) {
     flex: 1 1 100%;
     width: 100%;
+    &.footerBottomCol {
+      flex: 1 1 50%;
+      width: 50%;
+    }
   }
   @media screen and (max-width: 479px) {
     &.imageCol {
       flex: 1 1 18%;
       width: 18%;
+    }
+    &.footerBottomCol {
+      flex: 1 1 100%;
+      width: 100%;
     }
     svg {
       &.svgMarketPlace {
@@ -109,18 +117,35 @@ const ListItemWrapper = styled.ul`
   list-style: none;
   display: flex;
   flex-flow: row wrap;
+  white-space: pre;
   @media screen and (max-width: 900px) {
     padding-bottom: 3rem;
+    justify-content: center;
     &.socialmedia {
-      padding-bottom: 1.5rem;
+      padding-bottom: 0rem;
+      justify-content: flex-start;
     }
   } 
   @media screen and (max-width: 479px) {
-    &.mainFooterMenu {
-      flex-flow: row nowrap;
-      overflow: auto;
-      padding: 0 1.5rem;
+    &.socialmedia {
+      justify-content: center;
+      padding-bottom: 1.5rem;
     }
+    &.mainFooterMenu {
+      padding: 0;
+      li {
+        width: 25%;
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+    }
+    @media screen and (max-width: 440px) {
+      &.mainFooterMenu {
+        li {
+          width: 33.33%;
+        }
+      }
+    } 
   }
 `
 
@@ -129,7 +154,7 @@ const DownloadFromMarketplace = styled.div`
   padding: 0.75rem;
   align-items: center;
   justify-content: flex-start;
-  background-color: #ccc;
+  background-color: #fff;
   display: flex;
   flex-flow: row wrap;
   border: 1px solid var(--color-black);
@@ -171,8 +196,9 @@ const FooterSmallText = styled.p`
   &:first-of-type {
     margin-bottom: 0.5rem;
   }
-  @media screen and (max-width: 900px) {
-  text-align: ${props => props.textAlignLeft? 'left' : 'left'};
+  @media screen and (max-width: 479px) {
+  text-align: ${props => props.textAlignLeft ? 'left' : 'left'};
+  text-align: center;
   } 
 `
 
@@ -309,10 +335,10 @@ export default function Footer() {
         </Col>
       </Row>
       <Row className="footerBottom" alignCenter>
-        <Col>
+        <Col className="footerBottomCol">
           <SocialmediaLinks />
         </Col>
-        <Col>
+        <Col className="footerBottomCol">
           <FooterSmallText>
           &#9400; 2019 Smart Oak Project. Wszelkie prawa zastrzeżone.
           </FooterSmallText>
