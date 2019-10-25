@@ -12,7 +12,7 @@ const IndexPage = () => {
     return (
         <>
             <GlobalStyle />
-            <h1>Next Page</h1>
+
             <Nav />
             <Header />
             <Content

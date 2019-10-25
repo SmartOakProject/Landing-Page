@@ -29,51 +29,58 @@ const StyledLink = styled(props => <Link {...props} />)`
     line-height: 1;
     padding: 9px 1.25rem 15px;
     border-bottom: solid 2px #151515;
-
-    &:hover {
-        border-bottom-color: #2a80f8;
-    }
 `
+
+const activeStyles = {
+    borderBottomColor: "#2a80f8",
+}
 
 const projekctLinks = [
     {
-        path: "",
+        path: "/",
+        linkText: "Home",
+    },
+    {
+        path: "/new-neuropsychiatry",
         linkText: "New Neuropsychiatry",
     },
     {
-        path: "",
+        path: "/neuron-direction",
         linkText: "NeuroN Direction",
     },
     {
-        path: "",
+        path: "oakes-innovate",
         linkText: "Oakes Innovate",
     },
     {
-        path: "",
+        path: "ntv-channel",
         linkText: "NTV Channel",
     },
     {
-        path: "",
+        path: "oakes-clinic",
         linkText: "Oakes Clinic",
     },
     {
-        path: "",
+        path: "oak-atlantis",
         linkText: "Oak Atlantis",
     },
     {
-        path: "",
+        path: "neuron-currency",
         linkText: "NeuroN Currency",
     },
     {
-        path: "",
+        path: "about-us",
         linkText: "O nas",
     },
 ]
+
 export default function NavSecondary() {
     return (
         <Container>
             {projekctLinks.map(e => (
-                <StyledLink to={e.path}>{e.linkText}</StyledLink>
+                <StyledLink to={e.path} activeStyle={activeStyles}>
+                    {e.linkText}
+                </StyledLink>
             ))}
         </Container>
     )
