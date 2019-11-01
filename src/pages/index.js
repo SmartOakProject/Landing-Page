@@ -8,7 +8,22 @@ import Content from "../components/Content/Content"
 import Cards from "../components/Cards"
 
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
+import Wrapper from "../components/Wrapper"
 
+import logo from "../images/logo-biale.png"
+import styled from "styled-components"
+
+const Logo = styled.img`
+    position: fixed;
+    top: 30%;
+    left: 10%;
+    height: 20vh;
+    /* width: 30vw; */
+    z-index: 100;
+    @media screen and (max-width: 900px) {
+        position: static;
+    }
+`
 const IndexPage = () => {
     return (
         <>
@@ -16,20 +31,13 @@ const IndexPage = () => {
             <Nav />
             <MobileNav />
             <Header />
-            <Content
-                text="
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique asperiores est aliquam placeat accusantium molestiae eius aspernatur autem officiis ipsam sequi numquam ea amet, a"
-            />
-            <Content
-                text="
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique asperiores est aliquam placeat accusantium molestiae eius aspernatur autem officiis ipsam sequi numquam ea amet, a"
-            />
-            <Content
-                text="
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique asperiores est aliquam placeat accusantium molestiae eius aspernatur autem officiis ipsam sequi numquam ea amet, a"
-            />
-            <Cards />
-            <Footer />
+            <Logo src={logo} />
+            <Wrapper bgc="red" />
+            <Wrapper bgc="blue" />
+            <Wrapper bgc="white" z="100">
+                <Cards />
+                <Footer />
+            </Wrapper>
         </>
     )
 }

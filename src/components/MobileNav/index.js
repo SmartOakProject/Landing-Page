@@ -60,6 +60,25 @@ const MobileNavItem = styled.li`
     }
 `
 
+const Input = styled.input`
+    width: 90%;
+    background-color: inherit;
+    border: none;
+    border-radius: 14px;
+    height: 3rem;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 1rem 2rem;
+    outline: none;
+    background: #282828;
+    margin: 3rem auto;
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+        -webkit-appearance: none;
+    }
+`
+
 const navigationLinks = [
     {
         path: "",
@@ -161,6 +180,11 @@ class MobileNav extends Component {
                     />
                 </MobileNavMenu>
                 <MobileList open={menuOpen}>
+                    <Input
+                        type="search"
+                        placeholder="Szukaj w Smart Oak Project"
+                    />
+
                     {navigationLinks.map(e => (
                         <MobileNavItem>
                             <Link to={e.path}>{e.linkText}</Link>

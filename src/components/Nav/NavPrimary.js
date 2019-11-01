@@ -163,7 +163,10 @@ export default class NavPrimary extends Component {
                 {this.state.showSearch ? (
                     <SearchWrapper>
                         <FaSearch />
-                        <Input type="search" />
+                        <Input
+                            type="search"
+                            placeholder="Szukaj w Smart Oak Project"
+                        />
                         <FaTimes
                             onClick={() =>
                                 this.setState({
