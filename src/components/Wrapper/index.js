@@ -13,10 +13,11 @@ const Container = styled.div`
 `
 
 const Text = styled.div`
-    width: 30vh;
+    width: 50vh;
+    color: ${props => props.color};
 `
-const Photo = styled.div`
-    background-color: black;
+const Video = styled.video`
+    /* background-color: black; */
     height: 50vh;
     width: 50vw;
 `
@@ -30,6 +31,9 @@ const Border = styled.div`
 `
 const Heg = styled.div`
     height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     z-index: ${props => props.z};
 `
 
@@ -40,16 +44,17 @@ export default function Wrapper(props) {
                 props.children
             ) : (
                 <Heg>
-                    <Text>
-                        <h2>Title</h2>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Labore omnis libero ut at accusantium, nostrum
-                            iste sunt! Atque, deleniti voluptatibus nihil cumque
-                            totam rem qui veritatis quas, optio suscipit iusto?
-                        </p>
+                    <Text color={props.textColor}>
+                        <h2>{props.title}</h2>
+
+                        <p>{props.text}</p>
                     </Text>
-                    <Photo />
+                    <Video
+                        muted
+                        autoPlay
+                        loop
+                        src={require(`../../video/${props.videoSrc}`)}
+                    />
                 </Heg>
             )}
         </Container>

@@ -3,16 +3,14 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const Container = styled.div`
-    height: 4.3rem;
-    min-height: 4.3rem;
+    height: 5rem;
+    min-height: 5rem;
     background-color: #151515;
-    line-height: 1.5;
     display: flex;
     justify-content: center;
     align-items: center;
     position: sticky;
     top: 0;
-    height: 100%;
     z-index: 100000;
 
     @media screen and (max-width: 900px) {

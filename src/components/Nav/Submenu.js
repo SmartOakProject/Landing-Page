@@ -7,7 +7,7 @@ const SubmenuWrapper = styled.ul`
     right: -4px;
     position: absolute;
     background-color: #0e0e0e;
-    z-index: 10000;
+    z-index: 100000000000;
     display: flex;
     justify-content: center;
     align-items: center;
