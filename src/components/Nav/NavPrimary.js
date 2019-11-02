@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import styled, { keyframes, css } from "styled-components"
 import { Link } from "gatsby"
+import { unique } from '../../utils';
 import {
     FaFacebookF,
     FaInstagram,
@@ -12,6 +13,7 @@ import {
     FaDownload,
     FaTimes,
 } from "react-icons/fa"
+import { projekctLinks } from '../MobileNav/index';
 
 import Submenu from "./Submenu"
 
@@ -93,11 +95,21 @@ const DropdownLink = styled.li`
     position: relative;
 `
 
+const DropDownWrapper = styled.ul`
+    background-color: #000;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    z-index: 100001;
+`
+
 const SearchWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     animation: 1s ${fadeIn} ease-out;
+    position: relative;
 
     svg {
         color: rgba(255, 255, 255, 0.85);
@@ -131,6 +143,8 @@ export default class NavPrimary extends Component {
             showLangMenu: false,
             showSearch: false,
             searchAnimation: false,
+            searchedPhrase: '',
+            searchedLinks: []
         }
     }
 
@@ -138,6 +152,33 @@ export default class NavPrimary extends Component {
         this.setState(prevState => ({
             showLangMenu: !prevState.showLangMenu,
         }))
+    }
+
+    handleSearchInputChange = (event) => {
+        this.setState({
+            searchedPhrase: event.target.value
+        }, this.searchInMenu);
+    }
+
+    clearIfEmpty = () => {
+        if(this.state.searchedPhrase === '') {
+            this.setState({
+                searchedLinks: [],
+            });
+        }
+    }
+
+    searchInMenu = () => {
+        let links = []
+        projekctLinks.forEach(link => {
+            if(link.linkText.includes(this.state.searchedPhrase)) {
+                links.push(link);
+                links = unique(links, 'linkText');
+                this.setState(prevState => ({
+                    searchedLinks: links,
+                }))
+            }
+        })
     }
 
     render() {
@@ -166,7 +207,18 @@ export default class NavPrimary extends Component {
                         <Input
                             type="search"
                             placeholder="Szukaj w Smart Oak Project"
+                            onChange={ (event) => { this.handleSearchInputChange(event); this.clearIfEmpty(); } }
+                            value={this.state.searchedPhrase}
                         />
+                        <DropDownWrapper>
+                            {this.state.searchedLinks.map((link, index) => {
+                                return (
+                                    <DropdownLink key={index} to={link.path}>
+                                        {link.linkText}
+                                    </DropdownLink>
+                                )
+                            })}
+                        </DropDownWrapper>
                         <FaTimes
                             onClick={() =>
                                 this.setState({
