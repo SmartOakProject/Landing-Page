@@ -5,12 +5,6 @@ import headerBg from "../../images/header-bg.jpeg"
 import logo from "../../images/logo-biale.png"
 import { FaFacebookF } from "react-icons/fa"
 
-const Background = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 56.5rem;
-`
-
 const Image = styled.div`
     position: absolute;
     width: 100%;
@@ -127,50 +121,42 @@ const FbIcon = styled(FaFacebookF)`
     transform: translateY(0.3rem);
 `
 
-export default class Header extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            scroll: 70,
-        }
-        this.image = React.createRef()
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll)
-    }
-
-    componentDidMount() {
-        this.prev = window.scrollY
-        window.addEventListener("scroll", e => this.handleNavigation(e))
-    }
-
-    handleNavigation = e => {
-        const window = e.currentTarget
-        let max = this.image.current.offsetHeight
-        let scrollPercent = (window.pageYOffset / max) * 100
-        let factor = 3.6
-        this.setState({ scroll: scrollPercent / factor + 70 })
-
-        this.prev = window.scrollY
-    }
-
+export default class Text extends Component {
     render() {
         return (
             <>
-                <Global />
-                <Background
+                <HeaderElement
                     style={{
-                        clipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+                        color: this.props.color,
+                        zIndex: this.props.zindex,
                     }}
-                    ref={this.image}
                 >
-                    <Image />
-                    <Filter />
-                </Background>
-                {this.props.children}
-                <Filler />
+                    <Logo>
+                        <Icon src={logo} alt="NeuroN Foundation Logo" />
+                        <Name>
+                            <FirstLine>Smart Oak</FirstLine>
+                            <SecondLine>Project</SecondLine>
+                        </Name>
+                    </Logo>
+                    <Title>NeuroN Foundation</Title>
+                    <Description>
+                        Fundacja skierowana jest dla osób z zaburzeniami
+                        funkcjonowania mózgu i osób uzależnionych. W niesieniu
+                        pomocy nie można się jednak ograniczać, dlatego dotykamy
+                        również wielu innych społecznych kwestii. Działamy w
+                        największych miastach, a także bez względu na miejsce
+                        zamieszkania, w ramach e-wolontariatu. O większości
+                        naszych projektów przeczytacie w tej i kolejnych
+                        zakładkach.
+                    </Description>
+                    <Link
+                        href="https://www.facebook.com/neuronfoundation/"
+                        target="_blank"
+                    >
+                        <FbIcon />
+                        Zobacz projekt na facebooku
+                    </Link>
+                </HeaderElement>
             </>
         )
     }

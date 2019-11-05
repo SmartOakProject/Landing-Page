@@ -1,6 +1,5 @@
-import React from "react"
+import React, { Component } from "react"
 import styled from "styled-components"
-import Test from "./Test"
 
 const Container = styled.div`
     background: ${props => props.bgc};
@@ -37,20 +36,20 @@ const Heg = styled.div`
     align-items: center;
     z-index: ${props => props.z};
 `
-
-export default function Wrapper(props) {
+export default function Test(props) {
     return (
-        <Container bgc={props.bgc} z={props.z}>
-            {props.children ? (
-                props.children
-            ) : (
-                <Test
-                    textColor={props.textColor}
-                    text={props.text}
-                    videoSrc={props.videoSrc}
-                    title={props.title}
-                />
-            )}
-        </Container>
+        <Heg>
+            <Text color={props.textColor}>
+                <h2>{props.title}</h2>
+
+                <p>{props.text}</p>
+            </Text>
+            <Video
+                muted
+                autoPlay
+                loop
+                src={require(`../../video/${props.videoSrc}`)}
+            />
+        </Heg>
     )
 }

@@ -1,12 +1,15 @@
 import React from "react"
-// import Header from "../components/Header"
+import Header from "../components/Header"
+import Text from "../components/Header/Text"
 import Nav from "../components/Nav"
 import MobileNav from "../components/MobileNav"
 import Footer from "../components/Footer/Footer"
+
 // import Content from "../components/Content"
 import Cards from "../components/Cards"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import Wrapper from "../components/Wrapper"
+import Test from "../components/Wrapper/Test"
 import logo from "../images/logo-biale.png"
 import styled from "styled-components"
 // ../../video/blackEarth.mp4
@@ -27,8 +30,18 @@ const IndexPage = () => {
             <GlobalStyle />
             <Nav />
             <MobileNav />
-            <Header />
+            <Header>
+                <Text zindex="10" color="white" />
+                <Text zindex="20" color="black" />
+            </Header>
             {/* <Logo src={logo} /> */}
+            <Wrapper
+                bgc="white"
+                videoSrc="whiteParticles.mp4"
+                text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
+                title="Jak dołączyć do projektu?"
+                textColor="black"
+            />
             <Wrapper
                 bgc="#131B2B"
                 videoSrc="blackEarth.mp4"
@@ -43,21 +56,15 @@ const IndexPage = () => {
                 title="Działalności gospodarcze"
                 textColor="black"
             />
-            <Wrapper
-                bgc="black"
-                videoSrc="blackPulse.mp4"
-                text="Dzięki naszej platformie wszyscy uczestnicy projektu mogą się wspierać i nieustannie od siebie uczyć. Osobom szczególnie zaangażowanym wystawiamy dokumenty referencyjne, proponujemy staż albo zatrudnienie, a nawet zapraszamy do współpracy przy komercyjnych częściach projektu."
-                title="Dlaczego warto z nami działać?"
-                textColor="white"
-            />
-            <Wrapper
-                bgc="white"
-                videoSrc="whiteParticles.mp4"
-                text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
-                title="Jak dołączyć do projektu?"
-                textColor="black"
-            />
+
             <Wrapper bgc="white" z="100">
+                <Test
+                    bgc="black"
+                    videoSrc="blackPulse.mp4"
+                    text="Dzięki naszej platformie wszyscy uczestnicy projektu mogą się wspierać i nieustannie od siebie uczyć. Osobom szczególnie zaangażowanym wystawiamy dokumenty referencyjne, proponujemy staż albo zatrudnienie, a nawet zapraszamy do współpracy przy komercyjnych częściach projektu."
+                    title="Dlaczego warto z nami działać?"
+                    textColor="white"
+                />
                 <Cards />
                 <Footer />
             </Wrapper>
