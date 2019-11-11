@@ -11,8 +11,10 @@ import img6 from "../../images/news/6.jpeg"
 const Container = styled.div`
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     padding-top: 3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     /* @media screen and (max-width: 1560px) {
         grid-template-columns: repeat(3, 1fr);
     } */
@@ -23,11 +25,11 @@ const Container = styled.div`
 export default function Section() {
     return (
         <Container>
-            {/* <Card
+            <Card
                 img={img1}
                 title="Smart Oak ERP System"
                 text="Jesteśmy dumni z naszego systemu Smart Oak ERP. To nasz komunikator i jednocześnie system do zarządzania całym projektem o wartości 200.000 $. Z jego pomocą każdy może do nas dołączyć, niezależnie od miejsca, w którym się znajduje i działać w projektach, które są mu najbliższe."
-            /> */}
+            />
             <Card
                 img={img2}
                 title="Jak dołączyć do projektu?"
@@ -46,12 +48,12 @@ export default function Section() {
             <Card
                 img={img5}
                 title="Hakatony Wolontariackie"
-                text="W ramach naszych działań IT, w różnych miastach organizujemy weekendowe hakatony, by pracować nad naszą aplikacją. W zakładce wydarzenia dodajemy informacje o wszystkich naszych planowanych działaniach. Znajdziesz tam także informacje, dotyczące zbliżających się hakatonów."
+                text="W ramach naszych działań IT, w różnych miastach organizujemy weekendowe hakatony, by pracować nad naszą aplikacją. W zakładce wydarzenia dodajemy informacje o wszystkich naszych planowanych działaniach. Znajdziesz tam także informacje, dotyczące hakatonów."
             />
             <Card
                 img={img6}
                 title="Działalności gospodarcze"
-                text="Najbardziej zaangażowane osoby w projekty charytatywne, są też z nami w projektach komercyjnych. Doceniamy tych, którzy więcej robią niż mówią. Jeżeli lubisz działać w projektach i potrafisz myśleć strategicznie, zacznij rozwijać z nami działalności gospodarcze. Więcej o naszych pomysłach w zakładce Oakes Innovate."
+                text="Najbardziej zaangażowane osoby w projekty charytatywne, są też z nami w projektach komercyjnych. Doceniamy tych, którzy więcej robią niż mówią. Jeżeli lubisz działać w projektach i potrafisz myśleć strategicznie, rozwijaj działalności gospodarcze. Więcej zakładce Oakes Innovate."
             />
         </Container>
     )

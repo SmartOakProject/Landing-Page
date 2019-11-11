@@ -19,7 +19,7 @@ const Image = styled.div`
 
     @media screen and (max-width: 425px) {
         background-position: 73% 0;
-        height: calc(56.5rem * 0.8);
+        height: 56.5rem;
     }
 `
 
@@ -34,7 +34,7 @@ const Filter = styled.div`
         background: black;
     }
     @media screen and (max-width: 425px) {
-        height: calc(56.5rem * 0.8);
+        height: 56.5rem;
     }
 `
 
@@ -148,7 +148,11 @@ export default class Header extends Component {
 
     handleNavigation = e => {
         const window = e.currentTarget
-        let max = this.image.current.offsetHeight
+        let max
+        if (this.image.current) {
+            max = this.image.current.offsetHeight
+        }
+
         let scrollPercent = (window.pageYOffset / max) * 100
         let factor = 3.6
         this.setState({ scroll: scrollPercent / factor + 70 })

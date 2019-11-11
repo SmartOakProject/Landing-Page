@@ -10,7 +10,7 @@ const MobileListWrapper = styled.ul`
     background: #0e0e0e;
     color: var(--color-white);
     transition: all 0.45s ease;
-
+    z-index: 123;
     padding-top: 5rem;
     @media only screen and (orientation: landscape) {
         padding-top: 1.5rem;

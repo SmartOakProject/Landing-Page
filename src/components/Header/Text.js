@@ -3,6 +3,7 @@ import styled from "styled-components"
 import Global from "../GlobalStyles/GlobalStyles"
 import headerBg from "../../images/header-bg.jpeg"
 import logo from "../../images/logo-biale.png"
+import logoBlack from "../../images/logo-czarne.png"
 import { FaFacebookF } from "react-icons/fa"
 
 const Image = styled.div`
@@ -33,10 +34,10 @@ const Filter = styled.div`
 `
 
 const HeaderElement = styled.header`
-    position: fixed;
-    z-index: 21231232132131;
-    width: 71%;
-    padding: 0.8rem 1.6rem 0 9.6rem;
+    /* position: fixed; */
+    z-index: 2;
+    /* width: 50%; */
+    /* padding: 0.8rem 1.6rem 0 9.6rem; */
     color: white;
     font-weight: 400;
     @media screen and (max-width: 900px) {
@@ -92,7 +93,7 @@ const Title = styled.h1`
 `
 
 const Description = styled.p`
-    margin-bottom: 1.6rem;
+    font-size: 1.4rem;
     line-height: 1.5;
 `
 
@@ -132,30 +133,31 @@ export default class Text extends Component {
                     }}
                 >
                     <Logo>
-                        <Icon src={logo} alt="NeuroN Foundation Logo" />
+                        {this.props.logo ? (
+                            <Icon src={logo} alt="NeuroN Foundation Logo" />
+                        ) : (
+                            <Icon
+                                src={logoBlack}
+                                alt="NeuroN Foundation Logo"
+                            />
+                        )}
+
                         <Name>
                             <FirstLine>Smart Oak</FirstLine>
                             <SecondLine>Project</SecondLine>
                         </Name>
                     </Logo>
-                    <Title>NeuroN Foundation</Title>
-                    <Description>
-                        Fundacja skierowana jest dla osób z zaburzeniami
-                        funkcjonowania mózgu i osób uzależnionych. W niesieniu
-                        pomocy nie można się jednak ograniczać, dlatego dotykamy
-                        również wielu innych społecznych kwestii. Działamy w
-                        największych miastach, a także bez względu na miejsce
-                        zamieszkania, w ramach e-wolontariatu. O większości
-                        naszych projektów przeczytacie w tej i kolejnych
-                        zakładkach.
+                    <Title>{this.props.title}</Title>
+                    <Description style={{ color: this.props.color }}>
+                        {this.props.text}
                     </Description>
-                    <Link
+                    {/* <Link
                         href="https://www.facebook.com/neuronfoundation/"
                         target="_blank"
                     >
                         <FbIcon />
                         Zobacz projekt na facebooku
-                    </Link>
+                    </Link> */}
                 </HeaderElement>
             </>
         )

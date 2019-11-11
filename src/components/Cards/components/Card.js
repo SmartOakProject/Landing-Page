@@ -2,25 +2,26 @@ import React from "react"
 import styled from "styled-components"
 
 const CardElement = styled.div`
-    margin: 0 1.5rem 3rem 1.5rem;
-    overflow: hidden;
-    border-radius: 3rem;
+    margin: 0 0.5rem 3rem 0.5rem;
+    /* overflow: hidden; */
+    border-radius: 2rem;
     box-shadow: 0 0.8rem 1.6rem rgba(214, 197, 246, 0.5);
+    z-index: 12312312312;
 `
 
 const ImageWrapper = styled.div`
-    background-color: var(--color-black);
     overflow: hidden;
-    margin: 0;
-    border: 0;
+    border-radius: 2rem 2rem 0 0;
 `
 
 const Image = styled.img`
     display: block;
-    transition: transform 0.5s ease, opacity 0.3s ease;
+    border-radius: 2rem 2rem 0 0;
+    transition: transform 0.5s ease, filter 0.5s ease;
+
     :hover {
+        filter: brightness(70%);
         transform: scale(1.2);
-        opacity: 0.6;
     }
 `
 
@@ -28,18 +29,17 @@ const Text = styled.div``
 
 const Title = styled.h2`
     text-align: center;
-    margin: 1.6rem 0;
+    margin: 1rem 0;
     font-weight: normal;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: #0e196e;
 `
 
 const Description = styled.p`
-    padding: 0 1rem;
-    margin-bottom: 1.2rem;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
     font-size: 1.3rem;
     text-align: justify;
-    line-height: 2rem;
 `
 
 export default function Card(props) {

@@ -40,20 +40,24 @@ const projekctLinks = [
         linkText: "Home",
     },
     {
+        path: "/neuron-foundation",
+        linkText: "NeuroN Foundation",
+    },
+    {
         path: "/new-neuropsychiatry",
         linkText: "New Neuropsychiatry",
     },
     {
-        path: "/neuron-direction",
-        linkText: "NeuroN Direction",
+        path: "/i-mundus",
+        linkText: "iMundus",
     },
     {
-        path: "oakes-innovate",
+        path: "/oakes-innovate",
         linkText: "Oakes Innovate",
     },
     {
-        path: "ntv-channel",
-        linkText: "NTV Channel",
+        path: "/n-media",
+        linkText: "N Media",
     },
     {
         path: "oakes-clinic",

@@ -19,7 +19,9 @@ class IndexPage extends Component {
                 <GlobalStyle />
                 <Nav />
                 <MobileNav />
-                <Header>{/* <Text zindex="20" color="#fff" /> */}</Header>
+                <Header>
+                    <Text zindex="20" color="#fff" />
+                </Header>
                 <Content />
                 <Content />
                 <Wrapper

@@ -5,8 +5,13 @@ import Test from "./Test"
 const Container = styled.div`
     background: ${props => props.bgc};
     width: 100%;
-    position: sticky;
+    height: ${props => (props.isSticky ? "auto" : "100vh")};
+    position: ${props => (props.isSticky ? "sticky" : "static")};
     top: 4.3rem;
+    /* overflow-y: hidden; */
+    -webkit-clip-path: inset(0);
+    clip-path: inset(0, 0, 0, 0);
+    clip: rect(0px, auto, auto, 0px);
     @media screen and (max-width: 900px) {
         position: static;
     }
@@ -40,15 +45,22 @@ const Heg = styled.div`
 
 export default function Wrapper(props) {
     return (
-        <Container bgc={props.bgc} z={props.z}>
+        <Container
+            bgc={props.bgc}
+            z={props.z}
+            isSticky={props.isSticky}
+            isLast={props.isLast}
+        >
             {props.children ? (
                 props.children
             ) : (
                 <Test
+                    logo={props.logo}
                     textColor={props.textColor}
                     text={props.text}
                     videoSrc={props.videoSrc}
                     title={props.title}
+                    color={props.color}
                 />
             )}
         </Container>

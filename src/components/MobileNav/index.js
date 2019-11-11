@@ -18,7 +18,7 @@ const appear = keyframes`
 const MobileNavMenu = styled.div`
     position: fixed;
     top: 0;
-    z-index: 9;
+    z-index: 9323232;
     align-items: center;
     justify-content: space-between;
     background: black;
@@ -104,35 +104,43 @@ const navigationLinks = [
 
 const projekctLinks = [
     {
-        path: "",
+        path: "/",
+        linkText: "Home",
+    },
+    {
+        path: "/neuron-foundation",
+        linkText: "NeuroN Foundation",
+    },
+    {
+        path: "/new-neuropsychiatry",
         linkText: "New Neuropsychiatry",
     },
     {
-        path: "",
-        linkText: "NeuroN Direction",
+        path: "/i-mundus",
+        linkText: "iMundus",
     },
     {
-        path: "",
+        path: "/oakes-innovate",
         linkText: "Oakes Innovate",
     },
     {
-        path: "",
-        linkText: "NTV Channel",
+        path: "/n-media",
+        linkText: "N Media",
     },
     {
-        path: "",
+        path: "oakes-clinic",
         linkText: "Oakes Clinic",
     },
     {
-        path: "",
+        path: "oak-atlantis",
         linkText: "Oak Atlantis",
     },
     {
-        path: "",
+        path: "neuron-currency",
         linkText: "NeuroN Currency",
     },
     {
-        path: "",
+        path: "about-us",
         linkText: "O nas",
     },
 ]

@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
+
 }
 /* Media queries które uzywamy */
 /* @media screen and (max-width: 600px) {
@@ -30,7 +31,8 @@ const GlobalStyle = createGlobalStyle`
 *,
 *::after,
 *::before {
-    box-sizing: inherit; 	
+    box-sizing: inherit;
+    /* border: 1px solid red; */
 }
 
 html {

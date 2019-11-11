@@ -10,6 +10,7 @@ const Container = styled.div`
     align-items: center;
     flex-direction: row;
     padding: 4.8rem 0;
+    /* z-index: 1000000000000; */
     :nth-child(2n) {
         flex-direction: row-reverse;
     }
@@ -25,24 +26,27 @@ const Container = styled.div`
 
 const Image = styled.img`
     display: block;
-    background-color: orangered;
-    height: 35rem;
-    width: 35rem;
-    border-radius: 10%;
+    height: 41rem;
+    /* width: 41rem; */
+    border-radius: 3rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
     @media (max-width: 767px) {
         margin-bottom: 4.8rem;
+        height: 15rem;
+        width: 15rem;
     }
 `
 
 const ContentItemElement = styled.div`
     width: 50%;
     /* min-height: 30rem; */
-    padding: 0 3rem;
+    margin: ${props => (props.isRight ? "0 8rem 0 0" : "0 0 0 8rem")};
+    padding: 0 4rem;
     line-height: 1.5;
     color: #393939;
     @media (max-width: 767px) {
         width: 100%;
+        margin: 0;
         padding: 0 1.5rem;
         text-align: center;
     }
@@ -90,7 +94,7 @@ class Img extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            rotate: -10,
+            rotate: -6,
         }
         this.rotate = React.createRef()
     }
@@ -105,33 +109,42 @@ class Img extends Component {
 
     handleNavigation = e => {
         const window = e.currentTarget
+        if (this.rotate.current) {
+            let bodyBoundingClientRect = document.body.getBoundingClientRect()
+            let elementBoundingClientRect = this.rotate.current.getBoundingClientRect()
+            let top = parseInt(
+                elementBoundingClientRect.top - bodyBoundingClientRect.top
+            )
+            let currentScrollTop = window.pageYOffset
 
-        let bodyBoundingClientRect = document.body.getBoundingClientRect()
-        let elementBoundingClientRect = this.rotate.current.getBoundingClientRect()
-        let top = parseInt(
-            elementBoundingClientRect.top - bodyBoundingClientRect.top
-        )
-        let currentScrollTop = window.pageYOffset
+            let currentAttitude = -1 * (currentScrollTop - (top + 350 / 2))
+            let landingAttitude = Math.max(
+                document.documentElement.clientHeight,
+                window.innerHeight || 0
+            )
+            let maximumLandingAngle = 10
+            let rotationFix = 0.5 * maximumLandingAngle
+            let currentLandingAngle =
+                -1 *
+                    ((currentAttitude * maximumLandingAngle) /
+                        landingAttitude) +
+                rotationFix
 
-        let currentAttitude = -1 * (currentScrollTop - (top + 350 / 2))
-        let landingAttitude = Math.max(
-            document.documentElement.clientHeight,
-            window.innerHeight || 0
-        )
-        let maximumLandingAngle = 10
-        let rotationFix = 0.5 * maximumLandingAngle
-        let currentLandingAngle =
-            -1 * ((currentAttitude * maximumLandingAngle) / landingAttitude) +
-            rotationFix
-
-        this.setState({ rotate: currentLandingAngle })
+            this.setState({ rotate: currentLandingAngle })
+        }
     }
 
     render() {
         return (
             <Image
                 src="https://picsum.photos/250"
-                style={{ transform: `rotate(${this.state.rotate}deg)` }}
+                style={{
+                    transform: `rotate(${
+                        this.props.isRight
+                            ? -1 * this.state.rotate
+                            : this.state.rotate
+                    }deg)`,
+                }}
                 ref={this.rotate}
             />
         )
@@ -142,17 +155,15 @@ export default class Content extends Component {
     render() {
         return (
             <Container>
-                <Img />
-                <ContentItemElement>
+                <Img isRight={this.props.isRight} />
+                <ContentItemElement isRight={this.props.isRight}>
                     <Title>{this.props.title}</Title>
                     <Description>{this.props.text}</Description>
-                    {this.props.fbPost ? (
+                    {this.props.fbPost && (
                         <Link href={this.props.fbLink} target="_blank">
                             <FbIcon />
                             Zobacz projekt na facebooku
                         </Link>
-                    ) : (
-                        ""
                     )}
                 </ContentItemElement>
             </Container>
