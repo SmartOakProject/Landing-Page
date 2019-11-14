@@ -27,13 +27,11 @@ const Container = styled.div`
 const Image = styled.img`
     display: block;
     height: 41rem;
-    /* width: 41rem; */
+
     border-radius: 3rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
     @media (max-width: 767px) {
-        margin-bottom: 4.8rem;
-        height: 15rem;
-        width: 15rem;
+        height: 64vw;
     }
 `
 
@@ -58,6 +56,7 @@ const Title = styled.h2`
     line-height: 1.2;
     color: #0e196e;
     font-weight: 300;
+    margin-top: 4rem;
 `
 
 const Description = styled.p`

@@ -22,17 +22,15 @@ const Text = styled.div`
     z-index: 3;
     top: -400px;
     left: 50px;
+    @media screen and (max-width: 771px) {
+        width: 80vw;
+        height: 300vh;
+    }
 `
 const Sticky = styled.div`
     position: sticky;
     top: 20rem;
     color: #000;
-    /* height: 300px; */
-    /* width: 300px; */
-    /* z-index: 1001010; */
-    /* padding-top: 0px; */
-    /* top: -300px; */
-    /* bottom: 0; */
 `
 const Video = styled.video`
     /* background-color: black; */

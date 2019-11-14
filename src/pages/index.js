@@ -1,6 +1,6 @@
 import React from "react"
 import Header from "../components/Header"
-import Text from "../components/Header/Text"
+import Text from "../components/Header/TextHeader"
 import Nav from "../components/Nav"
 import MobileNav from "../components/MobileNav"
 import Footer from "../components/Footer/Footer"
@@ -31,12 +31,13 @@ const IndexPage = () => {
             <Nav />
             <MobileNav />
             <Header>
-                {/* {/* <Text zindex="10" color="white" /> */}
-                {/* <Text zindex="1" color="white" /> } */}
+                <Text
+                    text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
+                    title="NeuroN Foundation"
+                />
             </Header>
             {/* <Logo src={logo} /> */}
             <Wrapper
-                isSticky={true}
                 logo={false}
                 bgc="white"
                 color="black"
@@ -47,7 +48,6 @@ const IndexPage = () => {
                 z="3"
             />
             <Wrapper
-                isSticky={true}
                 logo={true}
                 color="white"
                 bgc="#131B2B"
@@ -58,7 +58,6 @@ const IndexPage = () => {
                 z="4"
             />
             <Wrapper
-                isSticky={true}
                 logo={false}
                 bgc="white"
                 color="black"
@@ -69,7 +68,6 @@ const IndexPage = () => {
                 z="5"
             />
             <Wrapper
-                isSticky={true}
                 logo={true}
                 color="white"
                 bgc="#131B2B"
@@ -80,7 +78,6 @@ const IndexPage = () => {
                 z="6"
             />
             <Wrapper
-                isSticky={true}
                 logo={false}
                 bgc="white"
                 color="black"
@@ -91,7 +88,6 @@ const IndexPage = () => {
                 z="7"
             />
             <Wrapper
-                isSticky={true}
                 logo={true}
                 color="white"
                 bgc="#131B2B"
@@ -102,7 +98,6 @@ const IndexPage = () => {
                 z="8"
             />
             <Wrapper
-                isSticky={true}
                 logo={false}
                 bgc="white"
                 color="black"
@@ -113,12 +108,10 @@ const IndexPage = () => {
                 z="9"
             />
             <Wrapper
-                isSticky={true}
                 bgc="white"
                 z="10"
                 style={{ height: "auto" }}
-                isLast={true}
-            >
+                isLast={true}>
                 <Test
                     color="white"
                     logo={true}
@@ -127,8 +120,8 @@ const IndexPage = () => {
                     title="NeuroN Currency"
                     textColor="white"
                 />
-                <Cards />
-                <Footer />
+
+                <Footer black />
             </Wrapper>
         </>
     )

@@ -34,10 +34,11 @@ const Filter = styled.div`
 `
 
 const HeaderElement = styled.header`
-    /* position: fixed; */
-    z-index: 2;
-    /* width: 50%; */
-    /* padding: 0.8rem 1.6rem 0 9.6rem; */
+    position: sticky;
+    z-index: 23453453453534;
+    top: 50px;
+
+    padding: 0.8rem 1.6rem 0 9.6rem;
     color: white;
     font-weight: 400;
     @media screen and (max-width: 900px) {
@@ -65,6 +66,25 @@ const Icon = styled.img`
     @media screen and (max-width: 991px) {
         display: none;
     }
+`
+const TextWrapper = styled.div`
+    width: 50%;
+    height: 200vh;
+    color: #000;
+    /* display: inline-block; */
+    position: absolute;
+    z-index: 3;
+    top: 0;
+
+    @media screen and (max-width: 771px) {
+        width: 80vw;
+        height: 300vh;
+    }
+`
+const Sticky = styled.div`
+    position: sticky;
+    top: 20rem;
+    color: #000;
 `
 
 const Name = styled.div``
@@ -98,6 +118,7 @@ const Title = styled.h1`
 const Description = styled.p`
     font-size: 1.4rem;
     line-height: 1.5;
+    color: #fff;
     @media screen and (max-width: 991px) {
     }
 `
@@ -131,39 +152,31 @@ export default class Text extends Component {
     render() {
         return (
             <>
-                <HeaderElement
-                    style={{
-                        color: this.props.color,
-                        zIndex: this.props.zindex,
-                    }}
-                >
-                    <Logo>
-                        {this.props.logo ? (
+                {" "}
+                <TextWrapper>
+                    <HeaderElement
+                        style={{
+                            zIndex: this.props.zindex,
+                        }}>
+                        <Logo>
                             <Icon src={logo} alt="NeuroN Foundation Logo" />
-                        ) : (
-                            <Icon
-                                src={logoBlack}
-                                alt="NeuroN Foundation Logo"
-                            />
-                        )}
 
-                        <Name>
-                            <FirstLine>Smart Oak</FirstLine>
-                            <SecondLine>Project</SecondLine>
-                        </Name>
-                    </Logo>
-                    <Title>{this.props.title}</Title>
-                    <Description style={{ color: this.props.color }}>
-                        {this.props.text}
-                    </Description>
-                    {/* <Link
+                            <Name>
+                                <FirstLine>Smart Oak</FirstLine>
+                                <SecondLine>Project</SecondLine>
+                            </Name>
+                        </Logo>
+                        <Title>{this.props.title}</Title>
+                        <Description>{this.props.text}</Description>
+                        {/* <Link
                         href="https://www.facebook.com/neuronfoundation/"
                         target="_blank"
                     >
                         <FbIcon />
                         Zobacz projekt na facebooku
                     </Link> */}
-                </HeaderElement>
+                    </HeaderElement>
+                </TextWrapper>
             </>
         )
     }

@@ -9,6 +9,7 @@ const Background = styled.div`
     position: absolute;
     width: 100%;
     height: 56.5rem;
+    clip-path: ${props => props.scroll};
 `
 
 const Image = styled.div`
@@ -165,15 +166,12 @@ export default class Header extends Component {
             <>
                 <Global />
                 <Background
-                    style={{
-                        clipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
-                    }}
-                    ref={this.image}
-                >
+                    scroll={`polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`}
+                    ref={this.image}>
                     <Image />
                     <Filter />
+                    {this.props.children}
                 </Background>
-                {this.props.children}
                 <Filler />
             </>
         )

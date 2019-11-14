@@ -5,8 +5,9 @@ import Test from "./Test"
 const Container = styled.div`
     background: ${props => props.bgc};
     width: 100%;
-    height: ${props => (props.isSticky ? "auto" : "100vh")};
-    position: ${props => (props.isSticky ? "sticky" : "static")};
+    /* height: ${props => (props.isSticky ? "auto" : "100vh")}; */
+    height: auto;
+    /* position: ${props => (props.isSticky ? "sticky" : "static")}; */
     top: 4.3rem;
     /* overflow-y: hidden; */
     -webkit-clip-path: inset(0);
@@ -49,8 +50,7 @@ export default function Wrapper(props) {
             bgc={props.bgc}
             z={props.z}
             isSticky={props.isSticky}
-            isLast={props.isLast}
-        >
+            isLast={props.isLast}>
             {props.children ? (
                 props.children
             ) : (
