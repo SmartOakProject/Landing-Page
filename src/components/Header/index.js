@@ -156,7 +156,7 @@ export default class Header extends Component {
 
         let scrollPercent = (window.pageYOffset / max) * 100
         let factor = 3.6
-        this.setState({ scroll: scrollPercent / factor + 70 })
+        // this.setState({ scroll: scrollPercent / factor + 70 })
 
         this.prev = window.scrollY
     }
@@ -167,7 +167,8 @@ export default class Header extends Component {
                 <Global />
                 <Background
                     scroll={`polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`}
-                    ref={this.image}>
+                    ref={this.image}
+                >
                     <Image />
                     <Filter />
                     {this.props.children}

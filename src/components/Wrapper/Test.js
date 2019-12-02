@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const Text = styled.div`
     width: 35vw;
-    height: 200vh;
+    height: ${props => (props.isLast ? "150vh" : "200vh")};
     color: #000;
     /* display: inline-block; */
     position: absolute;
@@ -23,8 +23,10 @@ const Text = styled.div`
     top: -400px;
     left: 50px;
     @media screen and (max-width: 771px) {
+        left: 0;
+
         width: 80vw;
-        height: 300vh;
+        height: ${props => (props.isLast ? "120vh" : "250vh")};
     }
 `
 const Sticky = styled.div`
@@ -84,10 +86,9 @@ export default class Test extends Component {
         }
     }
     render() {
-        console.log(this.state.height)
         return (
             <Heg>
-                <Text>
+                <Text isLast={this.props.isLast}>
                     <Sticky ref={testRef => (this.testRef = testRef)}>
                         <Text31
                             logo={this.props.logo}
@@ -101,8 +102,7 @@ export default class Test extends Component {
                 <VisibilitySensor
                     partialVisibility={this.state.visiblitiy}
                     minTopValue={this.state.height}
-                    onChange={this.playVideo}
-                >
+                    onChange={this.playVideo}>
                     <Video
                         ref={vidRef => (this.vidRef = vidRef)}
                         muted

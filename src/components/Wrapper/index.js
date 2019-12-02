@@ -61,6 +61,7 @@ export default function Wrapper(props) {
                     videoSrc={props.videoSrc}
                     title={props.title}
                     color={props.color}
+                    isLast={props.isLast}
                 />
             )}
         </Container>

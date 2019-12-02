@@ -196,11 +196,13 @@ const DownloadFromMarketplaceText = styled.p`
 `
 
 const FooterSmallText = styled.p`
-    font-size: 1.25rem;
+    font-size: 1.04rem;
     color: var(--color-black);
     text-align: ${props => (props.textAlignLeft ? "left" : "right")};
-    &:first-of-type {
-        margin-bottom: 0.5rem;
+
+    margin-bottom: 0.3rem;
+    &:last-of-type {
+        margin-bottom: 0;
     }
     @media screen and (max-width: 479px) {
         text-align: ${props => (props.textAlignLeft ? "left" : "left")};
@@ -355,6 +357,9 @@ export default function Footer() {
                     </FooterSmallText>
                     <FooterSmallText>
                         <a>Polityka prywatności</a>
+                    </FooterSmallText>
+                    <FooterSmallText>
+                        Strona zrealizowana przez firmę Progressio
                     </FooterSmallText>
                 </Col>
             </Row>

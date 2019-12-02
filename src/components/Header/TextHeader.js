@@ -1,51 +1,23 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import Global from "../GlobalStyles/GlobalStyles"
-import headerBg from "../../images/header-bg.jpeg"
+
 import logo from "../../images/logo-biale.png"
-import logoBlack from "../../images/logo-czarne.png"
+
 import { FaFacebookF } from "react-icons/fa"
-
-const Image = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url(${headerBg}) no-repeat center center / cover;
-
-    @media screen and (max-width: 425px) {
-        background-position: 73% 0;
-        height: calc(56.5rem * 0.8);
-    }
-`
-
-const Filter = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(100deg, black 20%, transparent 60%);
-
-    opacity: 0.5;
-    @media screen and (max-width: 991px) {
-        background: black;
-    }
-    @media screen and (max-width: 425px) {
-        height: calc(56.5rem * 0.8);
-    }
-`
 
 const HeaderElement = styled.header`
     position: sticky;
     z-index: 23453453453534;
-    top: 50px;
+    top: 17vh;
 
-    padding: 0.8rem 1.6rem 0 9.6rem;
+    padding: 0rem 14rem 0 4.9rem;
     color: white;
     font-weight: 400;
     @media screen and (max-width: 900px) {
-        padding: 3.3rem 1.6rem 0 9.6rem;
+        /* padding: 3.3rem 14rem 0 9.6rem; */
     }
     @media screen and (max-width: 767px) {
-        padding: 3.3rem 1.6rem 0;
+        padding: 0 0 0fahandshelping 3rem;
         width: 100%;
     }
 `
@@ -57,11 +29,11 @@ const Logo = styled.div`
 `
 
 const Icon = styled.img`
-    width: 15rem;
-    height: 15rem;
+    width: 13rem;
+    height: 13rem;
     @media screen and (max-width: 1200px) {
-        width: 12rem;
-        height: 12rem;
+        width: 10rem;
+        height: 10rem;
     }
     @media screen and (max-width: 991px) {
         display: none;
@@ -81,11 +53,6 @@ const TextWrapper = styled.div`
         height: 300vh;
     }
 `
-const Sticky = styled.div`
-    position: sticky;
-    top: 20rem;
-    color: #000;
-`
 
 const Name = styled.div``
 
@@ -99,7 +66,7 @@ const FirstLine = styled.div`
 
 const SecondLine = styled.div`
     font-size: 10.5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     letter-spacing: 14.8px;
     margin-top: 0;
     padding-left: 7px;
@@ -107,9 +74,9 @@ const SecondLine = styled.div`
 `
 
 const Title = styled.h1`
-    font-size: 4.55rem;
+    font-size: 3.7rem;
     font-weight: 500;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1rem;
     @media screen and (max-width: 771px) {
         font-size: 2.4rem;
     }
@@ -117,7 +84,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
     font-size: 1.4rem;
-    line-height: 1.5;
+    line-height: 1.4;
     color: #fff;
     @media screen and (max-width: 991px) {
     }
@@ -152,12 +119,12 @@ export default class Text extends Component {
     render() {
         return (
             <>
-                {" "}
                 <TextWrapper>
                     <HeaderElement
                         style={{
                             zIndex: this.props.zindex,
-                        }}>
+                        }}
+                    >
                         <Logo>
                             <Icon src={logo} alt="NeuroN Foundation Logo" />
 

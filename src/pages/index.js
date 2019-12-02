@@ -32,8 +32,8 @@ const IndexPage = () => {
             <MobileNav />
             <Header>
                 <Text
-                    text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
-                    title="NeuroN Foundation"
+                    text="Smart Oak Project łączy ambitnych, aktywnych i kreatywnych ludzi z całego świata, chcących od życia czegoś więcej. Umożliwia on tworzenie różnorodnych projektów społecznych i komercyjnych. Dzięki wspólnemu zaangażowaniu i ogromnej pasji możemy realizować świetne projekty, startupy, możemy wspierać się i co najważniejsze pomagać innym. Jeśli tak jak my jesteś pozytywnie zakręcony, szukasz dobrej energii i motywacji do ambitnych działań – nie mogłeś trafić lepiej. Z nami będzie ci doskonale!"
+                    title="Smart Oak Project"
                 />
             </Header>
             {/* <Logo src={logo} /> */}
@@ -119,6 +119,7 @@ const IndexPage = () => {
                     text="Dzięki naszej platformie wszyscy uczestnicy projektu mogą się wspierać i nieustannie od siebie uczyć. Osobom szczególnie zaangażowanym wystawiamy dokumenty referencyjne, proponujemy staż albo zatrudnienie, a nawet zapraszamy do współpracy przy komercyjnych częściach projektu."
                     title="NeuroN Currency"
                     textColor="white"
+                    isLast={true}
                 />
 
                 <Footer black />

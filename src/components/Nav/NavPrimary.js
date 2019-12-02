@@ -11,6 +11,7 @@ import {
     FaShoppingCart,
     FaDownload,
     FaTimes,
+    FaHandHoldingHeart,
 } from "react-icons/fa"
 
 import Submenu from "./Submenu"
@@ -189,6 +190,10 @@ export default class NavPrimary extends Component {
                         <StyledLink middleNavPadding to="/">
                             Sklep
                             <FaShoppingCart />
+                        </StyledLink>
+                        <StyledLink middleNavPadding to="/">
+                            Wesprzyj
+                            <FaHandHoldingHeart />
                         </StyledLink>
                         <StyledLink middleNavPadding to="/">
                             Pobierz

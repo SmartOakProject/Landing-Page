@@ -1,37 +1,9 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import Global from "../GlobalStyles/GlobalStyles"
-import headerBg from "../../images/header-bg.jpeg"
+
 import logo from "../../images/logo-biale.png"
 import logoBlack from "../../images/logo-czarne.png"
 import { FaFacebookF } from "react-icons/fa"
-
-const Image = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url(${headerBg}) no-repeat center center / cover;
-
-    @media screen and (max-width: 425px) {
-        background-position: 73% 0;
-        height: calc(56.5rem * 0.8);
-    }
-`
-
-const Filter = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(100deg, black 20%, transparent 60%);
-
-    opacity: 0.5;
-    @media screen and (max-width: 991px) {
-        background: black;
-    }
-    @media screen and (max-width: 425px) {
-        height: calc(56.5rem * 0.8);
-    }
-`
 
 const HeaderElement = styled.header`
     /* position: fixed; */
@@ -56,11 +28,11 @@ const Logo = styled.div`
 `
 
 const Icon = styled.img`
-    width: 15rem;
-    height: 15rem;
+    width: 13rem;
+    height: 13rem;
     @media screen and (max-width: 1200px) {
-        width: 12rem;
-        height: 12rem;
+        width: 10rem;
+        height: 10rem;
     }
     @media screen and (max-width: 991px) {
         display: none;
@@ -79,7 +51,7 @@ const FirstLine = styled.div`
 
 const SecondLine = styled.div`
     font-size: 10.5px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     letter-spacing: 14.8px;
     margin-top: 0;
     padding-left: 7px;
@@ -87,9 +59,9 @@ const SecondLine = styled.div`
 `
 
 const Title = styled.h1`
-    font-size: 4.55rem;
+    font-size: 3.7rem;
     font-weight: 500;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1rem;
     @media screen and (max-width: 771px) {
         font-size: 2.4rem;
     }
@@ -97,11 +69,11 @@ const Title = styled.h1`
 
 const Description = styled.p`
     font-size: 1.4rem;
-    line-height: 1.5;
+    line-height: 1.4;
+    color: #fff;
     @media screen and (max-width: 991px) {
     }
 `
-
 const Filler = styled.div`
     width: 100%;
     height: 56.5rem;
@@ -135,18 +107,12 @@ export default class Text extends Component {
                     style={{
                         color: this.props.color,
                         zIndex: this.props.zindex,
-                    }}
-                >
+                    }}>
                     <Logo>
-                        {this.props.logo ? (
-                            <Icon src={logo} alt="NeuroN Foundation Logo" />
-                        ) : (
-                            <Icon
-                                src={logoBlack}
-                                alt="NeuroN Foundation Logo"
-                            />
-                        )}
-
+                        <Icon
+                            src={this.props.logo ? logo : logoBlack}
+                            alt="NeuroN Foundation Logo"
+                        />
                         <Name>
                             <FirstLine>Smart Oak</FirstLine>
                             <SecondLine>Project</SecondLine>
