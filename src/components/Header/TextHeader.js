@@ -41,7 +41,7 @@ const Icon = styled.img`
 `
 const TextWrapper = styled.div`
     width: 50%;
-    height: 200vh;
+    height: 150vh;
     color: #000;
     /* display: inline-block; */
     position: absolute;
