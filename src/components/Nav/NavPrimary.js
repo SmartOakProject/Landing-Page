@@ -49,8 +49,7 @@ const SocialIcons = styled.div`
 
     a > svg {
         color: rgba(255, 255, 255, 0.85);
-        margin-right: 0.8rem;
-        margin-left: 0.8rem;
+        margin: 0 1rem;
     }
 `
 
