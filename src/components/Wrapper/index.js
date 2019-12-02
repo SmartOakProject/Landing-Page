@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Test from "./Test"
+import Sticky from "./Sticky"
 
 const Container = styled.div`
     background: ${props => props.bgc};
@@ -50,11 +50,12 @@ export default function Wrapper(props) {
             bgc={props.bgc}
             z={props.z}
             isSticky={props.isSticky}
-            isLast={props.isLast}>
+            isLast={props.isLast}
+        >
             {props.children ? (
                 props.children
             ) : (
-                <Test
+                <Sticky
                     logo={props.logo}
                     textColor={props.textColor}
                     text={props.text}

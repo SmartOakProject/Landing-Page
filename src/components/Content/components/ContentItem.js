@@ -26,7 +26,7 @@ const Container = styled.div`
 
 const Image = styled.img`
     display: block;
-    height: 41rem;
+    height: 37rem;
 
     border-radius: 3rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
@@ -64,7 +64,7 @@ const Description = styled.p`
     font-size: 1.3rem;
 `
 
-const Link = styled.a`
+const ExternalLink = styled.a`
     background-color: transparent;
     text-decoration: none;
     color: var(--color-black);
@@ -159,10 +159,10 @@ export default class Content extends Component {
                     <Title>{this.props.title}</Title>
                     <Description>{this.props.text}</Description>
                     {this.props.fbPost && (
-                        <Link href={this.props.fbLink} target="_blank">
+                        <ExternalLink href={this.props.fbLink} target="_blank">
                             <FbIcon />
                             Zobacz projekt na facebooku
-                        </Link>
+                        </ExternalLink>
                     )}
                 </ContentItemElement>
             </Container>

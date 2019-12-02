@@ -193,9 +193,9 @@ class MobileNav extends Component {
                         placeholder="Szukaj w Smart Oak Project"
                     />
 
-                    {navigationLinks.map(e => (
-                        <MobileNavItem>
-                            <Link to={e.path}>{e.linkText}</Link>
+                    {navigationLinks.map((e, i) => (
+                        <MobileNavItem key={i}>
+                            <a to={e.path}>{e.linkText}</a>
                         </MobileNavItem>
                     ))}
                 </MobileList>
@@ -208,8 +208,8 @@ class MobileNav extends Component {
                     >
                         NASZE PROJEKTY
                     </h3>
-                    {projekctLinks.map(e => (
-                        <MobileNavItem>
+                    {projekctLinks.map((e, i) => (
+                        <MobileNavItem key={i}>
                             <Link to={e.path}>{e.linkText}</Link>
                         </MobileNavItem>
                     ))}

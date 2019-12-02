@@ -80,8 +80,8 @@ const projekctLinks = [
 export default function NavSecondary() {
     return (
         <Container>
-            {projekctLinks.map(e => (
-                <StyledLink to={e.path} activeStyle={activeStyles}>
+            {projekctLinks.map((e, i) => (
+                <StyledLink key={i} to={e.path} activeStyle={activeStyles}>
                     {e.linkText}
                 </StyledLink>
             ))}

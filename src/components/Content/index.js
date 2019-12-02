@@ -9,8 +9,9 @@ const ContentElement = styled.div`
 
 export default function Content(props) {
     const text = props.text
-    const textList = text.map(e => (
+    const textList = text.map((e, i) => (
         <ContentItem
+            key={i}
             title={e.title}
             text={e.desc}
             fbPost={e.post}

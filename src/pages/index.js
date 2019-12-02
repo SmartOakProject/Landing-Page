@@ -1,6 +1,6 @@
 import React from "react"
 import Header from "../components/Header"
-import Text from "../components/Header/TextHeader"
+import TextHeader from "../components/Header/TextHeader"
 import Nav from "../components/Nav"
 import MobileNav from "../components/MobileNav"
 import Footer from "../components/Footer/Footer"
@@ -9,7 +9,7 @@ import Footer from "../components/Footer/Footer"
 import Cards from "../components/Cards"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import Wrapper from "../components/Wrapper"
-import Test from "../components/Wrapper/Test"
+import Sticky from "../components/Wrapper/Sticky"
 import logo from "../images/logo-biale.png"
 import styled from "styled-components"
 // ../../video/blackEarth.mp4
@@ -31,7 +31,9 @@ const IndexPage = () => {
             <Nav />
             <MobileNav />
             <Header>
-                <Text
+                <TextHeader
+                    logo
+                    link
                     text="Smart Oak Project łączy ambitnych, aktywnych i kreatywnych ludzi z całego świata, chcących od życia czegoś więcej. Umożliwia on tworzenie różnorodnych projektów społecznych i komercyjnych. Dzięki wspólnemu zaangażowaniu i ogromnej pasji możemy realizować świetne projekty, startupy, możemy wspierać się i co najważniejsze pomagać innym. Jeśli tak jak my jesteś pozytywnie zakręcony, szukasz dobrej energii i motywacji do ambitnych działań – nie mogłeś trafić lepiej. Z nami będzie ci doskonale!"
                     title="Smart Oak Project"
                 />
@@ -111,8 +113,9 @@ const IndexPage = () => {
                 bgc="white"
                 z="10"
                 style={{ height: "auto" }}
-                isLast={true}>
-                <Test
+                isLast={true}
+            >
+                <Sticky
                     color="white"
                     logo={true}
                     videoSrc="home-8.mp4"

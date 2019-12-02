@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import VisibilitySensor from "react-visibility-sensor"
-import Text31 from "../Header/Text"
+import TextHeader from "../Header/TextHeader"
 const Container = styled.div`
     background: ${props => props.bgc};
     width: 100%;
@@ -21,7 +21,7 @@ const Text = styled.div`
     position: absolute;
     z-index: 3;
     top: -400px;
-    left: 50px;
+    left: 0;
     @media screen and (max-width: 771px) {
         left: 0;
 
@@ -90,7 +90,7 @@ export default class Test extends Component {
             <Heg>
                 <Text isLast={this.props.isLast}>
                     <Sticky ref={testRef => (this.testRef = testRef)}>
-                        <Text31
+                        <TextHeader
                             logo={this.props.logo}
                             color={this.props.color}
                             text={this.props.text}
@@ -102,7 +102,8 @@ export default class Test extends Component {
                 <VisibilitySensor
                     partialVisibility={this.state.visiblitiy}
                     minTopValue={this.state.height}
-                    onChange={this.playVideo}>
+                    onChange={this.playVideo}
+                >
                     <Video
                         ref={vidRef => (this.vidRef = vidRef)}
                         muted

@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
 
 const SubmenuWrapper = styled.ul`
     width: 4rem;
@@ -22,7 +21,7 @@ const SubmenuListItem = styled.li`
     }
 `
 
-const StyledLink = styled(props => <Link {...props} />)`
+const StyledLink = styled.a`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     padding: 1.2rem 0.8rem;
@@ -54,7 +53,7 @@ export default function Submenu() {
             {languages.map((e, i) => {
                 return (
                     <SubmenuListItem key={i}>
-                        <StyledLink to={e.path}>{e.language}</StyledLink>
+                        <StyledLink href={e.path}>{e.language}</StyledLink>
                     </SubmenuListItem>
                 )
             })}

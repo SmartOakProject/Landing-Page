@@ -16,7 +16,7 @@ import {
 
 import Submenu from "./Submenu"
 
-const StyledLink = styled(props => <Link {...props} />)`
+const StyledLink = styled.a`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     padding: 1.2rem ${props => (props.middleNavPadding ? "1.5rem" : "0.8rem")};
@@ -144,21 +144,21 @@ export default class NavPrimary extends Component {
         return (
             <Container>
                 <SocialIcons>
-                    <Link to="">
+                    <a to="">
                         <FaFacebookF />
-                    </Link>
-                    <Link to="">
+                    </a>
+                    <a to="">
                         <FaInstagram />
-                    </Link>
-                    <Link to="">
+                    </a>
+                    <a to="">
                         <FaTwitter />
-                    </Link>
-                    <Link to="">
+                    </a>
+                    <a to="">
                         <FaYoutube />
-                    </Link>
-                    <Link to="">
+                    </a>
+                    <a to="">
                         <FaLinkedin />
-                    </Link>
+                    </a>
                 </SocialIcons>
                 {this.state.showSearch ? (
                     <SearchWrapper>

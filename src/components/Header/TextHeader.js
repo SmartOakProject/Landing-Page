@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import styled from "styled-components"
 
 import logo from "../../images/logo-biale.png"
+import logoBlack from "../../images/logo-czarne.png"
 
 import { FaFacebookF } from "react-icons/fa"
 
@@ -9,15 +10,15 @@ const HeaderElement = styled.header`
     position: sticky;
     z-index: 23453453453534;
     top: 17vh;
-
-    padding: 0rem 14rem 0 4.9rem;
+    width: 50vw;
+    padding: 0rem 3rem 0 4.9rem;
     color: white;
     font-weight: 400;
     @media screen and (max-width: 900px) {
-        /* padding: 3.3rem 14rem 0 9.6rem; */
+        padding: 3.3rem 1.6rem 0 9.6rem;
     }
     @media screen and (max-width: 767px) {
-        padding: 0 0 0fahandshelping 3rem;
+        padding: 3.3rem 1.6rem 0;
         width: 100%;
     }
 `
@@ -40,7 +41,6 @@ const Icon = styled.img`
     }
 `
 const TextWrapper = styled.div`
-    width: 50%;
     height: 150vh;
     color: #000;
     /* display: inline-block; */
@@ -86,6 +86,7 @@ const Description = styled.p`
     font-size: 1.4rem;
     line-height: 1.4;
     color: #fff;
+    margin-bottom: 1rem;
     @media screen and (max-width: 991px) {
     }
 `
@@ -123,10 +124,14 @@ export default class Text extends Component {
                     <HeaderElement
                         style={{
                             zIndex: this.props.zindex,
+                            color: this.props.color,
                         }}
                     >
                         <Logo>
-                            <Icon src={logo} alt="NeuroN Foundation Logo" />
+                            <Icon
+                                src={this.props.logo ? logo : logoBlack}
+                                alt="NeuroN Foundation Logo"
+                            />
 
                             <Name>
                                 <FirstLine>Smart Oak</FirstLine>
@@ -134,14 +139,18 @@ export default class Text extends Component {
                             </Name>
                         </Logo>
                         <Title>{this.props.title}</Title>
-                        <Description>{this.props.text}</Description>
-                        {/* <Link
-                        href="https://www.facebook.com/neuronfoundation/"
-                        target="_blank"
-                    >
-                        <FbIcon />
-                        Zobacz projekt na facebooku
-                    </Link> */}
+                        <Description style={{ color: this.props.color }}>
+                            {this.props.text}
+                        </Description>
+                        {this.props.link ? (
+                            <Link
+                                href="https://www.facebook.com/neuronfoundation/"
+                                target="_blank"
+                            >
+                                <FbIcon />
+                                Zobacz projekt na facebooku
+                            </Link>
+                        ) : null}
                     </HeaderElement>
                 </TextWrapper>
             </>

@@ -19,6 +19,8 @@ class IndexPage extends Component {
                 <MobileNav />
                 <Header>
                     <TextHeader
+                        logo
+                        link
                         text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
                         title="New Neuropsychiatry"
                     />
