@@ -102,7 +102,7 @@ const navigationLinks = [
     },
 ]
 
-const projekctLinks = [
+export const projekctLinks = [
     {
         path: "/",
         linkText: "Home",
