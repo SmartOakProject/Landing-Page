@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import VisibilitySensor from "react-visibility-sensor"
-import TextHeader from "../Header/TextHeader"
+import TextHeader from "../TextHeader"
 const Container = styled.div`
     background: ${props => props.bgc};
     width: 100%;
@@ -72,17 +72,19 @@ export default class Test extends Component {
     }
     componentDidMount() {
         const height = this.vidRef.clientHeight
-        console.log(this.testRef)
 
         this.setState({ height: height - 60 })
         this.setState({ visiblitiy: true })
     }
 
     playVideo = isVisible => {
-        // console.log("Element is now %s", isVisible ? "visible" : "hidden")
-        // console.log(isVisible)
         if (isVisible) {
+            const height = this.vidRef.clientHeight
+
             this.vidRef.play()
+            this.setState({ height: height - height })
+        } else {
+            this.vidRef.pause()
         }
     }
     render() {

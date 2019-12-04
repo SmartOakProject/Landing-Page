@@ -2,8 +2,8 @@ import React from "react"
 import styled from "styled-components"
 
 const SubmenuWrapper = styled.ul`
-    width: 4rem;
-    right: -4px;
+    width: ${props => (props.width ? "12vw" : "")};
+    left: ${props => props.left};
     position: absolute;
     background-color: #0e0e0e;
     z-index: 100000000000;
@@ -25,35 +25,17 @@ const StyledLink = styled.a`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     padding: 1.2rem 0.8rem;
+
     cursor: pointer;
 `
 
-const languages = [
-    {
-        path: "/",
-        language: "ENG",
-    },
-    {
-        path: "/",
-        language: "DE",
-    },
-    {
-        path: "/",
-        language: "FR",
-    },
-    {
-        path: "/",
-        language: "ES",
-    },
-]
-
-export default function Submenu() {
+export default function Submenu(props) {
     return (
-        <SubmenuWrapper>
-            {languages.map((e, i) => {
+        <SubmenuWrapper width={props.width} left={props.left}>
+            {props.data.map((e, i) => {
                 return (
                     <SubmenuListItem key={i}>
-                        <StyledLink href={e.path}>{e.language}</StyledLink>
+                        <StyledLink href={e.path}>{e.text}</StyledLink>
                     </SubmenuListItem>
                 )
             })}

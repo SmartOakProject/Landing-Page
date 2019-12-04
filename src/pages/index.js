@@ -1,6 +1,6 @@
 import React from "react"
 import Header from "../components/Header"
-import TextHeader from "../components/Header/TextHeader"
+import TextHeader from "../components/TextHeader"
 import Nav from "../components/Nav"
 import MobileNav from "../components/MobileNav"
 import Footer from "../components/Footer/Footer"

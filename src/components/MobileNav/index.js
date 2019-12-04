@@ -161,6 +161,7 @@ class MobileNav extends Component {
                 <MobileNavMenu>
                     <MobileNavBtn
                         open={menuOpen}
+                        icon
                         onClick={() =>
                             this.setState({
                                 menuOpen2: false,

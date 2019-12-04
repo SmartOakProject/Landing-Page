@@ -2,8 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,800,900');
-@import url('https://fonts.googleapis.com/css?family=Muli:300|Source+Sans+Pro:300');
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
 :root{
     --color-white: #fff;

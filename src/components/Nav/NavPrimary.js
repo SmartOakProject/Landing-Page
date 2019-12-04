@@ -129,36 +129,91 @@ export default class NavPrimary extends Component {
         super(props)
         this.state = {
             showLangMenu: false,
+            showProjectMenu: false,
             showSearch: false,
             searchAnimation: false,
         }
     }
 
-    onChangeLangButtonClick = () => {
-        this.setState(prevState => ({
-            showLangMenu: !prevState.showLangMenu,
-        }))
-    }
-
     render() {
+        const languages = [
+            {
+                path: "/",
+                text: "ENG",
+            },
+            {
+                path: "/",
+                text: "DE",
+            },
+            {
+                path: "/",
+                text: "FR",
+            },
+            {
+                path: "/",
+                text: "ES",
+            },
+        ]
+        const projekctLinks = [
+            {
+                path: "/",
+                text: "Home",
+            },
+            {
+                path: "/neuron-foundation",
+                text: "NeuroN Foundation",
+            },
+            {
+                path: "/new-neuropsychiatry",
+                text: "New Neuropsychiatry",
+            },
+            {
+                path: "/i-mundus",
+                text: "iMundus",
+            },
+            {
+                path: "/oakes-innovate",
+                text: "Oakes Innovate",
+            },
+            {
+                path: "/n-media",
+                text: "N Media",
+            },
+            {
+                path: "oakes-clinic",
+                text: "Oakes Clinic",
+            },
+            {
+                path: "oak-atlantis",
+                text: "Oak Atlantis",
+            },
+            {
+                path: "neuron-currency",
+                text: "NeuroN Currency",
+            },
+            {
+                path: "about-us",
+                text: "O nas",
+            },
+        ]
         return (
             <Container>
                 <SocialIcons>
-                    <a to="">
+                    <Link to="">
                         <FaFacebookF />
-                    </a>
-                    <a to="">
+                    </Link>
+                    <Link to="">
                         <FaInstagram />
-                    </a>
-                    <a to="">
+                    </Link>
+                    <Link to="">
                         <FaTwitter />
-                    </a>
-                    <a to="">
+                    </Link>
+                    <Link to="">
                         <FaYoutube />
-                    </a>
-                    <a to="">
+                    </Link>
+                    <Link to="">
                         <FaLinkedin />
-                    </a>
+                    </Link>
                 </SocialIcons>
                 {this.state.showSearch ? (
                     <SearchWrapper>
@@ -201,14 +256,28 @@ export default class NavPrimary extends Component {
                     </MiddleNav>
                 )}
                 <RightNav>
-                    <StyledLink to="/">O projekcie</StyledLink>
+                    <DropdownLink
+                        onMouseLeave={() =>
+                            this.setState({ showProjectMenu: false })
+                        }
+                        onClick={() => this.setState({ showProjectMenu: true })}
+                    >
+                        O projekcie
+                        {this.state.showProjectMenu && (
+                            <Submenu left="-41px" width data={projekctLinks} />
+                        )}
+                    </DropdownLink>
                     <StyledLink to="/">Kontakt</StyledLink>
                     <DropdownLink
-                        onMouseLeave={this.onChangeLangButtonClick}
-                        onClick={this.onChangeLangButtonClick}
+                        onMouseLeave={() =>
+                            this.setState({ showLangMenu: false })
+                        }
+                        onClick={() => this.setState({ showLangMenu: true })}
                     >
                         PL
-                        {this.state.showLangMenu && <Submenu />}
+                        {this.state.showLangMenu && (
+                            <Submenu left="-6px" data={languages} />
+                        )}
                     </DropdownLink>
                 </RightNav>
             </Container>

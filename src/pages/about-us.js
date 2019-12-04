@@ -5,7 +5,7 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer/Footer"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import AboutUsCard from "../components/AboutUsCard"
-import TextHeader from "../components/Header/TextHeader"
+import TextHeader from "../components/TextHeader"
 
 const aboutUsData = [
     {

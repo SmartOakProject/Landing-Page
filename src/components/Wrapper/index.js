@@ -9,10 +9,12 @@ const Container = styled.div`
     height: auto;
     /* position: ${props => (props.isSticky ? "sticky" : "static")}; */
     top: 4.3rem;
+    -moz-clip-path: inset(0);
+    -ms-clip-path: inset(0);
     /* overflow-y: hidden; */
     -webkit-clip-path: inset(0);
-    clip-path: inset(0, 0, 0, 0);
-    clip: rect(0px, auto, auto, 0px);
+    clip-path: inset(0);
+    /* clip: rect(0px, auto, auto, 0px); */
     @media screen and (max-width: 900px) {
         position: static;
     }

@@ -8,7 +8,7 @@ import Content from "../components/Content"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import Wrapper from "../components/Wrapper"
 
-import TextHeader from "../components/Header/TextHeader"
+import TextHeader from "../components/TextHeader"
 
 class IndexPage extends Component {
     render() {

@@ -1,18 +1,42 @@
 import React, { Component } from "react"
-import styled from "styled-components"
+import styled, { keyframes } from "styled-components"
+
+import { IoMdMenu, IoMdClose, IoMdHome } from "react-icons/io"
 
 const MobileBtn = styled.div`
-    height: 32px;
-    width: 32px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     padding: 4px;
+    svg {
+        fill: #fff;
+        height: 32px;
+        width: 32px;
+        /* opacity: 0; */
+        animation: 0.5s ${fadeInFromNone} forwards;
+        animation-delay: 0.2s;
+    }
     @media only screen and (orientation: landscape) {
         height: 2.5rem;
         width: 2.5rem;
+    }
+`
+const fadeInFromNone = keyframes`
+ 0% {
+        /* display: none; */
+        opacity: 0;
+    }
+
+    1% {
+        /* display: block; */
+        opacity: 0;
+    }
+
+    100% {
+        /* display: block; */
+        opacity: 1;
     }
 `
 
@@ -36,30 +60,6 @@ export default class MobileNavBtn extends Component {
     }
 
     render() {
-        const styles = {
-            line: {
-                height: "2px",
-                width: "20px",
-                background: this.state.color,
-                transition: "all 0.2s ease",
-            },
-            lineTop: {
-                transform: this.state.open ? "rotate(45deg)" : "none",
-                transformOrigin: "top left",
-                marginBottom: "5px",
-            },
-            lineMiddle: {
-                opacity: this.state.open ? 0 : 1,
-                transform: this.state.open ? "translateX(-16px)" : "none",
-            },
-            lineBottom: {
-                transform: this.state.open
-                    ? "translateX(-1px) rotate(-45deg)"
-                    : "none",
-                transformOrigin: "top left",
-                marginTop: "5px",
-            },
-        }
         return (
             <MobileBtn
                 onClick={
@@ -70,9 +70,13 @@ export default class MobileNavBtn extends Component {
                           }
                 }
             >
-                <div style={{ ...styles.line, ...styles.lineTop }} />
-                <div style={{ ...styles.line, ...styles.lineMiddle }} />
-                <div style={{ ...styles.line, ...styles.lineBottom }} />
+                {this.props.open ? (
+                    <IoMdClose />
+                ) : this.props.icon ? (
+                    <IoMdHome />
+                ) : (
+                    <IoMdMenu />
+                )}
             </MobileBtn>
         )
     }

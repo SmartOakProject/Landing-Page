@@ -129,7 +129,11 @@ class Img extends Component {
                         landingAttitude) +
                 rotationFix
 
-            this.setState({ rotate: currentLandingAngle })
+            if (currentLandingAngle < 7 && currentLandingAngle > -7) {
+                requestAnimationFrame(() => {
+                    this.setState({ rotate: currentLandingAngle })
+                })
+            }
         }
     }
 

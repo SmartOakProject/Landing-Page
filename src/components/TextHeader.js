@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 
-import logo from "../../images/logo-biale.png"
-import logoBlack from "../../images/logo-czarne.png"
+import logo from "../images/logo-biale.png"
+import logoBlack from "../images/logo-czarne.png"
 
 import { FaFacebookF } from "react-icons/fa"
 

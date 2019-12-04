@@ -9,7 +9,6 @@ const Background = styled.div`
     position: absolute;
     width: 100%;
     height: 56.5rem;
-    clip-path: ${props => props.scroll};
 `
 
 const Image = styled.div`
@@ -137,14 +136,13 @@ export default class Header extends Component {
         }
         this.image = React.createRef()
     }
-
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll)
-    }
-
     componentDidMount() {
         this.prev = window.scrollY
         window.addEventListener("scroll", e => this.handleNavigation(e))
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll)
     }
 
     handleNavigation = e => {
@@ -156,8 +154,12 @@ export default class Header extends Component {
 
         let scrollPercent = (window.pageYOffset / max) * 100
         let factor = 3.6
-        // this.setState({ scroll: scrollPercent / factor + 70 })
-
+        let currentScroll = scrollPercent / factor + 70
+        if (currentScroll <= 100) {
+            requestAnimationFrame(() => {
+                this.setState({ scroll: currentScroll })
+            })
+        }
         this.prev = window.scrollY
     }
 
@@ -166,7 +168,10 @@ export default class Header extends Component {
             <>
                 <Global />
                 <Background
-                    scroll={`polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`}
+                    style={{
+                        clipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+                        WebkitClipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+                    }}
                     ref={this.image}
                 >
                     <Image />
