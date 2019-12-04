@@ -26,8 +26,11 @@ const StyledLink = styled(props => <Link {...props} />)`
     align-items: center;
     border: none;
     line-height: 1;
-    padding: 9px 1.25rem 15px;
+
     border-bottom: solid 2px #151515;
+    @media screen and (max-width: 1050px) {
+        padding: 1.2rem 0.6rem;
+    }
 `
 
 const activeStyles = {
