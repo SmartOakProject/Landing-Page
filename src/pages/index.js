@@ -24,6 +24,9 @@ const Logo = styled.img`
         position: static;
     }
 `
+
+const isHomepage = window.location.pathname === '/' ? true : false;
+
 const IndexPage = () => {
     return (
         <>
@@ -125,7 +128,7 @@ const IndexPage = () => {
                     isLast={true}
                 />
 
-                <Footer black />
+                <Footer isHomepage={isHomepage} />
             </Wrapper>
         </>
     )
