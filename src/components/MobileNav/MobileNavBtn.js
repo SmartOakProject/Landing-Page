@@ -2,41 +2,35 @@ import React, { Component } from "react"
 import styled, { keyframes } from "styled-components"
 
 import { IoMdMenu, IoMdClose, IoMdHome } from "react-icons/io"
-
+const fadeInFromNone = keyframes`
+    0% {
+       /* display: none; */
+       opacity: 0;
+   }
+   100% {
+       /* display: block; */
+       opacity: 1;
+   }
+`
 const MobileBtn = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
+
     padding: 4px;
+    outline: none;
+    transition: all 1s ease;
     svg {
         fill: #fff;
         height: 32px;
         width: 32px;
         /* opacity: 0; */
-        animation: 0.5s ${fadeInFromNone} forwards;
-        animation-delay: 0.2s;
+        animation: ${fadeInFromNone} 0.7s linear;
     }
     @media only screen and (orientation: landscape) {
         height: 2.5rem;
         width: 2.5rem;
-    }
-`
-const fadeInFromNone = keyframes`
- 0% {
-        /* display: none; */
-        opacity: 0;
-    }
-
-    1% {
-        /* display: block; */
-        opacity: 0;
-    }
-
-    100% {
-        /* display: block; */
-        opacity: 1;
     }
 `
 

@@ -8,23 +8,27 @@ import { FaFacebookF } from "react-icons/fa"
 
 const HeaderElement = styled.header`
     position: sticky;
-    z-index: 23453453453534;
+    z-index: 9;
     top: 17vh;
     width: 50vw;
     padding: 0rem 3rem 0 4.9rem;
     color: white;
     font-weight: 400;
+    @media screen and (max-width: 1100px) {
+        width: 65vw;
+    }
     @media screen and (max-width: 900px) {
-        padding: 3.3rem 1.6rem 0 9.6rem;
+        padding: 0 1.6rem 0 6.6rem;
+        top: 14vh;
     }
     @media screen and (max-width: 767px) {
-        padding: 3.3rem 1.6rem 0;
-        width: 100%;
+        padding: 0 2.6rem 0;
+        width: 90%;
     }
 `
 
 const Logo = styled.div`
-    @media screen and (max-width: 991px) {
+    @media screen and (max-width: 746px) {
         display: none;
     }
 `
@@ -36,7 +40,7 @@ const Icon = styled.img`
         width: 10rem;
         height: 10rem;
     }
-    @media screen and (max-width: 991px) {
+    @media screen and (max-width: 746px) {
         display: none;
     }
 `
@@ -45,12 +49,11 @@ const TextWrapper = styled.div`
     color: #000;
     /* display: inline-block; */
     position: absolute;
-    z-index: 3;
-    top: 0;
-
-    @media screen and (max-width: 771px) {
-        width: 80vw;
-        height: 300vh;
+    z-index: ${props => props.zIndex};
+    top: ${props => (props.secondText ? "-175px" : "0")};
+    @media screen and (max-width: 1200px) {
+        width: 100vw;
+        height: 150vh;
     }
 `
 
@@ -120,7 +123,10 @@ export default class Text extends Component {
     render() {
         return (
             <>
-                <TextWrapper>
+                <TextWrapper
+                    zIndex={this.props.z}
+                    secondText={this.props.secondText}
+                >
                     <HeaderElement
                         style={{
                             zIndex: this.props.zindex,

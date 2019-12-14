@@ -24,21 +24,21 @@ const Text = styled.div`
     left: 0;
     @media screen and (max-width: 771px) {
         left: 0;
-
         width: 80vw;
         height: ${props => (props.isLast ? "120vh" : "250vh")};
     }
 `
-const Sticky = styled.div`
+const StickyWrapper = styled.div`
     position: sticky;
-    top: 20rem;
+    top: 13rem;
+
     color: #000;
 `
 const Video = styled.video`
     /* background-color: black; */
     /* object-fit: fill; */
     width: 100vw;
-    height: 100vh;
+    height: 95vh;
     /* border: 2px solid #f00; */
     object-fit: cover;
     position: relative;
@@ -52,7 +52,7 @@ const Border = styled.div`
     bottom: 0px;
 `
 const Heg = styled.div`
-    height: 100vh;
+    height: 95vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -60,7 +60,7 @@ const Heg = styled.div`
     z-index: ${props => props.z};
 `
 
-export default class Test extends Component {
+export default class Sticky extends Component {
     constructor(props) {
         super(props)
 
@@ -91,14 +91,18 @@ export default class Test extends Component {
         return (
             <Heg>
                 <Text isLast={this.props.isLast}>
-                    <Sticky ref={testRef => (this.testRef = testRef)}>
+                    <StickyWrapper
+                        ref={testRef => (this.testRef = testRef)}
+                        thirdText={this.props.thirdText}
+                    >
                         <TextHeader
+                            secondText={this.props.secondText}
                             logo={this.props.logo}
                             color={this.props.color}
                             text={this.props.text}
                             title={this.props.title}
                         />
-                    </Sticky>
+                    </StickyWrapper>
                 </Text>
 
                 <VisibilitySensor
@@ -106,12 +110,27 @@ export default class Test extends Component {
                     minTopValue={this.state.height}
                     onChange={this.playVideo}
                 >
+                    {/* <Video
+                        ref={vidRef => (this.vidRef = vidRef)}
+                        muted
+                        loop
+                        playsinline
+                        src={require(`../../video/${this.props.videoSrc}`)}
+                    /> */}
                     <Video
                         ref={vidRef => (this.vidRef = vidRef)}
                         muted
                         loop
-                        src={require(`../../video/${this.props.videoSrc}`)}
-                    />
+                        playsinline
+                    >
+                        {console.log(
+                            require(`../../video/${this.props.videoSrc}`)
+                        )}
+                        <source
+                            src={require(`../../video/${this.props.videoSrc}`)}
+                            type="video/mp4"
+                        />
+                    </Video>
                 </VisibilitySensor>
             </Heg>
         )

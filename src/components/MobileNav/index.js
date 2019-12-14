@@ -93,12 +93,29 @@ const navigationLinks = [
         linkText: "O Projekcie",
     },
     {
-        path: "",
+        path: "/contact",
         linkText: "Kontakt",
     },
     {
         path: "",
         linkText: "PL",
+    },
+    {
+        path: "",
+        linkText: "ENG ",
+    },
+    {
+        path: "",
+        linkText: "DE ",
+    },
+
+    {
+        path: "",
+        linkText: "FR",
+    },
+    {
+        path: "",
+        linkText: " ES",
     },
 ]
 

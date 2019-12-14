@@ -31,6 +31,18 @@ const StyledLink = styled.a`
     }
 `
 
+const StyledGatsbyLink = styled(props => <Link {...props} />)`
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    padding: 1.2rem ${props => (props.middleNavPadding ? "1.5rem" : "0.8rem")};
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    svg {
+        margin-left: 1rem;
+    }
+`
 const Container = styled.div`
     height: 4.3rem;
     min-height: 5rem;
@@ -331,7 +343,7 @@ export default class NavPrimary extends Component {
                             <Submenu left="-41px" width data={projekctLinks} />
                         )}
                     </DropdownLink>
-                    <StyledLink to="/">Kontakt</StyledLink>
+                    <StyledGatsbyLink to="/contact">Kontakt</StyledGatsbyLink>
                     <DropdownLink
                         onMouseLeave={() =>
                             this.setState({ showLangMenu: false })

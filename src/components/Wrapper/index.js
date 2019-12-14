@@ -3,17 +3,20 @@ import styled from "styled-components"
 import Sticky from "./Sticky"
 
 const Container = styled.div`
-    background: ${props => props.bgc};
     width: 100%;
-    /* height: ${props => (props.isSticky ? "auto" : "100vh")}; */
-    height: auto;
-    /* position: ${props => (props.isSticky ? "sticky" : "static")}; */
+
+    height: 95vh;
+
     top: 4.3rem;
-    -moz-clip-path: inset(0);
-    -ms-clip-path: inset(0);
-    /* overflow-y: hidden; */
-    -webkit-clip-path: inset(0);
-    clip-path: inset(0);
+    -moz-clip-path: ${props =>
+        props.secondText ? "inset(-175px 0 0 0)" : "inset(0)"};
+    -ms-clip-path: ${props =>
+        props.secondText ? "inset(-175px 0 0 0)" : "inset(0)"};
+
+    -webkit-clip-path: ${props =>
+        props.secondText ? "inset(-175px 0 0 0)" : "inset(0)"};
+    clip-path: ${props =>
+        props.secondText ? "inset(-175px 0 0 0)" : "inset(0)"};
     /* clip: rect(0px, auto, auto, 0px); */
     @media screen and (max-width: 900px) {
         position: static;
@@ -49,10 +52,10 @@ const Heg = styled.div`
 export default function Wrapper(props) {
     return (
         <Container
-            bgc={props.bgc}
             z={props.z}
             isSticky={props.isSticky}
             isLast={props.isLast}
+            secondText={props.secondText}
         >
             {props.children ? (
                 props.children
@@ -65,6 +68,8 @@ export default function Wrapper(props) {
                     title={props.title}
                     color={props.color}
                     isLast={props.isLast}
+                    secondText={props.secondText}
+                    thirdText={props.thirdText}
                 />
             )}
         </Container>

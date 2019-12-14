@@ -6,6 +6,8 @@ import Footer from "../components/Footer/Footer"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import AboutUsCard from "../components/AboutUsCard"
 import TextHeader from "../components/TextHeader"
+import FloatBtn from "../components/FloatBtn"
+import MobileNav from "../components/MobileNav"
 
 const aboutUsData = [
     {
@@ -81,7 +83,9 @@ const IndexPage = () => {
     return (
         <>
             <GlobalStyle />
+            <FloatBtn />
             <Nav />
+            <MobileNav />
             <Header>
                 <TextHeader
                     logo

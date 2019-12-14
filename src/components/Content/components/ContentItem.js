@@ -6,7 +6,7 @@ import VisibilitySensor from "react-visibility-sensor"
 const Container = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-direction: row;
     padding: 4.8rem 0;
@@ -14,6 +14,9 @@ const Container = styled.div`
     :nth-child(2n) {
         flex-direction: row-reverse;
     }
+    /* @media (max-width: 1200px) {
+        justify-content: space-around;
+    } */
     @media (max-width: 767px) {
         width: 100%;
         flex-direction: column;
@@ -26,12 +29,12 @@ const Container = styled.div`
 
 const Image = styled.img`
     display: block;
-    height: 37rem;
+    height: 35rem;
 
     border-radius: 3rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
-    @media (max-width: 767px) {
-        height: 64vw;
+    @media (max-width: 1100px) {
+        height: 27rem;
     }
 `
 
@@ -42,6 +45,9 @@ const ContentItemElement = styled.div`
     padding: 0 4rem;
     line-height: 1.5;
     color: #393939;
+    @media (max-width: 1100px) {
+        margin: ${props => (props.isRight ? "0 4rem 0 0" : "0 0 0 4rem")};
+    }
     @media (max-width: 767px) {
         width: 100%;
         margin: 0;

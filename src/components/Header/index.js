@@ -1,30 +1,35 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import Global from "../GlobalStyles/GlobalStyles"
+
 import headerBg from "../../images/header-bg.jpeg"
 import logo from "../../images/logo-biale.png"
 import { FaFacebookF } from "react-icons/fa"
 
 const Background = styled.div`
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
-    height: 56.5rem;
+    height: 60.5rem;
+    z-index: 999;
+    position: relative;
+    /* clip-path: inset(0); */
 `
 
-const Image = styled.div`
-    position: absolute;
+const Image = styled.img`
+    /* position: absolute; */
     width: 100%;
     height: 100%;
-    background: url(${headerBg}) no-repeat center center / cover;
+    /* background: url(${headerBg}) no-repeat center center / cover; */
+    position: relative;
+    /* z-index: 20; */
 
     @media screen and (max-width: 425px) {
         background-position: 73% 0;
-        height: 56.5rem;
+        height: 60.5rem;
     }
 `
 
 const Filter = styled.div`
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     height: 100%;
     background: linear-gradient(100deg, black 20%, transparent 60%);
@@ -165,21 +170,16 @@ export default class Header extends Component {
 
     render() {
         return (
-            <>
-                <Global />
-                <Background
-                    style={{
-                        clipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
-                        WebkitClipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
-                    }}
-                    ref={this.image}
-                >
-                    <Image />
-                    <Filter />
-                    {this.props.children}
-                </Background>
-                <Filler />
-            </>
+            <Background
+                style={{
+                    clipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+                    WebkitClipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+                }}
+                ref={this.image}
+            >
+                <Image src={headerBg} />
+                {this.props.children}
+            </Background>
         )
     }
 }

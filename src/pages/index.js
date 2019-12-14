@@ -4,30 +4,17 @@ import TextHeader from "../components/TextHeader"
 import Nav from "../components/Nav"
 import MobileNav from "../components/MobileNav"
 import Footer from "../components/Footer/Footer"
+import FloatBtn from "../components/FloatBtn"
 
-// import Content from "../components/Content"
-import Cards from "../components/Cards"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import Wrapper from "../components/Wrapper"
 import Sticky from "../components/Wrapper/Sticky"
-import logo from "../images/logo-biale.png"
-import styled from "styled-components"
-// ../../video/blackEarth.mp4
-const Logo = styled.img`
-    position: fixed;
-    top: 30%;
-    left: 10%;
-    height: 20vh;
-    /* width: 30vw; */
-    z-index: 100;
-    @media screen and (max-width: 900px) {
-        position: static;
-    }
-`
+
 const IndexPage = () => {
     return (
         <>
             <GlobalStyle />
+            <FloatBtn />
             <Nav />
             <MobileNav />
             <Header>
@@ -38,30 +25,28 @@ const IndexPage = () => {
                     title="Smart Oak Project"
                 />
             </Header>
-            {/* <Logo src={logo} /> */}
             <Wrapper
                 logo={false}
-                bgc="white"
                 color="black"
                 videoSrc="home-1.mp4"
                 text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
                 title="NeuroN Foundation"
                 textColor="black"
                 z="3"
+                secondText
             />
             <Wrapper
                 logo={true}
                 color="white"
-                bgc="#131B2B"
                 videoSrc="home-2.mp4"
                 text="To system przeznaczony dla osób biorących aktywny udział w rozwoju Smart Oak Project, służący do zarządzania nim. Choć jesteśmy z różnych części świata, nasz system ERP z rozbudowanym komunikatorem umożliwia nam pozostanie ze sobą w stałym kontakcie. Po co się ograniczać? Na co dzień Smart Oak System pomaga nam w prowadzeniu szkoleń, "
                 title="New Neuropsychiatry"
                 textColor="white"
                 z="4"
+                thirdText
             />
             <Wrapper
                 logo={false}
-                bgc="white"
                 color="black"
                 videoSrc="home-3.mp4"
                 text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
@@ -72,7 +57,6 @@ const IndexPage = () => {
             <Wrapper
                 logo={true}
                 color="white"
-                bgc="#131B2B"
                 videoSrc="home-4.mp4"
                 text="To system przeznaczony dla osób biorących aktywny udział w rozwoju Smart Oak Project, służący do zarządzania nim. Choć jesteśmy z różnych części świata, nasz system ERP z rozbudowanym komunikatorem umożliwia nam pozostanie ze sobą w stałym kontakcie. Po co się ograniczać? Na co dzień Smart Oak System pomaga nam w prowadzeniu szkoleń, "
                 title="Oakes Innovate"
@@ -81,7 +65,6 @@ const IndexPage = () => {
             />
             <Wrapper
                 logo={false}
-                bgc="white"
                 color="black"
                 videoSrc="home-5.mp4"
                 text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
@@ -92,7 +75,6 @@ const IndexPage = () => {
             <Wrapper
                 logo={true}
                 color="white"
-                bgc="#131B2B"
                 videoSrc="home-6.mp4"
                 text="To system przeznaczony dla osób biorących aktywny udział w rozwoju Smart Oak Project, służący do zarządzania nim. Choć jesteśmy z różnych części świata, nasz system ERP z rozbudowanym komunikatorem umożliwia nam pozostanie ze sobą w stałym kontakcie. Po co się ograniczać? Na co dzień Smart Oak System pomaga nam w prowadzeniu szkoleń, "
                 title="Oakes Clinic"
@@ -101,7 +83,6 @@ const IndexPage = () => {
             />
             <Wrapper
                 logo={false}
-                bgc="white"
                 color="black"
                 videoSrc="home-7.mp4"
                 text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
@@ -109,12 +90,7 @@ const IndexPage = () => {
                 textColor="black"
                 z="9"
             />
-            <Wrapper
-                bgc="white"
-                z="10"
-                style={{ height: "auto" }}
-                isLast={true}
-            >
+            <Wrapper z="10" style={{ height: "auto" }} isLast>
                 <Sticky
                     color="white"
                     logo={true}

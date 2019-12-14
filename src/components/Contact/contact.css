@@ -1,0 +1,129 @@
+.contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5rem;
+    color: var(--color-primary);
+    margin: 0 4rem;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.contact_text h4,
+.contact_text p {
+    margin-bottom: 2rem;
+}
+
+.contact_icon {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.contact_details {
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.contact_details img {
+    align-items: center;
+    height: 2rem;
+    padding-right: 2rem;
+}
+
+.email a,
+.phone a {
+    display: flex;
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+.email {
+    margin-right: 3rem;
+}
+
+.form input,
+.user_questions textarea {
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-radius: 3px;
+    color: #606060;
+    border: 0.1rem solid #999;
+    outline: none;
+    resize: none;
+    font-family: "Montserrat", sans-serif;
+    transition: all 0.2s;
+}
+.form input:focus,
+.user_questions textarea:focus {
+    color: #3e3e3e;
+    border: 0.1rem solid #000 !important;
+}
+.sent {
+    background-color: #fff;
+    cursor: pointer;
+    color: #606060;
+    border: 0.1rem solid #999;
+    display: block;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+}
+
+.user_questions textarea {
+    width: 100%;
+    height: 15rem;
+}
+.email_label {
+    display: block;
+    color: #c91630;
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+}
+
+.sent:hover {
+    color: #3e3e3e;
+    border: 0.1rem solid #000;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.804);
+    transition: all 0.3s ease;
+}
+
+/* MEDIA QUERY */
+
+@media only screen and (max-width: 1000px) {
+    .contact {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        margin: 0 5rem;
+    }
+    .contact_text h4,
+    .contact_text p {
+        margin-bottom: 3rem;
+    }
+
+    .contact_details {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .contact {
+        text-align: center;
+    }
+
+    .form input,
+    .user_questions textarea {
+        padding: 1.1rem 3rem;
+        margin-bottom: 2rem;
+    }
+    .user_questions textarea {
+        height: 18rem;
+    }
+    .contact_details {
+        flex-direction: column;
+        align-items: center;
+    }
+    .email {
+        margin-bottom: 2rem;
+    }
+}
