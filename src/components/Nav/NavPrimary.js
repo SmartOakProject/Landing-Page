@@ -25,24 +25,11 @@ const StyledLink = styled.a`
     display: flex;
     align-items: center;
     cursor: pointer;
-
     svg {
         margin-left: 1rem;
     }
 `
 
-const StyledGatsbyLink = styled(props => <Link {...props} />)`
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    padding: 1.2rem ${props => (props.middleNavPadding ? "1.5rem" : "0.8rem")};
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-
-    svg {
-        margin-left: 1rem;
-    }
-`
 const Container = styled.div`
     height: 4.3rem;
     min-height: 5rem;
@@ -60,7 +47,6 @@ const SocialIcons = styled.div`
     align-items: center;
     height: 100%;
     padding-left: 1.6rem;
-
     a > svg {
         color: rgba(255, 255, 255, 0.85);
         margin: 0 1rem;
@@ -105,10 +91,6 @@ const DropdownLink = styled.li`
     padding: 1.2rem 0.8rem;
     cursor: pointer;
     position: relative;
-    transition: 250ms all ease;
-    &:hover {
-        opacity: 0.8;
-    }
 `
 
 const DropDownWrapper = styled.ul`
@@ -126,7 +108,6 @@ const SearchWrapper = styled.div`
     align-items: center;
     animation: 1s ${fadeIn} ease-out;
     position: relative;
-
     svg {
         color: rgba(255, 255, 255, 0.85);
         margin-right: 0.8rem;
@@ -144,7 +125,6 @@ const Input = styled.input`
     color: rgba(255, 255, 255, 0.85);
     outline: none;
     padding: 1rem 3rem;
-    cursor: pointer;    
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
     &::-webkit-search-results-button,
@@ -164,29 +144,12 @@ export default class NavPrimary extends Component {
             searchedPhrase: "",
             searchedLinks: [],
         }
-        this.wrapperRef = React.createRef();
     }
 
     onChangeLangButtonClick = () => {
         this.setState(prevState => ({
             showLangMenu: !prevState.showLangMenu,
         }))
-    }
-
-    componentDidMount() {
-        document.addEventListener('mousedown', this.handleClickOutside)       
-    }
-
-    componentWillMount() {
-        document.removeEventListener('mousedown', this.handleClickOutside)
-    }
-
-    handleClickOutside = (event) => {
-        console.log(event.target, this.wrapperRef);
-    }
-
-    setWrapperRef = (node) => {
-        this.wrapperRef = node;
     }
 
     handleSearchInputChange = event => {
@@ -300,7 +263,7 @@ export default class NavPrimary extends Component {
                     </Link>
                 </SocialIcons>
                 {this.state.showSearch ? (
-                    <SearchWrapper ref={this.setWrapperRef}>
+                    <SearchWrapper>
                         <FaSearch />
                         <Input
                             type="search"
@@ -339,18 +302,18 @@ export default class NavPrimary extends Component {
                             Szukaj
                             <FaSearch />
                         </StyledLink>
-                        <StyledGatsbyLink middleNavPadding to="/">
+                        <StyledLink middleNavPadding to="/">
                             Sklep
                             <FaShoppingCart />
-                        </StyledGatsbyLink>
-                        <StyledGatsbyLink middleNavPadding to="/support">
+                        </StyledLink>
+                        <StyledLink middleNavPadding to="/">
                             Wesprzyj
                             <FaHandHoldingHeart />
-                        </StyledGatsbyLink>
-                        <StyledGatsbyLink middleNavPadding to="/">
+                        </StyledLink>
+                        <StyledLink middleNavPadding to="/">
                             Pobierz
                             <FaDownload />
-                        </StyledGatsbyLink>
+                        </StyledLink>
                     </MiddleNav>
                 )}
                 <RightNav>
@@ -365,7 +328,7 @@ export default class NavPrimary extends Component {
                             <Submenu left="-41px" width data={projekctLinks} />
                         )}
                     </DropdownLink>
-                    <StyledGatsbyLink to="/contact">Kontakt</StyledGatsbyLink>
+                    <StyledLink to="/">Kontakt</StyledLink>
                     <DropdownLink
                         onMouseLeave={() =>
                             this.setState({ showLangMenu: false })

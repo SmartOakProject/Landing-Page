@@ -84,6 +84,7 @@ export default class Sticky extends Component {
                             color={this.props.color}
                             text={this.props.text}
                             title={this.props.title}
+                            isLast={this.props.isLast}
                         />
                     </StickyWrapper>
                 </Text>

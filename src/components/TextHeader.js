@@ -45,7 +45,9 @@ const Icon = styled.img`
     }
 `
 const TextWrapper = styled.div`
-    height: 150vh;
+    /* height: 150vh; */
+    height: ${props => (props.isLast ? "0" : "150vh")};
+
     color: #000;
     /* display: inline-block; */
     position: absolute;
@@ -53,7 +55,7 @@ const TextWrapper = styled.div`
     top: ${props => (props.secondText ? "-175px" : "0")};
     @media screen and (max-width: 1200px) {
         width: 100vw;
-        height: 150vh;
+        height: ${props => (props.isLast ? "0" : "150vh")};
     }
 `
 
@@ -94,11 +96,6 @@ const Description = styled.p`
     }
 `
 
-const Filler = styled.div`
-    width: 100%;
-    height: 56.5rem;
-`
-
 const Link = styled.a`
     background-color: transparent;
     text-decoration: none;
@@ -126,6 +123,7 @@ export default class Text extends Component {
                 <TextWrapper
                     zIndex={this.props.z}
                     secondText={this.props.secondText}
+                    isLast={this.props.isLast}
                 >
                     <HeaderElement
                         style={{

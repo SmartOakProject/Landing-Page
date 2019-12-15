@@ -10,7 +10,7 @@ const MobileListWrapper = styled.ul`
     background: #0e0e0e;
     color: var(--color-white);
     transition: all 0.45s ease;
-    z-index: 9999;
+    z-index: 999999999999999;
     padding-top: 5rem;
     /* margin-bottom: 2rem; */
     overflow: auto;

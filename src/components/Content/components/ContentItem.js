@@ -5,7 +5,7 @@ import { FaFacebookF } from "react-icons/fa"
 const Container = styled.div`
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: ${props => (props.support ? "center" : "space-around")};
     align-items: center;
     flex-direction: row;
     padding: 4.8rem 0;
