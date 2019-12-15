@@ -105,6 +105,10 @@ const DropdownLink = styled.li`
     padding: 1.2rem 0.8rem;
     cursor: pointer;
     position: relative;
+    transition: 250ms all ease;
+    &:hover {
+        opacity: 0.8;
+    }
 `
 
 const DropDownWrapper = styled.ul`
@@ -140,6 +144,7 @@ const Input = styled.input`
     color: rgba(255, 255, 255, 0.85);
     outline: none;
     padding: 1rem 3rem;
+    cursor: pointer;    
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
     &::-webkit-search-results-button,
@@ -159,12 +164,29 @@ export default class NavPrimary extends Component {
             searchedPhrase: "",
             searchedLinks: [],
         }
+        this.wrapperRef = React.createRef();
     }
 
     onChangeLangButtonClick = () => {
         this.setState(prevState => ({
             showLangMenu: !prevState.showLangMenu,
         }))
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside)       
+    }
+
+    componentWillMount() {
+        document.removeEventListener('mousedown', this.handleClickOutside)
+    }
+
+    handleClickOutside = (event) => {
+        console.log(event.target, this.wrapperRef);
+    }
+
+    setWrapperRef = (node) => {
+        this.wrapperRef = node;
     }
 
     handleSearchInputChange = event => {
@@ -278,7 +300,7 @@ export default class NavPrimary extends Component {
                     </Link>
                 </SocialIcons>
                 {this.state.showSearch ? (
-                    <SearchWrapper>
+                    <SearchWrapper ref={this.setWrapperRef}>
                         <FaSearch />
                         <Input
                             type="search"
