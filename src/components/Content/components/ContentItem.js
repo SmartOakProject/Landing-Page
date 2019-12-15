@@ -1,18 +1,18 @@
 import React, { Component } from "react"
 import styled from "styled-components"
 import { FaFacebookF } from "react-icons/fa"
-import VisibilitySensor from "react-visibility-sensor"
 
 const Container = styled.div`
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     padding: 4.8rem 0;
+
     /* z-index: 1000000000000; */
     :nth-child(2n) {
-        flex-direction: row-reverse;
+        flex-direction: ${props => (props.support ? "row" : "row-reverse")};
     }
     /* @media (max-width: 1200px) {
         justify-content: space-around;
@@ -29,12 +29,13 @@ const Container = styled.div`
 
 const Image = styled.img`
     display: block;
-    height: 35rem;
+    /* height: 35rem; */
+    height: ${props => (props.imgHeight ? props.imgHeight : "35rem")};
 
     border-radius: 3rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
     @media (max-width: 1100px) {
-        height: 27rem;
+        height: ${props => (props.imgHeight ? props.imgHeight : "27rem")};
     }
 `
 
@@ -146,6 +147,7 @@ class Img extends Component {
     render() {
         return (
             <Image
+                imgHeight={this.props.imgHeight}
                 src="https://picsum.photos/250"
                 style={{
                     transform: `rotate(${
@@ -162,14 +164,23 @@ class Img extends Component {
 
 export default class Content extends Component {
     render() {
+        const {
+            imgHeight,
+            isRight,
+            title,
+            text,
+            fbPost,
+            fbLink,
+            support,
+        } = this.props
         return (
-            <Container>
-                <Img isRight={this.props.isRight} />
-                <ContentItemElement isRight={this.props.isRight}>
-                    <Title>{this.props.title}</Title>
-                    <Description>{this.props.text}</Description>
-                    {this.props.fbPost && (
-                        <ExternalLink href={this.props.fbLink} target="_blank">
+            <Container support={support}>
+                <Img imgHeight={imgHeight} isRight={isRight} />
+                <ContentItemElement isRight={isRight}>
+                    <Title>{title}</Title>
+                    <Description>{text}</Description>
+                    {fbPost && (
+                        <ExternalLink href={fbLink} target="_blank">
                             <FbIcon />
                             Zobacz projekt na facebooku
                         </ExternalLink>

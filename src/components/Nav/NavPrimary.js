@@ -317,18 +317,18 @@ export default class NavPrimary extends Component {
                             Szukaj
                             <FaSearch />
                         </StyledLink>
-                        <StyledLink middleNavPadding to="/">
+                        <StyledGatsbyLink middleNavPadding to="/">
                             Sklep
                             <FaShoppingCart />
-                        </StyledLink>
-                        <StyledLink middleNavPadding to="/">
+                        </StyledGatsbyLink>
+                        <StyledGatsbyLink middleNavPadding to="/support">
                             Wesprzyj
                             <FaHandHoldingHeart />
-                        </StyledLink>
-                        <StyledLink middleNavPadding to="/">
+                        </StyledGatsbyLink>
+                        <StyledGatsbyLink middleNavPadding to="/">
                             Pobierz
                             <FaDownload />
-                        </StyledLink>
+                        </StyledGatsbyLink>
                     </MiddleNav>
                 )}
                 <RightNav>

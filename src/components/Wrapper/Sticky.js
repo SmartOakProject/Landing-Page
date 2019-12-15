@@ -2,16 +2,6 @@ import React, { Component } from "react"
 import styled from "styled-components"
 import VisibilitySensor from "react-visibility-sensor"
 import TextHeader from "../TextHeader"
-const Container = styled.div`
-    background: ${props => props.bgc};
-    width: 100%;
-    position: sticky;
-    top: 4.3rem;
-    @media screen and (max-width: 900px) {
-        position: static;
-    }
-    z-index: ${props => props.z};
-`
 
 const Text = styled.div`
     width: 35vw;
@@ -44,13 +34,6 @@ const Video = styled.video`
     position: relative;
 `
 
-const Border = styled.div`
-    background: black;
-    height: 5vh;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-`
 const Heg = styled.div`
     height: 95vh;
     display: flex;
@@ -123,9 +106,6 @@ export default class Sticky extends Component {
                         loop
                         playsinline
                     >
-                        {console.log(
-                            require(`../../video/${this.props.videoSrc}`)
-                        )}
                         <source
                             src={require(`../../video/${this.props.videoSrc}`)}
                             type="video/mp4"

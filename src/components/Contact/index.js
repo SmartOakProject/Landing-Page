@@ -1,6 +1,5 @@
 import React from "react"
 
-import "./contact.css"
 import Item from "./Item"
 import Form from "./Form"
 import styled from "styled-components"
@@ -53,15 +52,43 @@ const contactList = [
     },
 ]
 
+const ContactWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5rem;
+    margin: 5rem 4rem;
+
+    @media screen and (max-width: 920px) {
+        grid-template-columns: 1fr;
+        margin-top: 10rem;
+        grid-auto-flow: dense;
+    }
+    @media screen and (max-width: 600px) {
+        margin: 5rem 2rem;
+        margin-top: 10rem;
+    }
+`
+
 const ContactItems = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 25px;
+    order: 1;
+    @media screen and (max-width: 900px) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 25px;
+
+        /* margin: 0 auto; */
+    }
+    @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+    }
 `
 
 export default function Contact() {
     return (
-        <div className="contact">
+        <ContactWrapper>
             <Form />
             <ContactItems>
                 {contactList.map(e => {
@@ -74,6 +101,6 @@ export default function Contact() {
                     )
                 })}
             </ContactItems>
-        </div>
+        </ContactWrapper>
     )
 }

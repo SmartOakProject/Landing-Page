@@ -1,5 +1,82 @@
 import React, { Component } from "react"
+import styled from "styled-components"
 
+const FormWrapper = styled.div`
+    width: 90%;
+    margin-left: auto;
+    @media screen and (max-width: 1100px) {
+        width: 100%;
+    }
+    @media screen and (max-width: 600px) {
+        order: 2;
+    }
+`
+
+const Btn = styled.button`
+    background-color: #fff;
+    cursor: pointer;
+    color: #606060;
+    border: 0.1rem solid #999;
+    text-align: center;
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    padding: 1rem 2rem;
+    border-radius: 3px;
+
+    &:hover {
+        color: #3e3e3e;
+        border: 0.1rem solid #000;
+        box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.804);
+        transition: all 0.3s ease;
+    }
+`
+const Heading = styled.p`
+    margin-bottom: 20px;
+    font-size: 18px;
+`
+const TextArea = styled.textarea`
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    color: #606060;
+    border: 0.1rem solid #999;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    transition: all 0.2s;
+    height: 15rem;
+
+    &:focus {
+        color: #3e3e3e;
+        border: 0.1rem solid #000 !important;
+    }
+`
+const EmailInput = styled.input`
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-radius: 3px;
+    color: #606060;
+    border: 0.1rem solid #999;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    transition: all 0.2s;
+    &:focus {
+        color: #3e3e3e;
+        border: 0.1rem solid #000 !important;
+    }
+`
+const EmailLabel = styled.label`
+    display: block;
+    color: #c91630;
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+`
 class Form extends Component {
     constructor(props) {
         super(props)
@@ -14,20 +91,6 @@ class Form extends Component {
         var validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
         if (validEmail.test(String(this.state.email).toLowerCase())) {
-            // var template_params = {
-            //     emialK: this.state.email,
-            //     message: this.state.message,
-            // }
-
-            // var service_id = "default_service"
-            // var template_id = "qwe"
-            // emailjs.send(
-            //     service_id,
-            //     template_id,
-            //     template_params,
-            //     "user_9gdw09JxKNJT5GlaOOklB"
-            // )
-
             this.setState({
                 email: "",
                 message: "",
@@ -41,16 +104,15 @@ class Form extends Component {
     }
     render() {
         return (
-            <div className="form">
-                <h4 className="section_heading">
+            <FormWrapper>
+                <Heading>
                     Nie wiesz do kogo się zwrócić? Zapraszamy do kontaktu.
-                </h4>
-                <label className="email_label" htmlFor="email-form">
+                </Heading>
+                <EmailLabel htmlFor="email-form">
                     {this.state.error ? "Nieprawidłowy adres e-mail" : ""}
-                </label>
-                <input
+                </EmailLabel>
+                <EmailInput
                     id="email-from"
-                    className="user_email"
                     type="email"
                     placeholder="Twój e-mail"
                     value={this.state.email}
@@ -61,21 +123,17 @@ class Form extends Component {
                             : "1px solid #999",
                     }}
                 />
-                <div className="user_questions">
-                    <div>
-                        <textarea
-                            value={this.state.message}
-                            onChange={e =>
-                                this.setState({ message: e.target.value })
-                            }
-                            placeholder="Jak możemy pomóc?"
-                        />
-                    </div>
-                </div>
-                <button className="sent" onClick={this.send}>
+
+                <TextArea
+                    value={this.state.message}
+                    onChange={e => this.setState({ message: e.target.value })}
+                    placeholder="Jak możemy pomóc?"
+                />
+
+                <Btn className="sent" onClick={this.send}>
                     Wyślij
-                </button>
-            </div>
+                </Btn>
+            </FormWrapper>
         )
     }
 }

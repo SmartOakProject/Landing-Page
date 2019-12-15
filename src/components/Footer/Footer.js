@@ -165,6 +165,7 @@ const DownloadFromMarketplace = styled.div`
     flex-flow: row wrap;
     border: 1px solid var(--color-black);
     width: 175px;
+    border-radius: 3px;
     &:last-of-type {
         margin-right: 0;
     }
