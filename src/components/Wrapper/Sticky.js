@@ -51,13 +51,22 @@ export default class Sticky extends Component {
         this.state = {
             height: 0,
             visiblitiy: false,
+            checkIfExist: false,
         }
     }
     componentDidMount() {
         const height = this.vidRef.clientHeight
+        // if (!this.state.checkIfExist) {
+        //     this.vidRef.play()
+        //     console.log("on")
 
-        this.setState({ height: height - 60 })
-        this.setState({ visiblitiy: true })
+        //     setTimeout(() => {
+        //         this.vidRef.pause()
+        //         console.log("off")
+        //     }, 500)
+        //     this.setState({ checkIfExist: true })
+        // }
+        this.setState({ height: height - 60, visiblitiy: true })
     }
 
     playVideo = isVisible => {
@@ -105,6 +114,8 @@ export default class Sticky extends Component {
                         ref={vidRef => (this.vidRef = vidRef)}
                         muted
                         loop
+                        autobuffer
+                        preload="auto"
                         playsinline
                     >
                         <source

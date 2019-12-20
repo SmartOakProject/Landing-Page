@@ -52,9 +52,13 @@ img {
     height: auto;
     
 }
-video{
+/* video{
     max-width: 100%;
     height: auto;
+} */
+video {
+  width: 100%;
+  height: auto;
 }
 `
 

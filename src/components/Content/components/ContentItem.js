@@ -116,31 +116,31 @@ class Img extends Component {
     handleNavigation = e => {
         const window = e.currentTarget
         if (this.rotate.current) {
-            let bodyBoundingClientRect = document.body.getBoundingClientRect()
-            let elementBoundingClientRect = this.rotate.current.getBoundingClientRect()
-            let top = parseInt(
-                elementBoundingClientRect.top - bodyBoundingClientRect.top
-            )
-            let currentScrollTop = window.pageYOffset
+            requestAnimationFrame(() => {
+                let bodyBoundingClientRect = document.body.getBoundingClientRect()
+                let elementBoundingClientRect = this.rotate.current.getBoundingClientRect()
+                let top = parseInt(
+                    elementBoundingClientRect.top - bodyBoundingClientRect.top
+                )
+                let currentScrollTop = window.pageYOffset
 
-            let currentAttitude = -1 * (currentScrollTop - (top + 350 / 2))
-            let landingAttitude = Math.max(
-                document.documentElement.clientHeight,
-                window.innerHeight || 0
-            )
-            let maximumLandingAngle = 10
-            let rotationFix = 0.5 * maximumLandingAngle
-            let currentLandingAngle =
-                -1 *
-                    ((currentAttitude * maximumLandingAngle) /
-                        landingAttitude) +
-                rotationFix
+                let currentAttitude = -1 * (currentScrollTop - (top + 350 / 2))
+                let landingAttitude = Math.max(
+                    document.documentElement.clientHeight,
+                    window.innerHeight || 0
+                )
+                let maximumLandingAngle = 10
+                let rotationFix = 0.5 * maximumLandingAngle
+                let currentLandingAngle =
+                    -1 *
+                        ((currentAttitude * maximumLandingAngle) /
+                            landingAttitude) +
+                    rotationFix
 
-            if (currentLandingAngle < 7 && currentLandingAngle > -7) {
-                requestAnimationFrame(() => {
+                if (currentLandingAngle < 7 && currentLandingAngle > -7) {
                     this.setState({ rotate: currentLandingAngle })
-                })
-            }
+                }
+            })
         }
     }
 

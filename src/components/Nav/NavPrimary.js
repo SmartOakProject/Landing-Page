@@ -18,7 +18,19 @@ import { projekctLinks } from "../MobileNav/index"
 
 import Submenu from "./Submenu"
 
-const StyledLink = styled.a`
+const StyledLink = styled(props => <Link {...props} />)`
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    padding: 1.2rem ${props => (props.middleNavPadding ? "1.5rem" : "0.8rem")};
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    svg {
+        margin-left: 1rem;
+    }
+`
+
+const SearchBtn = styled.span`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
     padding: 1.2rem ${props => (props.middleNavPadding ? "1.5rem" : "0.8rem")};
@@ -67,9 +79,9 @@ const animation = props =>
     1s ${fadeIn} ease-out;
   `
 
-const PulseButton = styled.button`
-    animation: ${animation};
-`
+// const PulseButton = styled.button`
+//     animation: ${animation};
+// `
 
 const MiddleNav = styled.div`
     display: flex;
@@ -294,19 +306,18 @@ export default class NavPrimary extends Component {
                     </SearchWrapper>
                 ) : (
                     <MiddleNav anim={this.state.searchAnimation}>
-                        <StyledLink
+                        <SearchBtn
                             onClick={() => this.setState({ showSearch: true })}
                             middleNavPadding
-                            to="/"
                         >
                             Szukaj
                             <FaSearch />
-                        </StyledLink>
+                        </SearchBtn>
                         <StyledLink middleNavPadding to="/">
                             Sklep
                             <FaShoppingCart />
                         </StyledLink>
-                        <StyledLink middleNavPadding to="/">
+                        <StyledLink middleNavPadding to="/support">
                             Wesprzyj
                             <FaHandHoldingHeart />
                         </StyledLink>
@@ -328,7 +339,7 @@ export default class NavPrimary extends Component {
                             <Submenu left="-41px" width data={projekctLinks} />
                         )}
                     </DropdownLink>
-                    <StyledLink to="/">Kontakt</StyledLink>
+                    <StyledLink to="/contact">Kontakt</StyledLink>
                     <DropdownLink
                         onMouseLeave={() =>
                             this.setState({ showLangMenu: false })

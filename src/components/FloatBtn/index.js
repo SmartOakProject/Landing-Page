@@ -1,7 +1,6 @@
 import React, { Component } from "react"
-import styled, { keyframes, css } from "styled-components"
+import styled from "styled-components"
 
-import { projekctLinks } from "../MobileNav/index"
 import { FaAngleUp } from "react-icons/fa"
 
 const Container = styled.div`

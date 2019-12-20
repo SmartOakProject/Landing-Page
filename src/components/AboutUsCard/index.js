@@ -1,18 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-const Container = styled.div`
-    background-color: #fff;
-    width: 100vw;
-    color: var(--color-white);
-    font-size: 30px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 1rem 1.5rem;
-    flex-flow: row wrap;
-`
-
 const Row = styled.div`
     display: flex;
     flex-flow: row wrap;

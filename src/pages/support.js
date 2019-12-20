@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+
 import Nav from "../components/Nav"
 import Footer from "../components/Footer/Footer"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"

@@ -11,7 +11,7 @@ import {
 } from "react-icons/fa"
 
 const Container = styled.div`
-    background-color: ${props => props.isHomepage ? '#000' : '#fff'};
+    background-color: ${props => (props.isHomepage ? "#000" : "#fff")};
     width: 100vw;
     color: var(--color-white);
     font-size: 30px;
@@ -94,7 +94,8 @@ const Col = styled.div`
 `
 
 const ListLink = styled.a`
-    color: ${props => props.isHomepage ? 'var(--color-white)' : 'var(--color-black)'} ;
+    color: ${props =>
+        props.isHomepage ? "var(--color-white)" : "var(--color-black)"};
     text-decoration: none;
     padding: 0 0.5rem;
     cursor: pointer;
@@ -102,15 +103,16 @@ const ListLink = styled.a`
         padding-left: 0;
     }
     &:hover {
-        color: ${props => props.isHomepage ? 'var(--color-white)' : 'var(--color-white)'} ;
+        color: ${props =>
+            props.isHomepage ? "var(--color-white)" : "var(--color-white)"};
         transition: 250ms all ease;
     }
 `
 
-const SocialMediaLink = styled.a`
-    color: var(--color-black);
-    font-size: 1rem;
-`
+// const SocialMediaLink = styled.a`
+//     color: var(--color-black);
+//     font-size: 1rem;
+// `
 
 const ListItem = styled.li`
     font-size: 1.25rem;
@@ -163,10 +165,11 @@ const DownloadFromMarketplace = styled.div`
     padding: 0.75rem;
     align-items: center;
     justify-content: flex-start;
-    background-color: ${props => props.isHomepage ? '#000' : '#fff'};
+    background-color: ${props => (props.isHomepage ? "#000" : "#fff")};
     display: flex;
     flex-flow: row wrap;
-    border: ${props => props.isHomepage ? null : '1px solid var(--color-black)'};
+    border: ${props =>
+        props.isHomepage ? null : "1px solid var(--color-black)"};
     width: 175px;
     border-radius: 3px;
     &:last-of-type {
@@ -188,7 +191,8 @@ const DownloadFromMarketplace = styled.div`
 
 const DownloadFromMarketplaceText = styled.p`
     font-size: ${props => (props.small ? "1.2rem" : "1.6rem")};
-    color: ${props => props.isHomepage ? 'var(--color-white)' : 'var(--color-gray)'};
+    color: ${props =>
+        props.isHomepage ? "var(--color-white)" : "var(--color-gray)"};
     font-weight: 500;
     text-align: center;
     &:first-of-type {
@@ -201,7 +205,8 @@ const DownloadFromMarketplaceText = styled.p`
 
 const FooterSmallText = styled.p`
     font-size: 1.04rem;
-    color: ${props => props.isHomepage ? 'var(--color-white)' : 'var(--color-black)' };
+    color: ${props =>
+        props.isHomepage ? "var(--color-white)" : "var(--color-black)"};
     text-align: ${props => (props.textAlignLeft ? "left" : "right")};
 
     margin-bottom: 0.3rem;
@@ -241,7 +246,9 @@ function FooterTopLeftMenu(props) {
     const menuList = props.menuItems.map((menuItem, index) => {
         return (
             <ListItem key={index}>
-                <ListLink isHomepage={props.isHomepage} href={menuItem.path}>{menuItem.name}</ListLink>
+                <ListLink isHomepage={props.isHomepage} href={menuItem.path}>
+                    {menuItem.name}
+                </ListLink>
             </ListItem>
         )
     })
@@ -273,15 +280,29 @@ class DownloadFromMarketplaceWrapper extends React.Component {
         const singleDownload = this.state.downloadFromMarketplaceContent.map(
             (singleDownload, index) => {
                 return (
-                    <DownloadFromMarketplace isHomepage={this.props.isHomepage} key={index}>
+                    <DownloadFromMarketplace
+                        isHomepage={this.props.isHomepage}
+                        key={index}
+                    >
                         <Col className="imageCol">
-                            {<singleDownload.icon className={`svgMarketPlace ${this.props.isHomepage ? 'white' : null}`} />}
+                            {
+                                <singleDownload.icon
+                                    className={`svgMarketPlace ${
+                                        this.props.isHomepage ? "white" : null
+                                    }`}
+                                />
+                            }
                         </Col>
                         <Col className="marketPlaceCol">
-                            <DownloadFromMarketplaceText isHomepage={this.props.isHomepage} small>
+                            <DownloadFromMarketplaceText
+                                isHomepage={this.props.isHomepage}
+                                small
+                            >
                                 {singleDownload.downloadText}
                             </DownloadFromMarketplaceText>
-                            <DownloadFromMarketplaceText isHomepage={this.props.isHomepage}>
+                            <DownloadFromMarketplaceText
+                                isHomepage={this.props.isHomepage}
+                            >
                                 {singleDownload.marketName}
                             </DownloadFromMarketplaceText>
                         </Col>
@@ -325,7 +346,9 @@ class SocialmediaLinks extends React.Component {
         const menuItems = this.state.socialmediaMenu.map((menuItem, index) => {
             return (
                 <ListItem key={index}>
-                    <ListLink isHomepage={this.props.isHomepage}>{<menuItem.icon />}</ListLink>
+                    <ListLink isHomepage={this.props.isHomepage}>
+                        {<menuItem.icon />}
+                    </ListLink>
                 </ListItem>
             )
         })
@@ -342,11 +365,16 @@ export default function Footer(props) {
         <Container isHomepage={props.isHomepage}>
             <Row alignCenter className="pb3">
                 <Col>
-                    <FooterTopLeftMenu menuItems={menuItems} isHomepage={props.isHomepage} />
+                    <FooterTopLeftMenu
+                        menuItems={menuItems}
+                        isHomepage={props.isHomepage}
+                    />
                 </Col>
                 <Col>
                     <Row p0 justifyEnd>
-                        <DownloadFromMarketplaceWrapper isHomepage={props.isHomepage} />
+                        <DownloadFromMarketplaceWrapper
+                            isHomepage={props.isHomepage}
+                        />
                     </Row>
                 </Col>
             </Row>
@@ -360,7 +388,7 @@ export default function Footer(props) {
                         zastrzeżone.
                     </FooterSmallText>
                     <FooterSmallText isHomepage={props.isHomepage}>
-                        <a>Polityka prywatności</a>
+                        <a href="/">Polityka prywatności</a>
                     </FooterSmallText>
                     <FooterSmallText isHomepage={props.isHomepage}>
                         Strona zrealizowana przez firmę Progressio

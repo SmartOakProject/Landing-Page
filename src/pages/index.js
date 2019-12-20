@@ -9,8 +9,7 @@ import FloatBtn from "../components/FloatBtn"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import Wrapper from "../components/Wrapper"
 import Sticky from "../components/Wrapper/Sticky"
-import logo from "../images/logo-biale.png"
-import styled from "styled-components"
+
 // ../../video/blackEarth.mp4
 
 const IndexPage = () => {

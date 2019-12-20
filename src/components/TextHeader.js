@@ -10,7 +10,7 @@ const HeaderElement = styled.header`
     position: sticky;
     z-index: 9;
     top: 17vh;
-    width: 50vw;
+    width: 48vw;
     padding: 0rem 3rem 0 4.9rem;
     color: white;
     font-weight: 400;

@@ -55,8 +55,8 @@ const contactList = [
 const ContactWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5rem;
-    margin: 5rem 4rem;
+    grid-gap: 15rem;
+    margin: 8rem 4rem;
 
     @media screen and (max-width: 920px) {
         grid-template-columns: 1fr;

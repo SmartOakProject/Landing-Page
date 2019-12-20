@@ -37,6 +37,28 @@ const MobileNavMenu = styled.div`
         }
     }
 `
+// const Black = styled.div`
+//     position: fixed;
+//     top: 0;
+//     z-index: 9323232;
+//     align-items: center;
+//     justify-content: space-between;
+//     background: black;
+//     width: 100%;
+//     display: none;
+//     padding: 0 2rem;
+//     height: 5rem;
+
+//     @media screen and (max-width: 900px) {
+//         display: flex;
+//     }
+
+//     @media only screen and (orientation: landscape) {
+//         img {
+//             height: 4.5rem;
+//         }
+//     }
+// `
 
 const MobileNavItem = styled.li`
     padding: 1.7rem 1rem;
@@ -85,6 +107,10 @@ const navigationLinks = [
         linkText: "Sklep",
     },
     {
+        path: "/support",
+        linkText: "Wesprzyj",
+    },
+    {
         path: "",
         linkText: "Pobierz",
     },
@@ -112,6 +138,30 @@ const navigationLinks = [
     {
         path: "",
         linkText: "FR",
+    },
+    {
+        path: "",
+        linkText: " ES",
+    },
+    {
+        path: "",
+        linkText: " ES",
+    },
+    {
+        path: "",
+        linkText: " ES",
+    },
+    {
+        path: "",
+        linkText: " ES",
+    },
+    {
+        path: "",
+        linkText: " ES",
+    },
+    {
+        path: "",
+        linkText: " ES",
     },
     {
         path: "",
@@ -213,7 +263,7 @@ class MobileNav extends Component {
 
                     {navigationLinks.map((e, i) => (
                         <MobileNavItem key={i}>
-                            <a to={e.path}>{e.linkText}</a>
+                            <Link to={e.path}>{e.linkText}</Link>
                         </MobileNavItem>
                     ))}
                 </MobileList>

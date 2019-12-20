@@ -1,4 +1,5 @@
 module.exports = {
+    pathPrefix: "/Landing-Page",
     siteMetadata: {
         title: `Landing SmartOakProject`,
         description: `Landing SmartOakProject`,

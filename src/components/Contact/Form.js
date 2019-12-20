@@ -32,14 +32,15 @@ const Btn = styled.button`
     }
 `
 const Heading = styled.p`
-    margin-bottom: 20px;
-    font-size: 18px;
+    margin-bottom: 25px;
+    font-size: 19px;
+    font-weight: 300;
 `
 const TextArea = styled.textarea`
     font-size: 1.4rem;
     padding: 1rem 2rem;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     border-radius: 3px;
     color: #606060;
     border: 0.1rem solid #999;
@@ -47,7 +48,7 @@ const TextArea = styled.textarea`
     resize: none;
     font-family: inherit;
     transition: all 0.2s;
-    height: 15rem;
+    height: 20rem;
 
     &:focus {
         color: #3e3e3e;

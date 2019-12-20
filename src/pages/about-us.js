@@ -12,60 +12,107 @@ import MobileNav from "../components/MobileNav"
 const aboutUsData = [
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John",
-        description: "Frontendowiec z zamiłowania",
+        fullName: "Anna Warszta",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Warszta2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullname: "Wojciech John3",
-        description: "Trzeci opis",
+        fullName: "Anna Warszta3",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Warszta2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Warszta2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Warszta2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Warszta2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Warszta2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
 
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
 
     {
         imgSrc: "https://via.placeholder.com/150",
-        fullName: "Wojciech John2",
-        description: "Drugi opis",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
+    },
+    {
+        imgSrc: "https://via.placeholder.com/150",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
+    },
+    {
+        imgSrc: "https://via.placeholder.com/150",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
+    },
+    {
+        imgSrc: "https://via.placeholder.com/150",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
+    },
+    {
+        imgSrc: "https://via.placeholder.com/150",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
+    },
+    {
+        imgSrc: "https://via.placeholder.com/150",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
+    },
+    {
+        imgSrc: "https://via.placeholder.com/150",
+        fullName: "Anna Bielawska2",
+        description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
 ]
 
