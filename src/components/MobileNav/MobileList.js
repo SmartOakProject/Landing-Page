@@ -10,7 +10,7 @@ const MobileListWrapper = styled.ul`
     background: #0e0e0e;
     color: var(--color-white);
     transition: all 0.45s ease;
-    z-index: 9999;
+    z-index: 999999999;
     padding-top: 5rem;
 
     /* padding-bottom: 5rem; */
@@ -26,11 +26,16 @@ const ListWrapper = styled.ul`
     flex-direction: column;
     display: flex;
     overflow: auto;
-    height: 90%;
-    /* padding-bottom: 5rem; */
-    /* margin-bottom: 2rem; */
+    height: 80%;
+    position: relative;
 `
-
+// const Black = styled.div`
+//     position: absolute;
+//     bottom: -15vh;
+//     background-color: #0e0e0e;
+//     width: 100vw;
+//     height: 15vh;
+// `
 export default class MobileList extends Component {
     constructor(props) {
         super(props)
@@ -50,6 +55,7 @@ export default class MobileList extends Component {
             <MobileListWrapper style={{ height: this.state.open ? "110%" : 0 }}>
                 <ListWrapper>
                     {this.state.open ? this.props.children : null}
+                    {/* <Black /> */}
                 </ListWrapper>
             </MobileListWrapper>
         )

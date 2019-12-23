@@ -29,11 +29,12 @@ const Container = styled.div`
 
 const Image = styled.img`
     display: block;
-    /* height: 35rem; */
-    height: ${props => (props.imgHeight ? props.imgHeight : "35rem")};
 
+    height: ${props => (props.imgHeight ? props.imgHeight : "35rem")};
     border-radius: 3rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
+    will-change: transform;
+
     @media (max-width: 1100px) {
         height: ${props => (props.imgHeight ? props.imgHeight : "27rem")};
     }
@@ -104,19 +105,17 @@ class Img extends Component {
         }
         this.rotate = React.createRef()
     }
+    componentDidMount() {
+        window.addEventListener("scroll", this.handleNavigation)
+    }
 
     componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll)
+        window.removeEventListener("scroll", this.handleNavigation)
     }
 
-    componentDidMount() {
-        window.addEventListener("scroll", e => this.handleNavigation(e))
-    }
-
-    handleNavigation = e => {
-        const window = e.currentTarget
-        if (this.rotate.current) {
-            requestAnimationFrame(() => {
+    handleNavigation = () => {
+        window.requestAnimationFrame(() => {
+            if (this.rotate.current) {
                 let bodyBoundingClientRect = document.body.getBoundingClientRect()
                 let elementBoundingClientRect = this.rotate.current.getBoundingClientRect()
                 let top = parseInt(
@@ -138,10 +137,16 @@ class Img extends Component {
                     rotationFix
 
                 if (currentLandingAngle < 7 && currentLandingAngle > -7) {
-                    this.setState({ rotate: currentLandingAngle })
+                    // this.setState({ rotate: currentLandingAngle })
+
+                    this.rotate.current.style.transform = `rotate(${
+                        this.props.isRight
+                            ? -1 * currentLandingAngle
+                            : currentLandingAngle
+                    }deg)`
                 }
-            })
-        }
+            }
+        })
     }
 
     render() {
@@ -150,11 +155,7 @@ class Img extends Component {
                 imgHeight={this.props.imgHeight}
                 src="https://picsum.photos/250"
                 style={{
-                    transform: `rotate(${
-                        this.props.isRight
-                            ? -1 * this.state.rotate
-                            : this.state.rotate
-                    }deg)`,
+                    transform: `rotate(${this.props.isRight ? -7 : 7}deg)`,
                 }}
                 ref={this.rotate}
             />

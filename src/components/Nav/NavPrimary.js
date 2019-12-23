@@ -130,7 +130,8 @@ const SearchWrapper = styled.div`
 
 const Input = styled.input`
     width: 39rem;
-    background-color: inherit;
+    background-color: #0e0e0e;
+    -webkit-appearance: textfield;
     border: none;
     border-radius: 14px;
     height: 2.2rem;

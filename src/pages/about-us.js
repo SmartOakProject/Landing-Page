@@ -11,106 +11,123 @@ import MobileNav from "../components/MobileNav"
 
 const aboutUsData = [
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski2",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta3",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski3",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski2",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski2",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski2",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski2",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Warszta2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski2",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
 
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
 
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
     {
-        imgSrc: "https://via.placeholder.com/150",
-        fullName: "Anna Bielawska2",
+        imgSrc:
+            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
+        fullName: "Lucas Dąbrowski-Dębski",
         description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
     },
@@ -139,6 +156,7 @@ const IndexPage = () => {
                     link
                     text="Smart Oak Project to przedsięwzięcie, którego ideą jest korzystanie z najnowszych rozwiązań technologicznych. Nie sposób więc pominąć w nim rolę walut alternatywnych. Osoby korzystające z naszych walutowych rozwiązań wspierają działanie Fundacji; kupując w naszym sklepie NeuroN Store bądź u jednego z naszych partnerów. W aplikacji iMundus powstał moduł, pozwalający na zarządzanie naszymi trzema walutami, zapewniając pełną kontrolę!"
                     title="NeuroN Currency"
+                    color="white"
                 />
             </Header>
             <Container>

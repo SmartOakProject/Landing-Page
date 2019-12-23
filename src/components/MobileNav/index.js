@@ -18,7 +18,7 @@ const appear = keyframes`
 const MobileNavMenu = styled.div`
     position: fixed;
     top: 0;
-    z-index: 9323232;
+    z-index: 999999999999999;
     align-items: center;
     justify-content: space-between;
     background: black;
@@ -195,19 +195,19 @@ export const projekctLinks = [
         linkText: "N Media",
     },
     {
-        path: "oakes-clinic",
+        path: "/oakes-clinic",
         linkText: "Oakes Clinic",
     },
     {
-        path: "oak-atlantis",
+        path: "/oak-atlantis",
         linkText: "Oak Atlantis",
     },
     {
-        path: "neuron-currency",
+        path: "/neuron-currency",
         linkText: "NeuroN Currency",
     },
     {
-        path: "about-us",
+        path: "/about-us",
         linkText: "O nas",
     },
 ]

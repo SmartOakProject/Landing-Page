@@ -6,46 +6,45 @@ export default class Header extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            scroll: 70,
-            renderState: true,
-        }
         this.image = React.createRef()
     }
     componentDidMount() {
-        this.prev = window.scrollY
-        window.addEventListener("scroll", e => this.handleNavigation(e))
+        window.addEventListener("scroll", this.handleNavigation)
     }
 
     componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleScroll)
+        window.removeEventListener("scroll", this.handleNavigation)
     }
 
-    handleNavigation = event => {
-        const widowOfHeader = event.currentTarget
+    handleNavigation = () => {
+        let ticking = false
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                let scrollPercent =
+                    (window.pageYOffset / this.image.current.offsetHeight) * 100
+                let factor = 3.6
+                let currentScroll = scrollPercent / factor + 70
 
-        window.requestAnimationFrame(() => {
-            let max
-            if (this.image.current) {
-                max = this.image.current.offsetHeight
-            }
+                if (
+                    this.image.current.offsetHeight >=
+                    window.pageYOffset - 50
+                ) {
+                    this.image.current.style.clipPath = `polygon(0 0, 100% 0, 100% ${currentScroll}%, 32% 100%, 0 ${currentScroll}%)`
 
-            let scrollPercent = (widowOfHeader.pageYOffset / max) * 100
-            let factor = 3
-            let currentScroll = scrollPercent / factor + 70
-
-            if (currentScroll <= 100) {
-                this.setState({ scroll: currentScroll })
-            }
-        })
+                    this.image.current.style.WebkitClipPath = `polygon(0 0, 100% 0, 100% ${currentScroll}%, 32% 100%, 0 ${currentScroll}%)`
+                }
+                ticking = false
+            })
+            ticking = true
+        }
     }
 
     render() {
         return (
             <div
                 style={{
-                    clipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
-                    WebkitClipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+                    WebkitClipPath: `polygon(0 0, 100% 0, 100% 70%, 32% 100%, 0 70%)`,
+                    clipPath: `polygon(0 0, 100% 0, 100% 70%, 32% 100%, 0 70%)`,
                     width: "100%",
                     height: "85vh",
                     zIndex: "999",
@@ -59,3 +58,74 @@ export default class Header extends Component {
         )
     }
 }
+
+// import React, { Component } from "react"
+
+// import headerBg from "../../images/header-bg.jpeg"
+// let ticking = false
+// export default class Header extends Component {
+//     constructor(props) {
+//         super(props)
+
+//         this.state = {
+//             scroll: 70,
+
+//         }
+//         this.image = React.createRef()
+//     }
+//     componentDidMount() {
+//         window.addEventListener(
+//             "wheel",
+//             () => {
+//                 if (!ticking) {
+//                     window.requestAnimationFrame(() => {
+//                         let scrollPercent =
+//                             (window.pageYOffset /
+//                                 this.image.current.offsetHeight) *
+//                             100
+//                         let factor = 3.6
+//                         let currentScroll = scrollPercent / factor + 70
+//                         if (
+//                             this.image.current.offsetHeight >=
+//                             window.pageYOffset - 50
+//                         ) {
+//                             this.setState({ scroll: currentScroll })
+//                         }
+//                         ticking = false
+//                     })
+
+//                     ticking = true
+//                 }
+//             },
+//             { passive: true }
+//         )
+//     }
+
+//     // componentWillUnmount() {
+//     //     window.removeEventListener("scroll", this.handleNavigation)
+//     // }
+
+//     // handleNavigation = () => {
+//     //     // window.requestAnimationFrame(() => {
+//     //     // })
+//     // }
+
+//     render() {
+//         return (
+//             <div
+//                 style={{
+//                     WebkitClipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+//                     clipPath: `polygon(0 0, 100% 0, 100% ${this.state.scroll}%, 32% 100%, 0 ${this.state.scroll}%)`,
+//                     width: "100%",
+//                     height: "80vh",
+//                     zIndex: "999",
+//                     position: "relative",
+//                     background: `url(${headerBg}) no-repeat center center / cover`,
+//                 }}
+//                 ref={this.image}
+//             >
+//                 {this.props.children}
+//             </div>
+//         )
+//     }
+// }

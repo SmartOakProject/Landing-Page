@@ -10,6 +10,8 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     position: sticky;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
     top: 0;
     z-index: 100000;
     margin-top: -1px;

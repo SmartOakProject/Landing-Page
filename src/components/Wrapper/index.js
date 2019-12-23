@@ -7,7 +7,7 @@ const Container = styled.div`
 
     height: 95vh;
 
-    top: 4.3rem;
+    /* top: 4.3rem; */
     -moz-clip-path: ${props =>
         props.secondText
             ? "inset(-175px 0 0 0)"
@@ -33,7 +33,7 @@ const Container = styled.div`
             : props.isLast
             ? "inset(0 0 -300px 0)"
             : "inset(0)"};
-    /* clip: rect(0px, auto, auto, 0px); */
+    clip: rect(0px, auto, auto, 0px);
     @media screen and (max-width: 900px) {
         position: static;
     }

@@ -387,9 +387,11 @@ export default function Footer(props) {
                         &#9400; 2019 Smart Oak Project. Wszelkie prawa
                         zastrzeżone.
                     </FooterSmallText>
+
                     <FooterSmallText isHomepage={props.isHomepage}>
-                        <a href="/">Polityka prywatności</a>
+                        Polityka prywatności
                     </FooterSmallText>
+
                     <FooterSmallText isHomepage={props.isHomepage}>
                         Strona zrealizowana przez firmę Progressio
                     </FooterSmallText>

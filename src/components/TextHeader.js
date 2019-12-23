@@ -6,13 +6,33 @@ import logoBlack from "../images/logo-czarne.png"
 
 import { FaFacebookF } from "react-icons/fa"
 
+const TextWrapper = styled.div`
+    /* height: ${props => (props.isLast ? "110vh" : "220vh")}; */
+    height: ${props =>
+        props.secondText ? "280vh" : props.isLast ? "110vh" : "220vh"};
+
+    color: #000;
+
+    position: absolute;
+    z-index: ${props => props.zIndex};
+    top: ${props => (props.secondText ? "-175px" : "0")};
+    @media screen and (max-width: 1200px) {
+        width: 100vw;
+        
+        
+    }
+`
 const HeaderElement = styled.header`
     position: sticky;
-    z-index: 9;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+
+    z-index: ${props => props.zIndex};
+
     top: 17vh;
-    width: 48vw;
+    width: 50vw;
     padding: 0rem 3rem 0 4.9rem;
-    color: white;
+    color: ${props => props.color};
     font-weight: 400;
     @media screen and (max-width: 1100px) {
         width: 65vw;
@@ -44,20 +64,6 @@ const Icon = styled.img`
         display: none;
     }
 `
-const TextWrapper = styled.div`
-    /* height: 150vh; */
-    height: ${props => (props.isLast ? "0" : "150vh")};
-
-    color: #000;
-    /* display: inline-block; */
-    position: absolute;
-    z-index: ${props => props.zIndex};
-    top: ${props => (props.secondText ? "-175px" : "0")};
-    @media screen and (max-width: 1200px) {
-        width: 100vw;
-        height: ${props => (props.isLast ? "0" : "150vh")};
-    }
-`
 
 const Name = styled.div``
 
@@ -71,7 +77,6 @@ const FirstLine = styled.div`
 
 const SecondLine = styled.div`
     font-size: 10.5px;
-    margin-bottom: 10px;
     letter-spacing: 14.8px;
     margin-top: 0;
     padding-left: 7px;
@@ -124,12 +129,11 @@ export default class Text extends Component {
                     zIndex={this.props.z}
                     secondText={this.props.secondText}
                     isLast={this.props.isLast}
+                    color={this.props.color}
                 >
                     <HeaderElement
-                        style={{
-                            zIndex: this.props.zindex,
-                            color: this.props.color,
-                        }}
+                        zIndex={this.props.zindex}
+                        color={this.props.color}
                     >
                         <Logo>
                             <Icon

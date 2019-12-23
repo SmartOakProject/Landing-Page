@@ -8,7 +8,7 @@ const Container = styled.div`
     bottom: 5vh;
     right: 3vw;
     z-index: 99999;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
     svg {
         fill: rgb(42, 128, 248);
         font-size: 2rem;

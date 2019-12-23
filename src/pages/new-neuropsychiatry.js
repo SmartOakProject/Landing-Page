@@ -7,6 +7,7 @@ import Footer from "../components/Footer/Footer"
 import Content from "../components/Content"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import Wrapper from "../components/Wrapper"
+import FloatBtn from "../components/FloatBtn"
 
 import TextHeader from "../components/TextHeader"
 
@@ -15,6 +16,8 @@ class IndexPage extends Component {
         return (
             <>
                 <GlobalStyle />
+                <FloatBtn />
+
                 <Nav />
                 <MobileNav />
                 <Header>
@@ -23,6 +26,7 @@ class IndexPage extends Component {
                         link
                         text="Chcesz zostać jednym z naszych wolontariuszy albo dołączyć do grona e-wolontariuszy? Przejdź do zakładki „Pobierz” i utwórz konto w Smart Oak ERP System. Niebawem skontaktuje się z tobą nasz koordynator i wszystko wytłumaczy. Dzięki swojej działalności pomożesz wielu ludziom na całym świecie. To jeszcze nigdy nie było takie proste!"
                         title="New Neuropsychiatry"
+                        color="white"
                     />
                 </Header>
                 <Content
@@ -65,10 +69,11 @@ class IndexPage extends Component {
                     logo={true}
                     sticky={false}
                     bgc="black"
-                    videoSrc="NNeuropsychiatry-1.mp4"
+                    videoSrc="NCurrency"
                     text="Dzięki naszej platformie wszyscy uczestnicy projektu mogą się wspierać i nieustannie od siebie uczyć. Osobom szczególnie zaangażowanym wystawiamy dokumenty referencyjne, proponujemy staż albo zatrudnienie, a nawet zapraszamy do współpracy przy komercyjnych częściach projektu."
                     title="Dlaczego warto z nami działać?"
                     textColor="white"
+                    color="white"
                 />
                 <Content
                     text={[
@@ -110,10 +115,11 @@ class IndexPage extends Component {
                     logo={true}
                     sticky={false}
                     bgc="black"
-                    videoSrc="NNeuropsychiatry-1.mp4"
+                    videoSrc="NCurrency"
                     text="Dzięki naszej platformie wszyscy uczestnicy projektu mogą się wspierać i nieustannie od siebie uczyć. Osobom szczególnie zaangażowanym wystawiamy dokumenty referencyjne, proponujemy staż albo zatrudnienie, a nawet zapraszamy do współpracy przy komercyjnych częściach projektu."
                     title="Dlaczego warto z nami działać?"
                     textColor="white"
+                    color="white"
                 />
                 <Content
                     text={[

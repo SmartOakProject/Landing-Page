@@ -7,6 +7,7 @@ import Footer from "../components/Footer/Footer"
 import Content from "../components/Content"
 import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
 import Wrapper from "../components/Wrapper"
+import FloatBtn from "../components/FloatBtn"
 
 import TextHeader from "../components/TextHeader"
 
@@ -16,6 +17,8 @@ class IndexPage extends Component {
             <>
                 <GlobalStyle />
                 <Nav />
+                <FloatBtn />
+
                 <MobileNav />
                 <Header>
                     <TextHeader
@@ -23,6 +26,7 @@ class IndexPage extends Component {
                         link
                         text="Smart Oak Project to przedsięwzięcie, którego ideą jest korzystanie z najnowszych rozwiązań technologicznych. Nie sposób więc pominąć w nim rolę walut alternatywnych. Osoby korzystające z naszych walutowych rozwiązań wspierają działanie Fundacji; kupując w naszym sklepie NeuroN Store bądź u jednego z naszych partnerów. W aplikacji iMundus powstał moduł, pozwalający na zarządzanie naszymi trzema walutami, zapewniając pełną kontrolę!"
                         title="NeuroN Currency"
+                        color="white"
                     />
                 </Header>
                 <Content
@@ -65,10 +69,11 @@ class IndexPage extends Component {
                     logo={true}
                     sticky={false}
                     bgc="black"
-                    videoSrc="NCurrency.mp4"
+                    videoSrc="NCurrency"
                     text="Dzięki naszej platformie wszyscy uczestnicy projektu mogą się wspierać i nieustannie od siebie uczyć. Osobom szczególnie zaangażowanym wystawiamy dokumenty referencyjne, proponujemy staż albo zatrudnienie, a nawet zapraszamy do współpracy przy komercyjnych częściach projektu."
                     title="Dlaczego warto z nami działać?"
                     textColor="white"
+                    color="white"
                 />
                 <Content
                     text={[

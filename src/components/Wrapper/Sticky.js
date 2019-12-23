@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import VisibilitySensor from "react-visibility-sensor"
+import Video from "./Video"
 import TextHeader from "../TextHeader"
 
 const Text = styled.div`
     width: 35vw;
-    height: ${props => (props.isLast ? "150vh" : "200vh")};
+    /* height: ${props => (props.isLast ? "150vh" : "200vh")}; */
     color: #000;
     /* display: inline-block; */
     position: absolute;
@@ -15,23 +15,24 @@ const Text = styled.div`
     @media screen and (max-width: 771px) {
         left: 0;
         width: 80vw;
-        height: ${props => (props.isLast ? "120vh" : "250vh")};
+        /* height: ${props => (props.isLast ? "120vh" : "250vh")}; */
     }
 `
-const StickyWrapper = styled.div`
-    position: sticky;
-    top: 13rem;
 
-    color: #000;
-`
-const Video = styled.video`
+const Image = styled.div`
     /* background-color: black; */
     /* object-fit: fill; */
     width: 100vw;
     height: 95vh;
     /* border: 2px solid #f00; */
-    object-fit: cover;
+    /* object-fit: cover; */
     position: relative;
+
+    background-image: url(${props => props.bgc && props.bgc});
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-position: 73% 0;
 `
 
 const Heg = styled.div`
@@ -40,90 +41,40 @@ const Heg = styled.div`
     justify-content: space-around;
     align-items: center;
     position: relative;
-    z-index: ${props => props.z};
 `
+
+const windowGlobal =
+    typeof window !== "undefined" &&
+    window.matchMedia("(max-width: 900px)").matches
 
 export default class Sticky extends Component {
     constructor(props) {
         super(props)
-
-        // this.vidRef = React.createRef()
         this.state = {
-            height: 0,
-            visiblitiy: false,
-            checkIfExist: false,
+            matches: windowGlobal,
         }
     }
-    componentDidMount() {
-        const height = this.vidRef.clientHeight
-        // if (!this.state.checkIfExist) {
-        //     this.vidRef.play()
-        //     console.log("on")
 
-        //     setTimeout(() => {
-        //         this.vidRef.pause()
-        //         console.log("off")
-        //     }, 500)
-        //     this.setState({ checkIfExist: true })
-        // }
-        this.setState({ height: height - 60, visiblitiy: true })
-    }
-
-    playVideo = isVisible => {
-        if (isVisible) {
-            const height = this.vidRef.clientHeight
-
-            this.vidRef.play()
-            this.setState({ height: height - height })
-        } else {
-            this.vidRef.pause()
-        }
-    }
     render() {
         return (
             <Heg>
-                <Text isLast={this.props.isLast}>
-                    <StickyWrapper
-                        ref={testRef => (this.testRef = testRef)}
-                        thirdText={this.props.thirdText}
-                    >
-                        <TextHeader
-                            secondText={this.props.secondText}
-                            logo={this.props.logo}
-                            color={this.props.color}
-                            text={this.props.text}
-                            title={this.props.title}
-                            isLast={this.props.isLast}
-                        />
-                    </StickyWrapper>
+                <Text>
+                    <TextHeader
+                        secondText={this.props.secondText}
+                        logo={this.props.logo}
+                        color={this.props.color}
+                        text={this.props.text}
+                        title={this.props.title}
+                        isLast={this.props.isLast}
+                    />
                 </Text>
-
-                <VisibilitySensor
-                    partialVisibility={this.state.visiblitiy}
-                    minTopValue={this.state.height}
-                    onChange={this.playVideo}
-                >
-                    {/* <Video
-                        ref={vidRef => (this.vidRef = vidRef)}
-                        muted
-                        loop
-                        playsinline
-                        src={require(`../../video/${this.props.videoSrc}`)}
-                    /> */}
-                    <Video
-                        ref={vidRef => (this.vidRef = vidRef)}
-                        muted
-                        loop
-                        autobuffer
-                        preload="auto"
-                        playsinline
-                    >
-                        <source
-                            src={require(`../../video/${this.props.videoSrc}`)}
-                            type="video/mp4"
-                        />
-                    </Video>
-                </VisibilitySensor>
+                {this.state.matches ? (
+                    <Image
+                        bgc={require(`../../images/videoImages/${this.props.videoSrc}.png`)}
+                    />
+                ) : (
+                    <Video videoSrc={this.props.videoSrc} />
+                )}
             </Heg>
         )
     }
