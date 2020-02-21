@@ -2,12 +2,12 @@ import React from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/Layout"
 import Header from "../components/Header"
 import TextHeader from "../components/TextHeader"
 import ContentItem from "../components/ContentItem"
 import Wrapper from "../components/Wrapper"
-
+import Footer from "../components/Footer/Footer"
+import Cards from "../components/Cards"
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         query oakAtlantis {
@@ -47,7 +47,7 @@ const IndexPage = () => {
 
     let counter = 1
     return (
-        <Layout>
+        <>
             <Header page="1">
                 <TextHeader
                     link
@@ -102,7 +102,9 @@ const IndexPage = () => {
                     }
                 }
             )}
-        </Layout>
+            <Cards />
+            <Footer />
+        </>
     )
 }
 export default IndexPage

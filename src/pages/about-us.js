@@ -3,10 +3,10 @@ import { useIntl } from "gatsby-plugin-intl"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
 
-import Layout from "../components/Layout"
 import Header from "../components/Header"
 import TextHeader from "../components/TextHeader"
 import AboutUsCard from "../components/AboutUsCard"
+import Footer from "../components/Footer/Footer"
 
 const Container = styled.div`
     display: block;
@@ -14,6 +14,7 @@ const Container = styled.div`
     padding: 0px 1rem;
     margin: 10rem auto 0rem;
 `
+
 const Row = styled.div`
     display: flex;
     flex-flow: row wrap;
@@ -56,7 +57,7 @@ const IndexPage = () => {
     const intl = useIntl()
 
     return (
-        <Layout removeCards>
+        <>
             <Header page="1">
                 <TextHeader
                     link
@@ -92,7 +93,8 @@ const IndexPage = () => {
                     )}
                 </Row>
             </Container>
-        </Layout>
+            <Footer />
+        </>
     )
 }
 export default IndexPage

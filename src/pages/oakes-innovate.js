@@ -2,12 +2,12 @@ import React from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/Layout"
 import Header from "../components/Header"
 import TextHeader from "../components/TextHeader"
 import ContentItem from "../components/ContentItem"
 import Wrapper from "../components/Wrapper"
-
+import Footer from "../components/Footer/Footer"
+import Cards from "../components/Cards"
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         query oakesInnovate {
@@ -47,7 +47,7 @@ const IndexPage = () => {
 
     let counter = 1
     return (
-        <Layout>
+        <>
             <Header page="1">
                 <TextHeader
                     link
@@ -57,10 +57,11 @@ const IndexPage = () => {
                     desc={intl.formatMessage({
                         id: "oakesInnovate.header.desc",
                     })}
-                 
-                    btns={data.allInternalPl.edges[1].node.oakesInnovate
-                        .header.btns}
-                                btnPath={`oakesInnovate.header.btns`}
+                    btns={
+                        data.allInternalPl.edges[1].node.oakesInnovate.header
+                            .btns
+                    }
+                    btnPath={`oakesInnovate.header.btns`}
                 />
             </Header>
             {data.allInternalPl.edges[1].node.oakesInnovate.content.map(
@@ -77,7 +78,6 @@ const IndexPage = () => {
                                 id={e.alternative_id}
                                 first={i === 0}
                                 isRight={i % 2 === 0}
-                              
                                 btns={e.btns}
                                 btnPath={`oakesInnovate.content.${i}.btns`}
                                 isBlack={true}
@@ -96,7 +96,6 @@ const IndexPage = () => {
                                 })}
                                 z={i + 1}
                                 isSecond={i === 0}
-                               
                                 btns={e.btns}
                                 btnPath={`oakesInnovate.content.${i}.btns`}
                             />
@@ -104,7 +103,9 @@ const IndexPage = () => {
                     }
                 }
             )}
-        </Layout>
+            <Cards />
+            <Footer />
+        </>
     )
 }
 export default IndexPage

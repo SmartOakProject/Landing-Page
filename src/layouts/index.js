@@ -3,15 +3,14 @@ import { injectIntl } from "gatsby-plugin-intl"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 
-import GlobalStyle from "./GlobalStyles/GlobalStyles"
-import Nav from "./Nav"
-import MobileNav from "./MobileNav"
-import Footer from "./Footer/Footer"
-import FloatBtn from "./FloatBtn"
-import Cookie from "./Cookie"
-import Cards from "./Cards"
+import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
+import Nav from "../components/Nav"
+import MobileNav from "../components/MobileNav"
 
-const Layout = ({ children, intl, removeCards, darkFooter, removeFooter }) => {
+import FloatBtn from "../components/FloatBtn"
+import Cookie from "../components/Cookie"
+
+const Layout = ({ children }) => {
     return (
         <>
             <GlobalStyle />
@@ -37,8 +36,6 @@ const Layout = ({ children, intl, removeCards, darkFooter, removeFooter }) => {
             <Nav />
             <MobileNav />
             {children}
-            {removeCards ? null : <Cards />}
-            {removeFooter ? null : <Footer darkFooter={darkFooter} />}
 
             <Cookie />
         </>

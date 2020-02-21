@@ -2,11 +2,12 @@ import React from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/Layout"
 import Header from "../components/Header"
 import TextHeader from "../components/TextHeader"
 import ContentItem from "../components/ContentItem"
 import Wrapper from "../components/Wrapper"
+import Footer from "../components/Footer/Footer"
+import Cards from "../components/Cards"
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -47,7 +48,7 @@ const IndexPage = () => {
 
     let counter = 1
     return (
-        <Layout>
+        <>
             <Header page="1">
                 <TextHeader
                     link
@@ -57,9 +58,7 @@ const IndexPage = () => {
                     desc={intl.formatMessage({
                         id: "iMundus.header.desc",
                     })}
-                    
-                    btns={data.allInternalPl.edges[1].node.iMundus.header
-                        .btns}
+                    btns={data.allInternalPl.edges[1].node.iMundus.header.btns}
                     btnPath={`iMundus.header.btns`}
                 />
             </Header>
@@ -78,7 +77,6 @@ const IndexPage = () => {
                             id={e.alternative_id}
                             first={i === 0}
                             isRight={i % 2 === 0}
-                           
                             btns={e.btns}
                             btnPath={`iMundus.content.${i}.btns`}
                             isBlack={true}
@@ -97,14 +95,15 @@ const IndexPage = () => {
                             })}
                             z={i + 1}
                             isSecond={i === 0}
-                           
                             btns={e.btns}
                             btnPath={`iMundus.content.${i}.btns`}
                         />
                     )
                 }
             })}
-        </Layout>
+            <Cards />
+            <Footer />
+        </>
     )
 }
 export default IndexPage

@@ -13,6 +13,8 @@ module.exports = {
                 path: `${__dirname}/src/images`,
             },
         },
+        `gatsby-plugin-layout`,
+
         {
             resolve: "gatsby-source-apiserver",
             options: {

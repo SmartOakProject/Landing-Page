@@ -2,9 +2,9 @@ import React from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/Layout"
 import ContentItem from "../components/ContentItem"
-import Wrapper from "../components/Wrapper"
+
+import Footer from "../components/Footer/Footer"
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -29,9 +29,8 @@ const IndexPage = () => {
     `)
     const intl = useIntl()
 
-    let counter = 1
     return (
-        <Layout removeCards>
+        <>
             {data.allInternalPl.edges[1].node.download.content.map((e, i) => {
                 return (
                     <ContentItem
@@ -50,7 +49,8 @@ const IndexPage = () => {
                     />
                 )
             })}
-        </Layout>
+            <Footer />
+        </>
     )
 }
 export default IndexPage

@@ -4,8 +4,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import Machine from "../components/Machine"
 import styled from "styled-components"
 
-import Layout from "../components/Layout"
 import SupportItem from "../components/SupportItem"
+import Footer from "../components/Footer/Footer"
 
 const Title = styled.h2`
     font-size: 2.6rem;
@@ -83,7 +83,7 @@ const IndexPage = () => {
         }
     )
     return (
-        <Layout removeCards>
+        <>
             <Machine data={machineData} />
             <Title>
                 {intl.formatMessage({
@@ -114,7 +114,9 @@ const IndexPage = () => {
                     }
                 )}
             </SupportItemContainer>
-        </Layout>
+
+            <Footer />
+        </>
     )
 }
 export default IndexPage

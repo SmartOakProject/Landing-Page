@@ -2,11 +2,10 @@ import React from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/Layout"
-
 import Item from "../components/Contact/Item"
 import Form from "../components/Contact/Form"
 import styled from "styled-components"
+import Footer from "../components/Footer/Footer"
 
 const ContactWrapper = styled.div`
     display: grid;
@@ -75,7 +74,7 @@ const IndexPage = () => {
     console.log(data.allInternalPl.edges[1].node.contact.content)
 
     return (
-        <Layout removeCards>
+        <>
             <ContactWrapper>
                 <ContactItems>
                     {data.allInternalPl.edges[1].node.contact.content.map(e => {
@@ -92,7 +91,8 @@ const IndexPage = () => {
                 </ContactItems>
                 <Form />
             </ContactWrapper>
-        </Layout>
+            <Footer />
+        </>
     )
 }
 export default IndexPage

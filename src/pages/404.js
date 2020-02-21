@@ -3,7 +3,7 @@ import { useIntl } from "gatsby-plugin-intl"
 import notFound from "../images/404.svg"
 import styled from "styled-components"
 import Button from "../components/common/Buttons"
-import Layout from "../components/Layout"
+
 const Container = styled.div`
     height: 100%;
     margin: 15vh 0 2vh 10vw;
@@ -52,7 +52,7 @@ const NotFoundPage = () => {
     const intl = useIntl()
 
     return (
-        <Layout removeCards removeFooter>
+        <>
             <Container>
                 <Title>Oops! This Page Could Not Be Found :(</Title>
                 <Image src={notFound} />
@@ -67,7 +67,7 @@ const NotFoundPage = () => {
                     isNotExternal
                 />
             </Container>
-        </Layout>
+        </>
     )
 }
 export default NotFoundPage

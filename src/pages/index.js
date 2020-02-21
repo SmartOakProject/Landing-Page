@@ -2,11 +2,11 @@ import React from "react"
 import { useIntl } from "gatsby-plugin-intl"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/Layout"
 import Header from "../components/Header"
 import TextHeader from "../components/TextHeader"
 
 import Wrapper from "../components/Wrapper"
+import Footer from "../components/Footer/Footer"
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -45,7 +45,7 @@ const IndexPage = () => {
     const intl = useIntl()
 
     return (
-        <Layout removeCards darkFooter>
+        <>
             <Header page="1">
                 <TextHeader
                     link
@@ -80,7 +80,9 @@ const IndexPage = () => {
                     />
                 )
             })}
-        </Layout>
+
+            <Footer darkFooter />
+        </>
     )
 }
 export default IndexPage
