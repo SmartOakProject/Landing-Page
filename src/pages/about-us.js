@@ -1,170 +1,98 @@
 import React from "react"
+import { useIntl } from "gatsby-plugin-intl"
+import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
+
+import Layout from "../components/Layout"
 import Header from "../components/Header"
-import Nav from "../components/Nav"
-import Footer from "../components/Footer/Footer"
-import GlobalStyle from "../components/GlobalStyles/GlobalStyles"
-import AboutUsCard from "../components/AboutUsCard"
 import TextHeader from "../components/TextHeader"
-import FloatBtn from "../components/FloatBtn"
-import MobileNav from "../components/MobileNav"
-
-const aboutUsData = [
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski2",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski3",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski2",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski2",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski2",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski2",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski2",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-    {
-        imgSrc:
-            "https://ca.slack-edge.com/TQ53VB79U-UQ2FNT22G-982bc694e72a-512",
-        fullName: "Lucas Dąbrowski-Dębski",
-        description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, quidem!",
-    },
-]
+import AboutUsCard from "../components/AboutUsCard"
 
 const Container = styled.div`
     display: block;
     max-width: 1100px;
-    padding: 0 1rem;
-    margin: 5rem auto 0rem;
-    @media screen and (max-width: 600px) {
-        margin: 2.5rem auto 0rem;
-    }
+    padding: 0px 1rem;
+    margin: 10rem auto 0rem;
+`
+const Row = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-items: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin: 2rem 0;
 `
 
 const IndexPage = () => {
+    const data = useStaticQuery(graphql`
+        query aboutUs {
+            allInternalPl {
+                edges {
+                    node {
+                        aboutUs {
+                            header {
+                                alternative_id
+                                btns {
+                                    btnLink
+                                    btnText
+                                    btnType
+                                }
+                                desc
+                                title
+                            }
+                            content {
+                                type
+                                title
+                                img
+                                desc
+                                alternative_id
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    `)
+    const intl = useIntl()
+
     return (
-        <>
-            <GlobalStyle />
-            <FloatBtn />
-            <Nav />
-            <MobileNav />
-            <Header>
+        <Layout removeCards>
+            <Header page="1">
                 <TextHeader
-                    logo
                     link
-                    text="Smart Oak Project to przedsięwzięcie, którego ideą jest korzystanie z najnowszych rozwiązań technologicznych. Nie sposób więc pominąć w nim rolę walut alternatywnych. Osoby korzystające z naszych walutowych rozwiązań wspierają działanie Fundacji; kupując w naszym sklepie NeuroN Store bądź u jednego z naszych partnerów. W aplikacji iMundus powstał moduł, pozwalający na zarządzanie naszymi trzema walutami, zapewniając pełną kontrolę!"
-                    title="NeuroN Currency"
-                    color="white"
+                    title={intl.formatMessage({
+                        id: "aboutUs.header.title",
+                    })}
+                    desc={intl.formatMessage({
+                        id: "aboutUs.header.desc",
+                    })}
+                    btns={data.allInternalPl.edges[1].node.aboutUs.header.btns}
+                    btnPath={`aboutUs.header.btns`}
+                    isLast
                 />
             </Header>
             <Container>
-                <AboutUsCard aboutUsData={aboutUsData} />
+                <Row>
+                    {data.allInternalPl.edges[1].node.aboutUs.content.map(
+                        (e, i) => {
+                            return (
+                                <AboutUsCard
+                                    title={intl.formatMessage({
+                                        id: `aboutUs.content.${i}.title`,
+                                    })}
+                                    desc={intl.formatMessage({
+                                        id: `aboutUs.content.${i}.desc`,
+                                    })}
+                                    img={intl.formatMessage({
+                                        id: `aboutUs.content.${i}.img`,
+                                    })}
+                                />
+                            )
+                        }
+                    )}
+                </Row>
             </Container>
-            <Footer />
-        </>
+        </Layout>
     )
 }
-
 export default IndexPage

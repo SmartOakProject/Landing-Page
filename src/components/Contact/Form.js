@@ -1,15 +1,9 @@
-import React, { Component } from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
+import { useIntl } from "gatsby-plugin-intl"
 
 const FormWrapper = styled.div`
-    width: 90%;
-    margin-left: auto;
-    @media screen and (max-width: 1100px) {
-        width: 100%;
-    }
-    @media screen and (max-width: 600px) {
-        order: 2;
-    }
+    width: 100%;
 `
 
 const Btn = styled.button`
@@ -35,6 +29,7 @@ const Heading = styled.p`
     margin-bottom: 25px;
     font-size: 19px;
     font-weight: 300;
+    text-align: center;
 `
 const TextArea = styled.textarea`
     font-size: 1.4rem;
@@ -78,65 +73,61 @@ const EmailLabel = styled.label`
     font-size: 1.4rem;
     padding-bottom: 1rem;
 `
-class Form extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            email: "",
-            message: "",
-            error: false,
-        }
-    }
+const Form = props => {
+    const [email, setEmail] = useState("")
+    const [message, setMessage] = useState("")
+    const [error, setError] = useState(false)
 
-    send = e => {
-        var validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    function send(e) {
+        let validEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-        if (validEmail.test(String(this.state.email).toLowerCase())) {
-            this.setState({
-                email: "",
-                message: "",
-                error: false,
-            })
+        if (validEmail.test(String(email).toLowerCase())) {
+            setEmail("")
+            setMessage("")
+            setError(false)
         } else {
-            this.setState({
-                error: true,
-            })
+            setError(true)
         }
     }
-    render() {
-        return (
-            <FormWrapper>
-                <Heading>
-                    Nie wiesz do kogo się zwrócić? Zapraszamy do kontaktu.
-                </Heading>
-                <EmailLabel htmlFor="email-form">
-                    {this.state.error ? "Nieprawidłowy adres e-mail" : ""}
-                </EmailLabel>
-                <EmailInput
-                    id="email-from"
-                    type="email"
-                    placeholder="Twój e-mail"
-                    value={this.state.email}
-                    onChange={e => this.setState({ email: e.target.value })}
-                    style={{
-                        border: this.state.error
-                            ? "1px solid #c91630"
-                            : "1px solid #999",
-                    }}
-                />
+    const intl = useIntl()
+    return (
+        <FormWrapper>
+            <Heading>
+                {intl.formatMessage({
+                    id: "general.contactTitle",
+                })}
+            </Heading>
+            <EmailLabel htmlFor="email-form">
+                {error ? "Nieprawidłowy adres e-mail" : ""}
+            </EmailLabel>
+            <EmailInput
+                id="email-from"
+                type="email"
+                placeholder={intl.formatMessage({
+                    id: "general.yourEmail",
+                })}
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                style={{
+                    border: error ? "1px solid #c91630" : "1px solid #999",
+                }}
+            />
 
-                <TextArea
-                    value={this.state.message}
-                    onChange={e => this.setState({ message: e.target.value })}
-                    placeholder="Jak możemy pomóc?"
-                />
+            <TextArea
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+                placeholder={intl.formatMessage({
+                    id: "general.help",
+                })}
+            />
 
-                <Btn className="sent" onClick={this.send}>
-                    Wyślij
-                </Btn>
-            </FormWrapper>
-        )
-    }
+            <Btn className="sent" onClick={send}>
+                {intl.formatMessage({
+                    id: "general.send",
+                })}
+            </Btn>
+        </FormWrapper>
+    )
 }
 
 export default Form

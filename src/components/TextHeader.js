@@ -1,38 +1,33 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
+
+import Buttons from "./common/Buttons"
 
 import logo from "../images/logo-biale.png"
 import logoBlack from "../images/logo-czarne.png"
 
-import { FaFacebookF } from "react-icons/fa"
-
 const TextWrapper = styled.div`
-    /* height: ${props => (props.isLast ? "110vh" : "220vh")}; */
     height: ${props =>
-        props.secondText ? "280vh" : props.isLast ? "110vh" : "220vh"};
-
+        props.isSecond ? "300vh" : props.isLast ? "150vh" : "250vh"};
     color: #000;
-
     position: absolute;
+
     z-index: ${props => props.zIndex};
-    top: ${props => (props.secondText ? "-175px" : "0")};
+    top: ${props => (props.isSecond ? "-175px" : "0")};
     @media screen and (max-width: 1200px) {
         width: 100vw;
-        
-        
+    }
+    @media only screen and (max-width: 901px) and (orientation: landscape) {
+        height: ${props =>
+            props.isSecond ? "320vh" : props.isLast ? "175vh" : "270vh"};
     }
 `
 const HeaderElement = styled.header`
     position: sticky;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-
-    z-index: ${props => props.zIndex};
-
     top: 17vh;
     width: 50vw;
     padding: 0rem 3rem 0 4.9rem;
-    color: ${props => props.color};
+    color: ${props => (props.isBlack ? "#000" : "#fff")};
     font-weight: 400;
     @media screen and (max-width: 1100px) {
         width: 65vw;
@@ -43,15 +38,15 @@ const HeaderElement = styled.header`
     }
     @media screen and (max-width: 767px) {
         padding: 0 2.6rem 0;
-        width: 90%;
+        width: 100%;
+    }
+    @media only screen and (max-width: 901px) and (orientation: landscape) {
+        top: 22vh;
+        width: 95%;
     }
 `
 
-const Logo = styled.div`
-    @media screen and (max-width: 746px) {
-        display: none;
-    }
-`
+const Logo = styled.div``
 
 const Icon = styled.img`
     width: 13rem;
@@ -60,12 +55,25 @@ const Icon = styled.img`
         width: 10rem;
         height: 10rem;
     }
-    @media screen and (max-width: 746px) {
+
+    @media screen and (max-width: 646px) {
+        width: 9rem;
+        height: 9rem;
+    }
+    @media only screen and (max-width: 901px) and (orientation: landscape) {
         display: none;
     }
 `
 
-const Name = styled.div``
+const Name = styled.div`
+    @media only screen and (max-width: 901px) and (orientation: landscape) {
+        display: none;
+    }
+
+    @media screen and (max-width: 636px) {
+        display: none;
+    }
+`
 
 const FirstLine = styled.div`
     margin: 1.2rem 0;
@@ -95,73 +103,50 @@ const Title = styled.h1`
 const Description = styled.p`
     font-size: 1.4rem;
     line-height: 1.4;
-    color: #fff;
+    color: inherit;
     margin-bottom: 1rem;
     @media screen and (max-width: 991px) {
     }
 `
 
-const Link = styled.a`
-    background-color: transparent;
-    text-decoration: none;
-    color: var(--color-white);
-    border: solid 0.1rem var(--color-white);
-    padding: 0.5rem;
-    font-size: 1.3rem;
-    font-family: "Muli", sans-serif;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding-right: 0.4rem;
-`
+const Text = ({ z, isSecond, isLast, isBlack, title, btns, desc, btnPath }) => {
+    console.log(btns)
 
-const FbIcon = styled(FaFacebookF)`
-    margin-left: 0.5rem;
-    margin-right: 1rem;
-    font-size: 1.6rem;
-    transform: translateY(0.3rem);
-`
-
-export default class Text extends Component {
-    render() {
-        return (
-            <>
-                <TextWrapper
-                    zIndex={this.props.z}
-                    secondText={this.props.secondText}
-                    isLast={this.props.isLast}
-                    color={this.props.color}
-                >
-                    <HeaderElement
-                        zIndex={this.props.zindex}
-                        color={this.props.color}
-                    >
-                        <Logo>
-                            <Icon
-                                src={this.props.logo ? logo : logoBlack}
-                                alt="NeuroN Foundation Logo"
-                            />
-
-                            <Name>
-                                <FirstLine>Smart Oak</FirstLine>
-                                <SecondLine>Project</SecondLine>
-                            </Name>
-                        </Logo>
-                        <Title>{this.props.title}</Title>
-                        <Description style={{ color: this.props.color }}>
-                            {this.props.text}
-                        </Description>
-                        {this.props.link ? (
-                            <Link
-                                href="https://www.facebook.com/neuronfoundation/"
-                                target="_blank"
-                            >
-                                <FbIcon />
-                                Zobacz projekt na facebooku
-                            </Link>
-                        ) : null}
-                    </HeaderElement>
-                </TextWrapper>
-            </>
-        )
-    }
+    return (
+        <TextWrapper
+            zIndex={z}
+            isSecond={isSecond}
+            isLast={isLast}
+            isBlack={isBlack}
+        >
+            <HeaderElement isBlack={isBlack}>
+                <Logo>
+                    <Icon
+                        src={isBlack ? logoBlack : logo}
+                        alt="NeuroN Foundation Logo"
+                    />
+                    <Name>
+                        <FirstLine>Smart Oak</FirstLine>
+                        <SecondLine>Project</SecondLine>
+                    </Name>
+                </Logo>
+                <Title>{title}</Title>
+                <Description>{desc}</Description>
+                {btns
+                    ? btns.map((btn, i) => {
+                          return (
+                              <Buttons
+                                  isBlack={isBlack}
+                                  isMore={i !== 0}
+                                  btnLink={`${btnPath}.${i}.btnLink`}
+                                  btnType={`${btnPath}.${i}.btnType`}
+                                  btnText={`${btnPath}.${i}.btnText`}
+                              />
+                          )
+                      })
+                    : null}
+            </HeaderElement>
+        </TextWrapper>
+    )
 }
+export default Text

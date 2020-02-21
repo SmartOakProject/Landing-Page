@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { useIntl } from "gatsby-plugin-intl"
+
 import Card from "./components/Card"
 import img1 from "../../images/news/1.jpeg"
 import img2 from "../../images/news/2.jpeg"
@@ -12,7 +14,7 @@ const Container = styled.div`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    padding-top: 3rem;
+    padding-top: 5rem;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     /* @media screen and (max-width: 1560px) {
@@ -22,39 +24,67 @@ const Container = styled.div`
         grid-template-columns: repeat(1, 1fr);
     }
 `
-export default function Section() {
+
+const Section = () => {
+    const intl = useIntl()
+
     return (
         <Container>
             <Card
                 img={img1}
-                title="Smart Oak ERP System"
-                text="Jesteśmy dumni z naszego systemu Smart Oak ERP. To nasz komunikator i jednocześnie system do zarządzania całym projektem o wartości 200.000 $. Z jego pomocą każdy może do nas dołączyć, niezależnie od miejsca, w którym się znajduje i działać w projektach, które są mu najbliższe."
+                title={intl.formatMessage({
+                    id: "cards.content.0.title",
+                })}
+                text={intl.formatMessage({
+                    id: "cards.content.0.desc",
+                })}
             />
             <Card
                 img={img2}
-                title="Jak dołączyć do projektu?"
-                text="Jeżeli chcesz zostać naszym wolontariuszem lub e-wolontariuszem, ściągnij Smart Oak ERP System, który znajduje się w zakładce POBIERZ. Po utworzeniu konta skontaktuje się z Tobą nasz koordynator i wszystko wytłumaczy. Pomaganie jeszcze nigdy nie było tak łatwe."
+                title={intl.formatMessage({
+                    id: "cards.content.1.title",
+                })}
+                text={intl.formatMessage({
+                    id: "cards.content.1.desc",
+                })}
             />
             <Card
                 img={img3}
-                title="Dlaczego warto z nami działać?"
-                text="Dzięki naszej platformie wszyscy uczestnicy projektu mogą się wspierać i wzajemnie od siebie uczyć. Osobom bardziej zaangażowanym wystawiamy dokumenty referencyjne, dajemy staż, zatrudniamy lub włączamy w komercyjne części projektu."
+                title={intl.formatMessage({
+                    id: "cards.content.2.title",
+                })}
+                text={intl.formatMessage({
+                    id: "cards.content.2.desc",
+                })}
             />
             <Card
                 img={img4}
-                title="W czym możesz pomóc?"
-                text="Zadania w naszej Fundacji są bardzo różne. Dlatego podajemy kilka najważniejszych tematów, które pozwolą Ci pomyśleć, czym można się zająć w projekcie: grafika, prawo, programowanie, social media, tłumaczenie, redagowanie, e-maile, wnioski, organizacja, marketing, PR etc."
+                title={intl.formatMessage({
+                    id: "cards.content.3.title",
+                })}
+                text={intl.formatMessage({
+                    id: "cards.content.3.desc",
+                })}
             />
             <Card
                 img={img5}
-                title="Hakatony Wolontariackie"
-                text="W ramach naszych działań IT, w różnych miastach organizujemy weekendowe hakatony, by pracować nad naszą aplikacją. W zakładce wydarzenia dodajemy informacje o wszystkich naszych planowanych działaniach. Znajdziesz tam także informacje, dotyczące hakatonów."
+                title={intl.formatMessage({
+                    id: "cards.content.4.title",
+                })}
+                text={intl.formatMessage({
+                    id: "cards.content.4.desc",
+                })}
             />
             <Card
                 img={img6}
-                title="Działalności gospodarcze"
-                text="Najbardziej zaangażowane osoby w projekty charytatywne, są też z nami w projektach komercyjnych. Doceniamy tych, którzy więcej robią niż mówią. Jeżeli lubisz działać w projektach i potrafisz myśleć strategicznie, rozwijaj działalności gospodarcze. Więcej zakładce Oakes Innovate."
+                title={intl.formatMessage({
+                    id: "cards.content.5.title",
+                })}
+                text={intl.formatMessage({
+                    id: "cards.content.5.desc",
+                })}
             />
         </Container>
     )
 }
+export default Section

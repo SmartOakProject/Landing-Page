@@ -1,14 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-const Row = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    justify-items: flex-start;
-    align-items: flex-start;
-    width: 100%;
-`
-
 const Col = styled.div`
     flex: 1 1 16.6666666667%;
     max-width: 16.6666666667%;
@@ -51,19 +43,13 @@ const Description = styled.p`
     text-align: center;
 `
 
-function AboutUsCard(props) {
+function AboutUsCard({ title, desc, img }) {
     return (
-        <Row>
-            {props.aboutUsData.map((col, index) => {
-                return (
-                    <Col key={index}>
-                        <Img src={col.imgSrc}></Img>
-                        <Fullname>{col.fullName}</Fullname>
-                        <Description>{col.description}</Description>
-                    </Col>
-                )
-            })}
-        </Row>
+        <Col>
+            <Img src={"https://via.placeholder.com/600/771796"}></Img>
+            <Fullname>{title}</Fullname>
+            <Description>{desc}</Description>
+        </Col>
     )
 }
 

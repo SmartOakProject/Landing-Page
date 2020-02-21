@@ -1,14 +1,14 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-
+import { animateScroll } from "react-scroll"
 import { FaAngleUp } from "react-icons/fa"
 
 const Container = styled.div`
     position: fixed;
-    bottom: 5vh;
+    bottom: 6.5vh;
     right: 3vw;
     z-index: 99999;
-    /* scroll-behavior: smooth; */
+
     svg {
         fill: rgb(42, 128, 248);
         font-size: 2rem;
@@ -18,7 +18,7 @@ const Container = styled.div`
 
 export default class NavPrimary extends Component {
     onBtnClick = () => {
-        window.scrollTo({ top: 0, behavior: "smooth" })
+        animateScroll.scrollToTop()
     }
 
     render() {

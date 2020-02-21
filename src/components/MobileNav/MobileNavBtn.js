@@ -1,14 +1,14 @@
 import React, { Component } from "react"
 import styled, { keyframes } from "styled-components"
-
 import { IoMdMenu, IoMdClose, IoMdHome } from "react-icons/io"
+
 const fadeInFromNone = keyframes`
     0% {
-       /* display: none; */
+
        opacity: 0;
    }
    100% {
-       /* display: block; */
+
        opacity: 1;
    }
 `
@@ -17,20 +17,17 @@ const MobileBtn = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    border: none;
+    outline-style: none;
     padding: 4px;
     outline: none;
     transition: all 1s ease;
     svg {
         fill: #fff;
-        height: 32px;
-        width: 32px;
+        height: 26px;
+        width: 26px;
         /* opacity: 0; */
         animation: ${fadeInFromNone} 0.7s linear;
-    }
-    @media only screen and (orientation: landscape) {
-        height: 2.5rem;
-        width: 2.5rem;
     }
 `
 

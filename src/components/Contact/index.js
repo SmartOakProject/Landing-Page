@@ -55,17 +55,18 @@ const contactList = [
 const ContactWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 15rem;
-    margin: 8rem 4rem;
+    grid-gap: 10rem;
+    margin: 8rem 10rem;
+    /* max-width: 100%; */
 
-    @media screen and (max-width: 920px) {
+    @media screen and (max-width: 950px) {
         grid-template-columns: 1fr;
-        margin-top: 10rem;
         grid-auto-flow: dense;
+        grid-gap: 5rem;
     }
     @media screen and (max-width: 600px) {
         margin: 5rem 2rem;
-        margin-top: 10rem;
+        margin-top: 3rem;
     }
 `
 
@@ -73,23 +74,25 @@ const ContactItems = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 25px;
-    order: 1;
+    /* max-width: 100%; */
     @media screen and (max-width: 900px) {
         grid-template-columns: repeat(3, 1fr);
         grid-column-gap: 25px;
+        margin: 0 auto;
 
         /* margin: 0 auto; */
     }
+    @media screen and (max-width: 790px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
     @media screen and (max-width: 600px) {
         grid-template-columns: 1fr;
-        margin: 0 auto;
     }
 `
 
 export default function Contact() {
     return (
         <ContactWrapper>
-            <Form />
             <ContactItems>
                 {contactList.map(e => {
                     return (
@@ -101,6 +104,7 @@ export default function Contact() {
                     )
                 })}
             </ContactItems>
+            <Form />
         </ContactWrapper>
     )
 }

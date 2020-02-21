@@ -1,27 +1,32 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes, css } from "styled-components"
-import { Link } from "gatsby"
-import { unique } from "../../utils"
 import {
-    FaFacebookF,
-    FaInstagram,
-    FaTwitter,
-    FaYoutube,
-    FaLinkedin,
+    IntlContextConsumer,
+    Link,
+    changeLocale,
+    useIntl,
+} from "gatsby-plugin-intl"
+import SocialIcons from "./SocialIcons"
+
+import LanguageSubmenu from "./LanguageSubmenu"
+import {
     FaSearch,
     FaShoppingCart,
     FaDownload,
-    FaTimes,
-    FaHandHoldingHeart,
+    FaAngleDown,
+    FaHeart,
 } from "react-icons/fa"
-import { projekctLinks } from "../MobileNav/index"
-
+import Search from "./Search"
 import Submenu from "./Submenu"
+import { projectLinks } from "../common/projectLinks"
+import oneIcon from "../../images/1.svg"
+
+const documentGlobal = typeof document !== "undefined"
 
 const StyledLink = styled(props => <Link {...props} />)`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    padding: 1.2rem ${props => (props.middleNavPadding ? "1.5rem" : "0.8rem")};
+    padding: 1.2rem ${props => (props.middlenavpadding ? "1.5rem" : "0.8rem")};
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -33,7 +38,7 @@ const StyledLink = styled(props => <Link {...props} />)`
 const SearchBtn = styled.span`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    padding: 1.2rem ${props => (props.middleNavPadding ? "1.5rem" : "0.8rem")};
+    padding: 1.2rem ${props => (props.middlenavpadding ? "1.5rem" : "0.8rem")};
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -45,23 +50,14 @@ const SearchBtn = styled.span`
 const Container = styled.div`
     height: 4.3rem;
     min-height: 5rem;
+    /* z-index: 20; */
     background-color: #0e0e0e;
     line-height: 1.5;
     display: flex;
     justify-content: space-between;
+    /* position: relative; */
     @media screen and (max-width: 900px) {
         display: none;
-    }
-`
-
-const SocialIcons = styled.div`
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding-left: 1.6rem;
-    a > svg {
-        color: rgba(255, 255, 255, 0.85);
-        margin: 0 1rem;
     }
 `
 
@@ -74,20 +70,30 @@ const fadeIn = keyframes`
   }
 `
 
-const animation = props =>
-    css`
-    1s ${fadeIn} ease-out;
-  `
-
-// const PulseButton = styled.button`
-//     animation: ${animation};
-// `
-
 const MiddleNav = styled.div`
     display: flex;
     align-items: center;
+    margin-left: 3.5rem;
     height: 100%;
-    animation: ${props => props.anim && animation};
+    animation: ${props => (props.anim ? "0.6" : "0")}s ${fadeIn} ease-out;
+
+    @media screen and (max-width: 1000px) {
+        margin-left: 0rem;
+    }
+`
+
+const DropdownLinkItem = styled.div`
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.85);
+    svg {
+        margin-left: 0.5rem;
+    }
+    img {
+        width: 18px;
+        height: 18px;
+        margin-left: 0.5rem;
+    }
 `
 
 const RightNav = styled.div`
@@ -95,265 +101,162 @@ const RightNav = styled.div`
     align-items: center;
     height: 100%;
     padding-right: 1.6rem;
+    animation: ${props => (props.anim ? "0.6" : "0")}s ${fadeIn} ease-out;
 `
+
 const DropdownLink = styled.li`
-    color: rgba(255, 255, 255, 0.85);
+    color: ${props => props.color};
     text-decoration: none;
     list-style-type: none;
-    padding: 1.2rem 0.8rem;
+    padding: 1.2rem 1.5rem;
     cursor: pointer;
     position: relative;
 `
+const NavPrimary = props => {
+    const [showLangMenu, setShowLangMenu] = useState(false)
+    const [showProjectMenu, setShowProjectMenu] = useState(false)
+    const [showSearch, setShowSearch] = useState(false)
+    const [showKRSMenu, setShowKRSMenu] = useState(false)
+    const [firstLoad, setFirstLoad] = useState(false)
 
-const DropDownWrapper = styled.ul`
-    background-color: #000;
-    position: absolute;
-    left: 0;
-    top: 50px;
-    width: 100%;
-    z-index: 100001;
-`
+    useEffect(() => {
+        // Update the document title using the browser API
+        console.log(firstLoad)
+        setTimeout(() => {
+            setFirstLoad(true)
+        }, 1000)
+    })
 
-const SearchWrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: 1s ${fadeIn} ease-out;
-    position: relative;
-    svg {
-        color: rgba(255, 255, 255, 0.85);
-        margin-right: 0.8rem;
-        margin-left: 0.8rem;
-        cursor: pointer;
-    }
-`
-
-const Input = styled.input`
-    width: 39rem;
-    background-color: #0e0e0e;
-    -webkit-appearance: textfield;
-    border: none;
-    border-radius: 14px;
-    height: 2.2rem;
-    color: rgba(255, 255, 255, 0.85);
-    outline: none;
-    padding: 1rem 3rem;
-    &::-webkit-search-decoration,
-    &::-webkit-search-cancel-button,
-    &::-webkit-search-results-button,
-    &::-webkit-search-results-decoration {
-        -webkit-appearance: none;
-    }
-`
-
-export default class NavPrimary extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            showLangMenu: false,
-            showProjectMenu: false,
-            showSearch: false,
-            searchAnimation: false,
-            searchedPhrase: "",
-            searchedLinks: [],
+    if (documentGlobal) {
+        if (showSearch) {
+            document.body.style.overflowY = "scroll"
+            document.body.style.width = "100%"
+            document.body.style.position = "fixed"
+        } else if (!showSearch) {
+            document.body.style.overflow = " hidden visible"
+            document.body.style.position = "static"
         }
     }
 
-    onChangeLangButtonClick = () => {
-        this.setState(prevState => ({
-            showLangMenu: !prevState.showLangMenu,
-        }))
+    function onInputClose() {
+        setShowSearch(false)
     }
-
-    handleSearchInputChange = event => {
-        this.setState(
-            {
-                searchedPhrase: event.target.value,
-            },
-            this.searchInMenu
-        )
-    }
-
-    clearIfEmpty = () => {
-        if (this.state.searchedPhrase === "") {
-            this.setState({
-                searchedLinks: [],
-            })
-        }
-    }
-
-    searchInMenu = () => {
-        let links = []
-        projekctLinks.forEach(link => {
-            if (link.linkText.includes(this.state.searchedPhrase)) {
-                links.push(link)
-                links = unique(links, "linkText")
-                this.setState(prevState => ({
-                    searchedLinks: links,
-                }))
-            }
-        })
-    }
-
-    render() {
-        const languages = [
-            {
-                path: "/",
-                text: "ENG",
-            },
-            {
-                path: "/",
-                text: "DE",
-            },
-            {
-                path: "/",
-                text: "FR",
-            },
-            {
-                path: "/",
-                text: "ES",
-            },
-        ]
-        const projekctLinks = [
-            {
-                path: "/",
-                text: "Home",
-            },
-            {
-                path: "/neuron-foundation",
-                text: "NeuroN Foundation",
-            },
-            {
-                path: "/new-neuropsychiatry",
-                text: "New Neuropsychiatry",
-            },
-            {
-                path: "/i-mundus",
-                text: "iMundus",
-            },
-            {
-                path: "/oakes-innovate",
-                text: "Oakes Innovate",
-            },
-            {
-                path: "/n-media",
-                text: "N Media",
-            },
-            {
-                path: "oakes-clinic",
-                text: "Oakes Clinic",
-            },
-            {
-                path: "oak-atlantis",
-                text: "Oak Atlantis",
-            },
-            {
-                path: "neuron-currency",
-                text: "NeuroN Currency",
-            },
-            {
-                path: "about-us",
-                text: "O nas",
-            },
-        ]
-        return (
-            <Container>
-                <SocialIcons>
-                    <Link to="">
-                        <FaFacebookF />
-                    </Link>
-                    <Link to="">
-                        <FaInstagram />
-                    </Link>
-                    <Link to="">
-                        <FaTwitter />
-                    </Link>
-                    <Link to="">
-                        <FaYoutube />
-                    </Link>
-                    <Link to="">
-                        <FaLinkedin />
-                    </Link>
-                </SocialIcons>
-                {this.state.showSearch ? (
-                    <SearchWrapper>
+    const intl = useIntl()
+    return (
+        <Container>
+            {showSearch ? null : <SocialIcons anim={firstLoad} />}
+            {showSearch ? (
+                <Search
+                    onInputClose={onInputClose}
+                    isDesktop
+                    projectsList={props.projectsList}
+                />
+            ) : (
+                <MiddleNav anim={firstLoad}>
+                    <SearchBtn
+                        onClick={() => setShowSearch(true)}
+                        middlenavpadding
+                    >
+                        {intl.formatMessage({
+                            id: `general.search`,
+                        })}
                         <FaSearch />
-                        <Input
-                            type="search"
-                            placeholder="Szukaj w Smart Oak Project"
-                            onChange={event => {
-                                this.handleSearchInputChange(event)
-                                this.clearIfEmpty()
-                            }}
-                            value={this.state.searchedPhrase}
-                        />
-                        <DropDownWrapper>
-                            {this.state.searchedLinks.map((link, index) => {
+                    </SearchBtn>
+                    <StyledLink middlenavpadding to="/">
+                        {intl.formatMessage({
+                            id: `general.shop`,
+                        })}
+                        <FaShoppingCart />
+                    </StyledLink>
+                    <StyledLink middlenavpadding to="/support/">
+                        {intl.formatMessage({
+                            id: `general.support`,
+                        })}
+                        <FaHeart />
+                    </StyledLink>
+                    <StyledLink middlenavpadding to="/download/">
+                        {intl.formatMessage({
+                            id: `general.download`,
+                        })}
+                        <FaDownload />
+                    </StyledLink>
+                    <IntlContextConsumer>
+                        {({ languages, language: currentLocale }) => {
+                            if (currentLocale === "pl") {
                                 return (
-                                    <DropdownLink key={index} to={link.path}>
-                                        {link.linkText}
+                                    <DropdownLink
+                                        onMouseLeave={() =>
+                                            setShowKRSMenu(false)
+                                        }
+                                        onMouseEnter={() =>
+                                            setShowKRSMenu(true)
+                                        }
+                                    >
+                                        <DropdownLinkItem krs>
+                                            Przekaż
+                                            <img
+                                                src={oneIcon}
+                                                alt=""
+                                                srcset=""
+                                            />
+                                        </DropdownLinkItem>
+                                        {showKRSMenu && (
+                                            <Submenu
+                                                krs
+                                                left="50%"
+                                                width="10vw"
+                                                data={[
+                                                    { text: "Nasz numer KRS:" },
+                                                    { text: "0000123512" },
+                                                ]}
+                                            />
+                                        )}
                                     </DropdownLink>
                                 )
-                            })}
-                        </DropDownWrapper>
-                        <FaTimes
-                            onClick={() =>
-                                this.setState({
-                                    showSearch: false,
-                                    searchAnimation: true,
-                                })
                             }
-                        />
-                    </SearchWrapper>
-                ) : (
-                    <MiddleNav anim={this.state.searchAnimation}>
-                        <SearchBtn
-                            onClick={() => this.setState({ showSearch: true })}
-                            middleNavPadding
-                        >
-                            Szukaj
-                            <FaSearch />
-                        </SearchBtn>
-                        <StyledLink middleNavPadding to="/">
-                            Sklep
-                            <FaShoppingCart />
-                        </StyledLink>
-                        <StyledLink middleNavPadding to="/support">
-                            Wesprzyj
-                            <FaHandHoldingHeart />
-                        </StyledLink>
-                        <StyledLink middleNavPadding to="/">
-                            Pobierz
-                            <FaDownload />
-                        </StyledLink>
-                    </MiddleNav>
-                )}
-                <RightNav>
+                        }}
+                    </IntlContextConsumer>
+                </MiddleNav>
+            )}
+            {showSearch ? null : (
+                <RightNav anim={firstLoad}>
                     <DropdownLink
-                        onMouseLeave={() =>
-                            this.setState({ showProjectMenu: false })
-                        }
-                        onClick={() => this.setState({ showProjectMenu: true })}
+                        onMouseLeave={() => setShowProjectMenu(false)}
+                        onMouseEnter={() => setShowProjectMenu(true)}
                     >
-                        O projekcie
-                        {this.state.showProjectMenu && (
-                            <Submenu left="-41px" width data={projekctLinks} />
+                        <DropdownLinkItem>
+                            {intl.formatMessage({
+                                id: `general.otherSites`,
+                            })}
+                            <FaAngleDown />
+                        </DropdownLinkItem>
+                        {showProjectMenu && (
+                            <Submenu left="-35px" width data={projectLinks} />
                         )}
                     </DropdownLink>
-                    <StyledLink to="/contact">Kontakt</StyledLink>
+                    <StyledLink to="/contact/">
+                        {intl.formatMessage({
+                            id: `general.contact`,
+                        })}
+                    </StyledLink>
                     <DropdownLink
-                        onMouseLeave={() =>
-                            this.setState({ showLangMenu: false })
-                        }
-                        onClick={() => this.setState({ showLangMenu: true })}
+                        onMouseLeave={() => setShowLangMenu(false)}
+                        onMouseEnter={() => setShowLangMenu(true)}
                     >
-                        PL
-                        {this.state.showLangMenu && (
-                            <Submenu left="-6px" data={languages} />
-                        )}
+                        <DropdownLinkItem>
+                            <IntlContextConsumer>
+                                {({ languages, language: currentLocale }) =>
+                                    currentLocale.toUpperCase()
+                                }
+                            </IntlContextConsumer>
+                            <FaAngleDown />
+                        </DropdownLinkItem>
+                        {showLangMenu && <LanguageSubmenu />}
                     </DropdownLink>
                 </RightNav>
-            </Container>
-        )
-    }
+            )}
+        </Container>
+    )
 }
+
+export default NavPrimary

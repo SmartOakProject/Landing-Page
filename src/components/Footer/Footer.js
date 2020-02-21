@@ -1,5 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
+
 import {
     FaApple,
     FaGoogle,
@@ -11,8 +13,11 @@ import {
 } from "react-icons/fa"
 
 const Container = styled.div`
-    background-color: ${props => (props.isHomepage ? "#000" : "#fff")};
+    background-color: ${props => (props.darkFooter ? "#000" : "#fff")};
     width: 100vw;
+    max-width: 100%;
+
+    top: 95vh;
     color: var(--color-white);
     font-size: 30px;
     display: flex;
@@ -20,8 +25,20 @@ const Container = styled.div`
     align-items: center;
     padding: 1rem 1.5rem;
     flex-flow: column wrap;
+    @media screen and (max-width: 900px) {
+        width: 100vw;
+    }
 `
 
+const FooterLink = styled.a`
+    text-decoration: none;
+    color: #0c6bf0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+`
 const Row = styled.div`
     display: flex;
     flex-flow: row wrap;
@@ -95,7 +112,7 @@ const Col = styled.div`
 
 const ListLink = styled.a`
     color: ${props =>
-        props.isHomepage ? "var(--color-white)" : "var(--color-black)"};
+        props.darkFooter ? "var(--color-white)" : "var(--color-black)"};
     text-decoration: none;
     padding: 0 0.5rem;
     cursor: pointer;
@@ -104,8 +121,11 @@ const ListLink = styled.a`
     }
     &:hover {
         color: ${props =>
-            props.isHomepage ? "var(--color-white)" : "var(--color-white)"};
+            props.darkFooter ? "var(--color-white)" : "var(--color-black)"};
         transition: 250ms all ease;
+    }
+    svg {
+        font-size: 1.5rem;
     }
 `
 
@@ -165,11 +185,11 @@ const DownloadFromMarketplace = styled.div`
     padding: 0.75rem;
     align-items: center;
     justify-content: flex-start;
-    background-color: ${props => (props.isHomepage ? "#000" : "#fff")};
+    background-color: ${props => (props.darkFooter ? "#000" : "#fff")};
     display: flex;
     flex-flow: row wrap;
     border: ${props =>
-        props.isHomepage ? null : "1px solid var(--color-black)"};
+        props.darkFooter ? null : "1px solid var(--color-black)"};
     width: 175px;
     border-radius: 3px;
     &:last-of-type {
@@ -192,7 +212,7 @@ const DownloadFromMarketplace = styled.div`
 const DownloadFromMarketplaceText = styled.p`
     font-size: ${props => (props.small ? "1.2rem" : "1.6rem")};
     color: ${props =>
-        props.isHomepage ? "var(--color-white)" : "var(--color-gray)"};
+        props.darkFooter ? "var(--color-white)" : "var(--color-gray)"};
     font-weight: 500;
     text-align: center;
     &:first-of-type {
@@ -206,7 +226,7 @@ const DownloadFromMarketplaceText = styled.p`
 const FooterSmallText = styled.p`
     font-size: 1.04rem;
     color: ${props =>
-        props.isHomepage ? "var(--color-white)" : "var(--color-black)"};
+        props.darkFooter ? "var(--color-white)" : "var(--color-black)"};
     text-align: ${props => (props.textAlignLeft ? "left" : "right")};
 
     margin-bottom: 0.3rem;
@@ -221,23 +241,19 @@ const FooterSmallText = styled.p`
 
 const menuItems = [
     {
-        name: "Sklep",
+        name: "shop",
         path: "",
     },
     {
-        name: "Pobierz",
+        name: "download",
         path: "",
     },
     {
-        name: "Wydarzenia",
+        name: "support",
         path: "",
     },
     {
-        name: "Kontakt",
-        path: "",
-    },
-    {
-        name: "O projekcie",
+        name: "contact",
         path: "",
     },
 ]
@@ -246,8 +262,8 @@ function FooterTopLeftMenu(props) {
     const menuList = props.menuItems.map((menuItem, index) => {
         return (
             <ListItem key={index}>
-                <ListLink isHomepage={props.isHomepage} href={menuItem.path}>
-                    {menuItem.name}
+                <ListLink darkFooter={props.darkFooter} href={menuItem.path}>
+                    <FormattedMessage id={`general.${menuItem.name}`} />
                 </ListLink>
             </ListItem>
         )
@@ -256,144 +272,122 @@ function FooterTopLeftMenu(props) {
         <ListItemWrapper className="mainFooterMenu">{menuList}</ListItemWrapper>
     )
 }
+const DownloadFromMarketplaceWrapper = props => {
+    const downloadFromMarketplaceContent = [
+        {
+            icon: FaApple,
+            downloadText: "Pobierz",
+            marketName: "App Store",
+        },
+        {
+            icon: FaGoogle,
+            downloadText: "Pobierz",
+            marketName: "Google Play",
+        },
+    ]
 
-class DownloadFromMarketplaceWrapper extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            downloadFromMarketplaceContent: [
-                {
-                    icon: FaApple,
-                    downloadText: "Pobierz",
-                    marketName: "App Store",
-                },
-                {
-                    icon: FaGoogle,
-                    downloadText: "Pobierz",
-                    marketName: "Google Play",
-                },
-            ],
-        }
-    }
-
-    render() {
-        const singleDownload = this.state.downloadFromMarketplaceContent.map(
-            (singleDownload, index) => {
-                return (
-                    <DownloadFromMarketplace
-                        isHomepage={this.props.isHomepage}
-                        key={index}
+    return downloadFromMarketplaceContent.map((singleDownload, index) => {
+        return (
+            <DownloadFromMarketplace darkFooter={props.darkFooter} key={index}>
+                <Col className="imageCol">
+                    {
+                        <singleDownload.icon
+                            className={`svgMarketPlace ${
+                                props.darkFooter ? "white" : null
+                            }`}
+                        />
+                    }
+                </Col>
+                <Col className="marketPlaceCol">
+                    <DownloadFromMarketplaceText
+                        darkFooter={props.darkFooter}
+                        small
                     >
-                        <Col className="imageCol">
-                            {
-                                <singleDownload.icon
-                                    className={`svgMarketPlace ${
-                                        this.props.isHomepage ? "white" : null
-                                    }`}
-                                />
-                            }
-                        </Col>
-                        <Col className="marketPlaceCol">
-                            <DownloadFromMarketplaceText
-                                isHomepage={this.props.isHomepage}
-                                small
-                            >
-                                {singleDownload.downloadText}
-                            </DownloadFromMarketplaceText>
-                            <DownloadFromMarketplaceText
-                                isHomepage={this.props.isHomepage}
-                            >
-                                {singleDownload.marketName}
-                            </DownloadFromMarketplaceText>
-                        </Col>
-                    </DownloadFromMarketplace>
-                )
-            }
+                        <FormattedMessage id="general.download" />
+                    </DownloadFromMarketplaceText>
+                    <DownloadFromMarketplaceText darkFooter={props.darkFooter}>
+                        {singleDownload.marketName}
+                    </DownloadFromMarketplaceText>
+                </Col>
+            </DownloadFromMarketplace>
         )
-        return singleDownload
-    }
+    })
 }
 
-class SocialmediaLinks extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            socialmediaMenu: [
-                {
-                    path: "",
-                    icon: FaFacebookSquare,
-                },
-                {
-                    path: "",
-                    icon: FaTwitter,
-                },
-                {
-                    path: "",
-                    icon: FaInstagram,
-                },
-                {
-                    path: "",
-                    icon: FaYoutube,
-                },
-                {
-                    path: "",
-                    icon: FaLinkedin,
-                },
-            ],
-        }
-    }
-    render() {
-        const menuItems = this.state.socialmediaMenu.map((menuItem, index) => {
-            return (
-                <ListItem key={index}>
-                    <ListLink isHomepage={this.props.isHomepage}>
-                        {<menuItem.icon />}
-                    </ListLink>
-                </ListItem>
-            )
-        })
+const SocialmediaLinks = props => {
+    const socialmediaMenu = [
+        {
+            path: "",
+            icon: FaFacebookSquare,
+        },
+        {
+            path: "",
+            icon: FaTwitter,
+        },
+        {
+            path: "",
+            icon: FaInstagram,
+        },
+        {
+            path: "",
+            icon: FaYoutube,
+        },
+        {
+            path: "",
+            icon: FaLinkedin,
+        },
+    ]
+
+    const menuItems = socialmediaMenu.map((menuItem, index) => {
         return (
-            <ListItemWrapper className="socialmedia">
-                {menuItems}
-            </ListItemWrapper>
+            <ListItem key={index}>
+                <ListLink darkFooter={props.darkFooter}>
+                    {<menuItem.icon />}
+                </ListLink>
+            </ListItem>
         )
-    }
+    })
+    return (
+        <ListItemWrapper className="socialmedia">{menuItems}</ListItemWrapper>
+    )
 }
 
 export default function Footer(props) {
+    const intl = useIntl()
     return (
-        <Container isHomepage={props.isHomepage}>
+        <Container darkFooter={props.darkFooter}>
             <Row alignCenter className="pb3">
                 <Col>
                     <FooterTopLeftMenu
                         menuItems={menuItems}
-                        isHomepage={props.isHomepage}
+                        darkFooter={props.darkFooter}
                     />
                 </Col>
                 <Col>
                     <Row p0 justifyEnd>
                         <DownloadFromMarketplaceWrapper
-                            isHomepage={props.isHomepage}
+                            darkFooter={props.darkFooter}
                         />
                     </Row>
                 </Col>
             </Row>
             <Row className="footerBottom" alignCenter>
                 <Col className="footerBottomCol">
-                    <SocialmediaLinks isHomepage={props.isHomepage} />
+                    <SocialmediaLinks darkFooter={props.darkFooter} />
                 </Col>
                 <Col className="footerBottomCol">
-                    <FooterSmallText isHomepage={props.isHomepage}>
-                        &#9400; 2019 Smart Oak Project. Wszelkie prawa
-                        zastrzeżone.
+                    <FooterSmallText darkFooter={props.darkFooter}>
+                        &#9400; 2019 Smart Oak Project.
+                        <FormattedMessage id="general.rights" />
                     </FooterSmallText>
 
-                    <FooterSmallText isHomepage={props.isHomepage}>
-                        Polityka prywatności
+                    <FooterSmallText darkFooter={props.darkFooter}>
+                        <FormattedMessage id="general.websiteMadeBy" />{" "}
+                        <FooterLink href="/">Progressio</FooterLink>
                     </FooterSmallText>
 
-                    <FooterSmallText isHomepage={props.isHomepage}>
-                        Strona zrealizowana przez firmę Progressio
+                    <FooterSmallText darkFooter={props.darkFooter}>
+                        <FormattedMessage id="general.privacyPolicy" />
                     </FooterSmallText>
                 </Col>
             </Row>
