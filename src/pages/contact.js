@@ -1,5 +1,5 @@
 import React from "react"
-import { useIntl } from "gatsby-plugin-intl"
+
 import { useStaticQuery, graphql } from "gatsby"
 
 import Item from "../components/Contact/Item"
@@ -70,16 +70,12 @@ const IndexPage = () => {
             }
         }
     `)
-    const intl = useIntl()
-    console.log(data.allInternalPl.edges[1].node.contact.content)
 
     return (
         <>
             <ContactWrapper>
                 <ContactItems>
                     {data.allInternalPl.edges[1].node.contact.content.map(e => {
-                        console.log(e)
-
                         return (
                             <Item
                                 title={e.title}

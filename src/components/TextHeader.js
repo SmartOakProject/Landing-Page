@@ -110,8 +110,6 @@ const Description = styled.p`
 `
 
 const Text = ({ z, isSecond, isLast, isBlack, title, btns, desc, btnPath }) => {
-    console.log(btns)
-
     return (
         <TextWrapper
             zIndex={z}

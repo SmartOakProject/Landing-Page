@@ -64,8 +64,6 @@ const IndexPage = () => {
             </Header>
             {data.allInternalPl.edges[1].node.iMundus.content.map((e, i) => {
                 if (e.type === "item") {
-                    // console.log(e.btns)
-
                     return (
                         <ContentItem
                             title={intl.formatMessage({

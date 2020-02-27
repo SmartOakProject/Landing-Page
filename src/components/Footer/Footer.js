@@ -192,8 +192,12 @@ const DownloadFromMarketplace = styled.div`
         props.darkFooter ? null : "1px solid var(--color-black)"};
     width: 175px;
     border-radius: 3px;
+    transition: all 0.3s;
     &:last-of-type {
         margin-right: 0;
+    }
+    &:hover {
+        transform: scale(1.04);
     }
     @media screen and (max-width: 900px) {
         &:first-of-type {

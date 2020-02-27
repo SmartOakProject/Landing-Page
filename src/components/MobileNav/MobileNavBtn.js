@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { IoMdMenu, IoMdClose, IoMdHome } from "react-icons/io"
 
@@ -30,45 +30,26 @@ const MobileBtn = styled.div`
         animation: ${fadeInFromNone} 0.7s linear;
     }
 `
+const MobileNavBtn = ({ open, onClick, homeBtn }) => {
+    const [isOpen, setIsOpen] = useState(false)
 
-export default class MobileNavBtn extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            open: this.props.open ? this.props.open : false,
-            color: this.props.color ? this.props.color : "black",
-        }
-    }
+    useEffect(() => {
+        setIsOpen(open)
+    }, [open])
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.open !== this.state.open) {
-            this.setState({ open: nextProps.open })
-        }
-    }
-
-    handleClick() {
-        this.setState({ open: !this.state.open })
-    }
-
-    render() {
-        return (
-            <MobileBtn
-                onClick={
-                    this.props.onClick
-                        ? this.props.onClick
-                        : () => {
-                              this.handleClick()
-                          }
-                }
-            >
-                {this.props.open ? (
-                    <IoMdClose />
-                ) : this.props.icon ? (
-                    <IoMdHome />
-                ) : (
-                    <IoMdMenu />
-                )}
-            </MobileBtn>
-        )
-    }
+    return (
+        <MobileBtn
+            onClick={
+                onClick
+                    ? onClick
+                    : () => {
+                          setIsOpen(!isOpen)
+                      }
+            }
+        >
+            {open ? <IoMdClose /> : homeBtn ? <IoMdHome /> : <IoMdMenu />}
+        </MobileBtn>
+    )
 }
+
+export default MobileNavBtn

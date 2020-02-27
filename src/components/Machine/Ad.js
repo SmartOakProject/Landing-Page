@@ -82,7 +82,7 @@ const Icon = styled.img`
 `
 export default function Ad() {
     const intl = useIntl()
-    console.log(intl.locale)
+
 
     return (
         <AdContainer>

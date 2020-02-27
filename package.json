@@ -6,6 +6,7 @@
   "author": "Progressio",
   "dependencies": {
     "babel-plugin-styled-components": "^1.10.7",
+    "final-form": "^4.18.7",
     "gatsby": "^2.19.19",
     "gatsby-background-image": "^0.9.19",
     "gatsby-image": "^2.2.41",
@@ -27,6 +28,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-final-form": "^6.3.5",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.9.0",
     "react-pdf": "^4.1.0",

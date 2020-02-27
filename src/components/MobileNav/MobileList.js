@@ -1,15 +1,15 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 
 const MobileListWrapper = styled.ul`
     position: ${props => (props.dropdown ? "static" : "fixed")};
+    transition: ${props => (props.dropdown ? "none" : "all 0.45s ease")};
     top: 0;
     width: 100vw;
     max-width: 100%;
     display: none;
     background: #0e0e0e;
     color: var(--color-white);
-    transition: all 0.45s ease;
     z-index: 999999999;
     padding-top: ${props => (props.dropdown ? "0rem" : "5rem")};
 
@@ -24,33 +24,25 @@ const ListWrapper = styled.ul`
 
     position: relative;
 `
+const MobileList = ({ open, dropdown, children }) => {
+    const [isOpen, setIsOpen] = useState(false)
 
-export default class MobileList extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            open: this.props.open ? this.props.open : false,
-        }
-    }
+    useEffect(() => {
+        setIsOpen(open)
+    }, [open])
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.open !== this.state.open) {
-            this.setState({ open: nextProps.open })
-        }
-    }
-
-    render() {
-        return (
-            <MobileListWrapper
-                dropdown={this.props.dropdown}
-                style={{
-                    height: this.state.open ? "110%" : 0,
-                }}
-            >
-                <ListWrapper dropdown={this.props.dropdown}>
-                    {this.state.open ? this.props.children : null}
-                </ListWrapper>
-            </MobileListWrapper>
-        )
-    }
+    return (
+        <MobileListWrapper
+            dropdown={dropdown}
+            style={{
+                height: isOpen ? "110%" : 0,
+            }}
+        >
+            <ListWrapper dropdown={dropdown}>
+                {isOpen ? children : null}
+            </ListWrapper>
+        </MobileListWrapper>
+    )
 }
+
+export default MobileList

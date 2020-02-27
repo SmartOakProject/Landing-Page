@@ -43,16 +43,17 @@ const Description = styled.p`
     }
 `
 
-export default function Card(props) {
+const Card = ({ img, title, text }) => {
     return (
         <CardElement>
             <ImageWrapper>
-                <Image src={props.img} alt="" />
+                <Image src={img} alt="" />
             </ImageWrapper>
             <div>
-                <Title>{props.title}</Title>
-                <Description>{props.text}</Description>
+                <Title>{title}</Title>
+                <Description>{text}</Description>
             </div>
         </CardElement>
     )
 }
+export default Card

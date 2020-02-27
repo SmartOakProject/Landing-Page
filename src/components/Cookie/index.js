@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Cookies from "universal-cookie"
 const cookies = new Cookies()
@@ -42,31 +42,29 @@ const Btn = styled.button`
         background-color: #555555;
     }
 `
-export default class Cookie extends Component {
-    state = { isVisible: false }
-    componentDidMount() {
+const Cookie = () => {
+    const [isVisible, setIsVisible] = useState(false)
+    useEffect(() => {
         let cookieStatus = cookies.get("cookieConsent_status")
 
         if (!cookieStatus) {
-            this.setState({ isVisible: true })
+            setIsVisible(true)
         }
-    }
-
-    onButtonClick = () => {
+    }, [])
+    const onButtonClick = () => {
         cookies.set("cookieConsent_status", true, { path: "/" })
-        this.setState({ isVisible: false })
+        setIsVisible(false)
     }
-
-    render() {
-        return this.state.isVisible ? (
-            <Container>
-                <Text>
-                    Ta strona korzysta z ciasteczek aby świadczyć usługi na
-                    najwyższym poziomie. Dalsze korzystanie ze strony oznacza,
-                    że zgadzasz się na ich użycie.
-                </Text>
-                <Btn onClick={this.onButtonClick}>Zgoda</Btn>
-            </Container>
-        ) : null
-    }
+    return isVisible ? (
+        <Container>
+            <Text>
+                Ta strona korzysta z ciasteczek aby świadczyć usługi na
+                najwyższym poziomie. Dalsze korzystanie ze strony oznacza, że
+                zgadzasz się na ich użycie.
+            </Text>
+            <Btn onClick={onButtonClick}>Zgoda</Btn>
+        </Container>
+    ) : null
 }
+
+export default Cookie

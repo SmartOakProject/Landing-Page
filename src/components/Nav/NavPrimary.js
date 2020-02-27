@@ -26,7 +26,7 @@ const documentGlobal = typeof document !== "undefined"
 const StyledLink = styled(props => <Link {...props} />)`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    padding: 1.2rem ${props => (props.middlenavpadding ? "1.5rem" : "0.8rem")};
+    padding: 1.2rem 1.4rem;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -38,7 +38,7 @@ const StyledLink = styled(props => <Link {...props} />)`
 const SearchBtn = styled.span`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    padding: 1.2rem ${props => (props.middlenavpadding ? "1.5rem" : "0.8rem")};
+    padding: 1.2rem 1.4rem;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -73,7 +73,7 @@ const fadeIn = keyframes`
 const MiddleNav = styled.div`
     display: flex;
     align-items: center;
-    margin-left: 3.5rem;
+    margin-left: 5rem;
     height: 100%;
     animation: ${props => (props.anim ? "0.6" : "0")}s ${fadeIn} ease-out;
 
@@ -121,7 +121,7 @@ const NavPrimary = props => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        console.log(firstLoad)
+
         setTimeout(() => {
             setFirstLoad(true)
         }, 1000)
@@ -153,28 +153,25 @@ const NavPrimary = props => {
                 />
             ) : (
                 <MiddleNav anim={firstLoad}>
-                    <SearchBtn
-                        onClick={() => setShowSearch(true)}
-                        middlenavpadding
-                    >
+                    <SearchBtn onClick={() => setShowSearch(true)}>
                         {intl.formatMessage({
                             id: `general.search`,
                         })}
                         <FaSearch />
                     </SearchBtn>
-                    <StyledLink middlenavpadding to="/">
+                    <StyledLink to="/">
                         {intl.formatMessage({
                             id: `general.shop`,
                         })}
                         <FaShoppingCart />
                     </StyledLink>
-                    <StyledLink middlenavpadding to="/support/">
+                    <StyledLink to="/support/">
                         {intl.formatMessage({
                             id: `general.support`,
                         })}
                         <FaHeart />
                     </StyledLink>
-                    <StyledLink middlenavpadding to="/download/">
+                    <StyledLink to="/download/">
                         {intl.formatMessage({
                             id: `general.download`,
                         })}
@@ -220,6 +217,16 @@ const NavPrimary = props => {
             )}
             {showSearch ? null : (
                 <RightNav anim={firstLoad}>
+                    <StyledLink to="/contact/">
+                        {intl.formatMessage({
+                            id: `general.contact`,
+                        })}
+                    </StyledLink>
+                    <StyledLink to="/about-us/">
+                        {intl.formatMessage({
+                            id: `general.aboutUs`,
+                        })}
+                    </StyledLink>
                     <DropdownLink
                         onMouseLeave={() => setShowProjectMenu(false)}
                         onMouseEnter={() => setShowProjectMenu(true)}
@@ -234,11 +241,7 @@ const NavPrimary = props => {
                             <Submenu left="-35px" width data={projectLinks} />
                         )}
                     </DropdownLink>
-                    <StyledLink to="/contact/">
-                        {intl.formatMessage({
-                            id: `general.contact`,
-                        })}
-                    </StyledLink>
+
                     <DropdownLink
                         onMouseLeave={() => setShowLangMenu(false)}
                         onMouseEnter={() => setShowLangMenu(true)}

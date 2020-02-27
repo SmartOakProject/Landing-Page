@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react"
-import styled, { keyframes, css } from "styled-components"
-import { useIntl } from "gatsby-plugin-intl"
+import styled, { keyframes } from "styled-components"
+
 import MachineFooter from "./MachineFooter"
 import WinList from "./WinList"
 import WonSection from "./WonSection"
@@ -270,9 +270,6 @@ const Machine = ({ data }) => {
     }
 
     const countSlots = data.length
-    // console.log(Math.round(140 / 2 / Math.tan(Math.PI / 32)))
-    // const intl = useIntl()
-    // console.log(intl)
 
     const slotsAngle = 360 / countSlots
 
@@ -324,16 +321,9 @@ const Machine = ({ data }) => {
             </div>
         )
     })
-    const intl = useIntl()
+
     return (
         <Container className="test">
-            {/* <ScrollContainer>
-                Scroll down
-                <ScrollMouseY>
-                    <ScrollScroller />
-                </ScrollMouseY>
-            </ScrollContainer> */}
-
             <MachineContainer>
                 <Ad />
                 <SpinningHand />

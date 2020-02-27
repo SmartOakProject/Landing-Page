@@ -116,13 +116,13 @@ const activeStyles = {
     borderBottomColor: "#2a80f8",
 }
 const MobileNav = () => {
-    const [menuOpen, setMenuOpen] = useState(false)
-    const [menuOpen2, setMenuOpen2] = useState(false)
-    const [menuOpen3, setMenuOpen3] = useState(false)
-    const [menuOpen4, setMenuOpen4] = useState(false)
+    const [homeMenu, setHomeMenu] = useState(false)
+    const [projectsMenu, setProjectsMenu] = useState(false)
+    const [otherWebsitesMenu, setOtherWebsitesMenu] = useState(false)
+    const [langMenu, setLangMenu] = useState(false)
 
     if (documentGlobal) {
-        if (menuOpen || menuOpen2) {
+        if (homeMenu || projectsMenu) {
             document.body.style.overflow = "hidden"
         } else {
             document.body.style.overflow = " hidden visible"
@@ -133,13 +133,12 @@ const MobileNav = () => {
         <>
             <MobileNavMenu>
                 <MobileNavBtn
-                    open={menuOpen}
-                    icon
+                    open={homeMenu}
+                    homeBtn
                     onClick={() => {
-                        setMenuOpen2(false)
-                        setMenuOpen(!menuOpen)
+                        setProjectsMenu(false)
+                        setHomeMenu(!homeMenu)
                     }}
-                    color="white"
                 />
 
                 <img
@@ -149,45 +148,71 @@ const MobileNav = () => {
                 />
 
                 <MobileNavBtn
-                    open={menuOpen2}
+                    open={projectsMenu}
                     onClick={() => {
-                        setMenuOpen(false)
-                        setMenuOpen2(!menuOpen2)
+                        setHomeMenu(false)
+                        setProjectsMenu(!projectsMenu)
                     }}
-                    color="white"
                 />
             </MobileNavMenu>
-            <MobileList open={menuOpen}>
+            <MobileList open={homeMenu}>
                 {/* <Search /> */}
                 <MobileNavItem>
-                    <StyledLink to="/">
+                    <StyledLink onClick={() => setHomeMenu(false)} to="/">
                         {intl.formatMessage({
                             id: `general.shop`,
                         })}
                     </StyledLink>
                 </MobileNavItem>
                 <MobileNavItem>
-                    <StyledLink to="/support/">
+                    <StyledLink
+                        onClick={() => setHomeMenu(false)}
+                        to="/support/"
+                    >
                         {intl.formatMessage({
                             id: `general.support`,
                         })}
                     </StyledLink>
                 </MobileNavItem>
                 <MobileNavItem>
-                    <StyledLink to="/download/">
+                    <StyledLink
+                        onClick={() => setHomeMenu(false)}
+                        to="/download/"
+                    >
                         {intl.formatMessage({
                             id: `general.download`,
                         })}
                     </StyledLink>
                 </MobileNavItem>
+
+                <MobileNavItem>
+                    <StyledLink
+                        onClick={() => setHomeMenu(false)}
+                        to="/contact/"
+                    >
+                        {intl.formatMessage({
+                            id: `general.contact`,
+                        })}
+                    </StyledLink>
+                </MobileNavItem>
+                <MobileNavItem>
+                    <StyledLink
+                        onClick={() => setHomeMenu(false)}
+                        to="/about-us/"
+                    >
+                        {intl.formatMessage({
+                            id: `general.aboutUs`,
+                        })}
+                    </StyledLink>
+                </MobileNavItem>
                 <MobileNavItem
-                    open={menuOpen3}
+                    open={otherWebsitesMenu}
                     onClick={() => {
-                        setMenuOpen4(false)
-                        setMenuOpen3(!menuOpen3)
+                        setLangMenu(false)
+                        setOtherWebsitesMenu(!otherWebsitesMenu)
                     }}
                 >
-                    <DropDownButton open={menuOpen3}>
+                    <DropDownButton open={otherWebsitesMenu}>
                         <DropDownLink>
                             {intl.formatMessage({
                                 id: `general.otherSites`,
@@ -195,38 +220,35 @@ const MobileNav = () => {
                         </DropDownLink>
                         <FaAngleDown
                             style={{
-                                transform: menuOpen3
+                                transform: otherWebsitesMenu
                                     ? "rotate(180deg)"
                                     : "rotate(0)",
                             }}
                         />
                     </DropDownButton>
 
-                    <MobileList open={menuOpen3} dropdown>
+                    <MobileList open={otherWebsitesMenu} dropdown>
                         {projectLinks.map((e, i) => (
                             <MobileNavItem key={i} dropdown>
-                                <StyledLink dropdown to={e.path}>
+                                <StyledLink
+                                    dropdown
+                                    onClick={() => setHomeMenu(false)}
+                                    to={e.path}
+                                >
                                     {e.text}
                                 </StyledLink>
                             </MobileNavItem>
                         ))}
                     </MobileList>
                 </MobileNavItem>
-                <MobileNavItem>
-                    <StyledLink to="/contact/">
-                        {intl.formatMessage({
-                            id: `general.contact`,
-                        })}
-                    </StyledLink>
-                </MobileNavItem>
                 <MobileNavItem
-                    open={menuOpen4}
+                    open={langMenu}
                     onClick={() => {
-                        setMenuOpen3(false)
-                        setMenuOpen4(!menuOpen4)
+                        setOtherWebsitesMenu(false)
+                        setLangMenu(!langMenu)
                     }}
                 >
-                    <DropDownButton open={menuOpen4}>
+                    <DropDownButton open={langMenu}>
                         <IntlContextConsumer>
                             {({ languages, language: currentLocale }) => {
                                 return (
@@ -238,14 +260,14 @@ const MobileNav = () => {
                         </IntlContextConsumer>
                         <FaAngleDown
                             style={{
-                                transform: menuOpen4
+                                transform: langMenu
                                     ? "rotate(180deg)"
                                     : "rotate(0)",
                             }}
                         />
                     </DropDownButton>
 
-                    <MobileList open={menuOpen4} dropdown>
+                    <MobileList open={langMenu} dropdown>
                         <IntlContextConsumer>
                             {({ languages, language: currentLocale }) =>
                                 languages
@@ -253,9 +275,10 @@ const MobileNav = () => {
                                     .map(language => (
                                         <MobileNavItem
                                             dropdown
-                                            onClick={() =>
+                                            onClick={() => {
+                                                setHomeMenu(false)
                                                 changeLocale(language)
-                                            }
+                                            }}
                                         >
                                             <StyledLink dropdown>
                                                 {language.toUpperCase()}
@@ -286,7 +309,7 @@ const MobileNav = () => {
                     </IntlContextConsumer>
                 </MobileNavItem>
             </MobileList>
-            <MobileList open={menuOpen2}>
+            <MobileList open={projectsMenu}>
                 <MobileTitle>
                     {intl.formatMessage({
                         id: `general.ourProjects`,
@@ -294,18 +317,15 @@ const MobileNav = () => {
                 </MobileTitle>
                 {subpageLinks.map((e, i) => (
                     <MobileNavItem key={i}>
-                        <StyledLink activeStyle={activeStyles} to={e.path}>
+                        <StyledLink
+                            onClick={() => setProjectsMenu(false)}
+                            activeStyle={activeStyles}
+                            to={e.path}
+                        >
                             {e.text}
                         </StyledLink>
                     </MobileNavItem>
                 ))}
-                <MobileNavItem>
-                    <StyledLink to="/about-us" activeStyle={activeStyles}>
-                        {intl.formatMessage({
-                            id: `general.aboutUs`,
-                        })}
-                    </StyledLink>
-                </MobileNavItem>
             </MobileList>
         </>
     )

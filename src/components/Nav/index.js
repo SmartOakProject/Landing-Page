@@ -10,7 +10,7 @@ export default function Nav() {
 
     const getProjectList = projectsArray => {
         let projectsList = []
-        console.log(projectsArray)
+
 
         projectsArray.map((element, index) => {
             element.array.map((singleProject, i) => {

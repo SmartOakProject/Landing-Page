@@ -56,11 +56,6 @@ export default function NavSecondary() {
                     </StyledLink>
                 )
             })}
-            <StyledLink to="/about-us/" activeStyle={activeStyles}>
-                {intl.formatMessage({
-                    id: `general.aboutUs`,
-                })}
-            </StyledLink>
         </Container>
     )
 }

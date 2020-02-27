@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import styled from "styled-components"
 import { animateScroll } from "react-scroll"
 import { FaAngleUp } from "react-icons/fa"
@@ -15,17 +15,15 @@ const Container = styled.div`
         cursor: pointer;
     }
 `
-
-export default class NavPrimary extends Component {
-    onBtnClick = () => {
+const FloatBtn = () => {
+    const onBtnClick = () => {
         animateScroll.scrollToTop()
     }
-
-    render() {
-        return (
-            <Container>
-                <FaAngleUp onClick={this.onBtnClick} />
-            </Container>
-        )
-    }
+    return (
+        <Container>
+            <FaAngleUp onClick={onBtnClick} />
+        </Container>
+    )
 }
+
+export default FloatBtn
