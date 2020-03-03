@@ -7,7 +7,6 @@ import icon4 from "../../images/gamble/icon-4.svg"
 import icon5 from "../../images/gamble/icon-5.svg"
 import icon6 from "../../images/gamble/icon-6.svg"
 import icon7 from "../../images/gamble/icon-7.svg"
-import icon9 from "../../images/gamble/icon-9.svg"
 
 import { FaArrowDown } from "react-icons/fa"
 
@@ -80,9 +79,8 @@ const Icon = styled.img`
     width: 2.5rem;
     margin: auto 2rem;
 `
-export default function Ad() {
+const Ad = () => {
     const intl = useIntl()
-
 
     return (
         <AdContainer>
@@ -113,3 +111,5 @@ export default function Ad() {
         </AdContainer>
     )
 }
+
+export default Ad

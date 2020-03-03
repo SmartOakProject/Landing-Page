@@ -1,7 +1,7 @@
 import React from "react"
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import Buttons from "../common/Buttons"
-
+import PropTypes from "prop-types"
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -90,5 +90,14 @@ const SupportItem = ({ title, desc, isBlack, id, btns, btnPath }) => {
             </ContentItemText>
         </Container>
     )
+}
+
+SupportItem.propTypes = {
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    isBlack: PropTypes.bool,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    btns: PropTypes.array,
+    btnPath: PropTypes.string,
 }
 export default SupportItem

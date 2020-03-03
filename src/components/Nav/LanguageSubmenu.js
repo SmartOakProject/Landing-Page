@@ -33,9 +33,9 @@ const SubmenuListItem = styled.li`
     }
 `
 
-const LanguageSubmenu = props => {
+const LanguageSubmenu = () => {
     return (
-        <SubmenuWrapper width={props.width} left={props.left}>
+        <SubmenuWrapper>
             <IntlContextConsumer>
                 {({ languages, language: currentLocale }) =>
                     languages

@@ -1,8 +1,8 @@
-import React, { Component } from "react"
+import React from "react"
 import styled, { css } from "styled-components"
 import Buttons from "../common/Buttons"
 import Image from "./Image.js"
-
+import PropTypes from "prop-types"
 const Container = styled.div`
     width: 100%;
     display: flex;
@@ -92,7 +92,6 @@ const Anchor = styled.div`
 `
 
 const ContentItem = ({
-    imgHeight,
     isRight,
     title,
     desc,
@@ -109,7 +108,6 @@ const ContentItem = ({
             {support ? null : <Anchor id={id} />}
             <Image
                 download={download}
-                imgHeight={imgHeight}
                 isRight={isRight}
                 first={first}
                 support={support}
@@ -135,4 +133,18 @@ const ContentItem = ({
         </Container>
     )
 }
+
+ContentItem.propTypes = {
+    isRight: PropTypes.bool,
+    title: PropTypes.string,
+    desc: PropTypes.string,
+    isBlack: PropTypes.bool,
+    download: PropTypes.bool,
+    first: PropTypes.bool,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    btns: PropTypes.array,
+    support: PropTypes.bool,
+    btnPath: PropTypes.string,
+}
+
 export default ContentItem

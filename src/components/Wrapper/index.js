@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, useState } from "react"
 import styled from "styled-components"
 import Video from "./Video"
 import TextHeader from "../TextHeader"
@@ -59,42 +59,32 @@ const Image2 = styled.img`
     background-size: cover;
     background-position: 73% 0;
 `
+//todo
+const Wrapper = props => {
+    const windowGlobal =
+        typeof window !== "undefined" &&
+        window.matchMedia("(max-width: 900px)").matches
 
-const windowGlobal =
-    typeof window !== "undefined" &&
-    window.matchMedia("(max-width: 900px)").matches
+    const [matches, setMatches] = useState(windowGlobal)
 
-class Wrapper extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            matches: windowGlobal,
-        }
-    }
-
-    render() {
-        return (
-            <Container z={this.props.z}>
-                <Heg
-                    isBlack={this.props.isBlack}
-                    isSecond={this.props.isSecond}
-                >
-                    <Text>
-                        <TextHeader {...this.props} />
-                    </Text>
-                    {this.state.matches ? (
-                        this.props.imgSrc ? (
-                            <Image fluid={this.props.imgSrc} alt="home photo" />
-                        ) : (
-                            <Image2 src={defaultImg} alt="home photo" />
-                        )
+    return (
+        <Container z={props.z}>
+            <Heg isBlack={props.isBlack} isSecond={props.isSecond}>
+                <Text>
+                    <TextHeader {...props} />
+                </Text>
+                {matches ? (
+                    props.imgSrc ? (
+                        <Image fluid={props.imgSrc} alt="home photo" />
                     ) : (
-                        <Video {...this.props} />
-                    )}
-                </Heg>
-            </Container>
-        )
-    }
+                        <Image2 src={defaultImg} alt="home photo" />
+                    )
+                ) : (
+                    <Video {...props} />
+                )}
+            </Heg>
+        </Container>
+    )
 }
 
 export default Wrapper

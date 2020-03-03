@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-
+import PropTypes from "prop-types"
 const ItemText = styled.p`
     margin: 4px 0;
 `
@@ -15,7 +15,7 @@ const ItemMail = styled.a`
     }
 `
 
-export default function Item({ title, phoneNumber, email }) {
+const Item = ({ title, phoneNumber, email }) => {
     return (
         <div>
             <ItemText>{title}</ItemText>
@@ -24,3 +24,9 @@ export default function Item({ title, phoneNumber, email }) {
         </div>
     )
 }
+Item.propTypes = {
+    title: PropTypes.string.isRequired,
+    phoneNumber: PropTypes.string,
+    email: PropTypes.string,
+}
+export default Item

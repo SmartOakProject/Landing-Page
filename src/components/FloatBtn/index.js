@@ -19,6 +19,7 @@ const FloatBtn = () => {
     const onBtnClick = () => {
         animateScroll.scrollToTop()
     }
+
     return (
         <Container>
             <FaAngleUp onClick={onBtnClick} />

@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { keyframes, css } from "styled-components"
 import { IoMdStar } from "react-icons/io"
-
+import PropTypes from "prop-types"
 const winAnimation = keyframes`
  0% {
     transform: scale(1);
@@ -101,5 +101,8 @@ const WonSection = ({ isWon }) => {
             />
         </WonSectionContainer>
     )
+}
+WonSection.propTypes = {
+    isWon: PropTypes.bool,
 }
 export default WonSection

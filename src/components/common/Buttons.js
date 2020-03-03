@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useIntl, Link } from "gatsby-plugin-intl"
-
+import PropTypes from "prop-types"
 import { FaFacebookF, FaPager, FaHeart } from "react-icons/fa"
 const ButtonNotExternal = styled(props => <Link {...props} />)`
     background-color: transparent;
@@ -117,5 +117,13 @@ const Buttons = ({
             {intl.formatMessage({ id: btnText })}
         </Button>
     )
+}
+Buttons.propTypes = {
+    isBlack: PropTypes.bool,
+    isMore: PropTypes.bool,
+    btnLink: PropTypes.string,
+    btnType: PropTypes.oneOf(["facebook", "pageLink", "support", "download"]),
+    btnText: PropTypes.string,
+    isNotExternal: PropTypes.bool,
 }
 export default Buttons

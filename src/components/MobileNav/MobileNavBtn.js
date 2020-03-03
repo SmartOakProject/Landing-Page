@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled, { keyframes } from "styled-components"
 import { IoMdMenu, IoMdClose, IoMdHome } from "react-icons/io"
-
+import PropTypes from "prop-types"
 const fadeInFromNone = keyframes`
     0% {
 
@@ -26,7 +26,6 @@ const MobileBtn = styled.div`
         fill: #fff;
         height: 26px;
         width: 26px;
-        /* opacity: 0; */
         animation: ${fadeInFromNone} 0.7s linear;
     }
 `
@@ -50,6 +49,12 @@ const MobileNavBtn = ({ open, onClick, homeBtn }) => {
             {open ? <IoMdClose /> : homeBtn ? <IoMdHome /> : <IoMdMenu />}
         </MobileBtn>
     )
+}
+
+MobileNavBtn.propTypes = {
+    open: PropTypes.bool.isRequired,
+    onClick: PropTypes.func,
+    homeBtn: PropTypes.bool,
 }
 
 export default MobileNavBtn

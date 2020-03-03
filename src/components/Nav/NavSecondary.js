@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { Link, useIntl } from "gatsby-plugin-intl"
+import { Link } from "gatsby-plugin-intl"
 import { subpageLinks } from "../common/subpageLinks"
 
 const Container = styled.div`
@@ -45,8 +45,7 @@ const activeStyles = {
     borderBottomColor: "#2a80f8",
 }
 
-export default function NavSecondary() {
-    const intl = useIntl()
+const NavSecondary = () => {
     return (
         <Container>
             {subpageLinks.map((e, i) => {
@@ -59,3 +58,4 @@ export default function NavSecondary() {
         </Container>
     )
 }
+export default NavSecondary

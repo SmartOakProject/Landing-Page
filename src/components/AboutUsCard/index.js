@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-
+import PropTypes from "prop-types"
 const Col = styled.div`
     flex: 1 1 16.6666666667%;
     max-width: 16.6666666667%;
@@ -46,11 +46,21 @@ const Description = styled.p`
 function AboutUsCard({ title, desc, img }) {
     return (
         <Col>
-            <Img src={"https://via.placeholder.com/600/771796"}></Img>
+            <Img src={img}></Img>
             <Fullname>{title}</Fullname>
             <Description>{desc}</Description>
         </Col>
     )
+}
+
+AboutUsCard.propTypes = {
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string,
+    img: PropTypes.string,
+}
+
+AboutUsCard.defaultProps = {
+    img: "https://via.placeholder.com/600/771796",
 }
 
 export default AboutUsCard

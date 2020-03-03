@@ -240,6 +240,7 @@ const Machine = ({ data }) => {
     const [checkIfItIsFirstBtnClick, setCheckIfItIsFirstBtnClick] = useState(
         true
     )
+    
     const ring1 = useRef(null)
     const ring2 = useRef(null)
     const ring3 = useRef(null)

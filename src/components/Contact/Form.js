@@ -73,7 +73,7 @@ const EmailLabel = styled.label`
     font-size: 1.4rem;
     padding-bottom: 1rem;
 `
-const Form = props => {
+const Form = () => {
     const [email, setEmail] = useState("")
     const [message, setMessage] = useState("")
     const [error, setError] = useState(false)

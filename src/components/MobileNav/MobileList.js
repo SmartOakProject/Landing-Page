@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
-
+import PropTypes from "prop-types"
 const MobileListWrapper = styled.ul`
     position: ${props => (props.dropdown ? "static" : "fixed")};
     transition: ${props => (props.dropdown ? "none" : "all 0.45s ease")};
@@ -43,6 +43,12 @@ const MobileList = ({ open, dropdown, children }) => {
             </ListWrapper>
         </MobileListWrapper>
     )
+}
+
+MobileList.propTypes = {
+    open: PropTypes.bool,
+    dropdown: PropTypes.bool,
+    children: PropTypes.elementType,
 }
 
 export default MobileList

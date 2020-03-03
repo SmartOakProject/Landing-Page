@@ -5,12 +5,11 @@ import NavSecondary from "./NavSecondary"
 import Json from "../../intl/pl.json"
 import { useIntl } from "gatsby-plugin-intl"
 
-export default function Nav() {
+const Nav = () => {
     const intl = useIntl()
 
     const getProjectList = projectsArray => {
         let projectsList = []
-
 
         projectsArray.map((element, index) => {
             element.array.map((singleProject, i) => {
@@ -87,3 +86,4 @@ export default function Nav() {
         </>
     )
 }
+export default Nav

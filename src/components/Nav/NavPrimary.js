@@ -26,7 +26,7 @@ const documentGlobal = typeof document !== "undefined"
 const StyledLink = styled(props => <Link {...props} />)`
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
-    padding: 1.2rem 1.4rem;
+    padding: 1.2rem ${props => (props.rightNav ? "1rem" : "1.4rem")};
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -90,8 +90,9 @@ const DropdownLinkItem = styled.div`
         margin-left: 0.5rem;
     }
     img {
-        width: 18px;
-        height: 18px;
+        width: 19px;
+        height: 19px;
+        /* transform: translateY(1px); */
         margin-left: 0.5rem;
     }
 `
@@ -108,11 +109,11 @@ const DropdownLink = styled.li`
     color: ${props => props.color};
     text-decoration: none;
     list-style-type: none;
-    padding: 1.2rem 1.5rem;
+    padding: 1.2rem ${props => (props.rightNav ? "1rem" : "1.4rem")};
     cursor: pointer;
     position: relative;
 `
-const NavPrimary = props => {
+const NavPrimary = ({ projectsList }) => {
     const [showLangMenu, setShowLangMenu] = useState(false)
     const [showProjectMenu, setShowProjectMenu] = useState(false)
     const [showSearch, setShowSearch] = useState(false)
@@ -149,7 +150,7 @@ const NavPrimary = props => {
                 <Search
                     onInputClose={onInputClose}
                     isDesktop
-                    projectsList={props.projectsList}
+                    projectsList={projectsList}
                 />
             ) : (
                 <MiddleNav anim={firstLoad}>
@@ -200,8 +201,6 @@ const NavPrimary = props => {
                                         {showKRSMenu && (
                                             <Submenu
                                                 krs
-                                                left="50%"
-                                                width="10vw"
                                                 data={[
                                                     { text: "Nasz numer KRS:" },
                                                     { text: "0000123512" },
@@ -217,17 +216,18 @@ const NavPrimary = props => {
             )}
             {showSearch ? null : (
                 <RightNav anim={firstLoad}>
-                    <StyledLink to="/contact/">
+                    <StyledLink rightNav to="/contact/">
                         {intl.formatMessage({
                             id: `general.contact`,
                         })}
                     </StyledLink>
-                    <StyledLink to="/about-us/">
+                    <StyledLink rightNav to="/about-us/">
                         {intl.formatMessage({
                             id: `general.aboutUs`,
                         })}
                     </StyledLink>
                     <DropdownLink
+                        rightNav
                         onMouseLeave={() => setShowProjectMenu(false)}
                         onMouseEnter={() => setShowProjectMenu(true)}
                     >
@@ -237,12 +237,11 @@ const NavPrimary = props => {
                             })}
                             <FaAngleDown />
                         </DropdownLinkItem>
-                        {showProjectMenu && (
-                            <Submenu left="-35px" width data={projectLinks} />
-                        )}
+                        {showProjectMenu && <Submenu data={projectLinks} />}
                     </DropdownLink>
 
                     <DropdownLink
+                        rightNav
                         onMouseLeave={() => setShowLangMenu(false)}
                         onMouseEnter={() => setShowLangMenu(true)}
                     >

@@ -1,6 +1,7 @@
-import React, { Component } from "react"
-import styled, { keyframes, css } from "styled-components"
+import React from "react"
+import styled from "styled-components"
 import { useIntl } from "gatsby-plugin-intl"
+import PropTypes from "prop-types"
 
 const MachineFooterBorder = styled.div`
     position: absolute;
@@ -174,5 +175,8 @@ const MachineFooter = ({ spin }) => {
             </MachineFooterContentBorder>
         </MachineFooterBorder>
     )
+}
+MachineFooter.propTypes = {
+    spin: PropTypes.func.isRequired,
 }
 export default MachineFooter

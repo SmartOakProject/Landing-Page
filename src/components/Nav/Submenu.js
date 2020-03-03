@@ -2,11 +2,11 @@ import React from "react"
 import styled, { css } from "styled-components"
 
 import KrsBtns from "../common/KrsBtns"
-
+import PropTypes from "prop-types"
 const SubmenuWrapper = styled.ul`
     width: 17rem;
 
-    left: 50%;
+    left: 48%;
     transform: translateX(-50%);
     position: absolute;
     background-color: #0e0e0e;
@@ -79,10 +79,10 @@ const StyledLink = styled.a`
         `}
 `
 
-const Submenu = ({ krs, width, left, data }) => {
+const Submenu = ({ krs, data }) => {
     if (krs) {
         return (
-            <SubmenuWrapper right krs={krs} width={width} left={left}>
+            <SubmenuWrapper right krs={krs}>
                 {data.map((e, i) => {
                     return (
                         <SubmenuListItem key={i} flex>
@@ -99,7 +99,7 @@ const Submenu = ({ krs, width, left, data }) => {
         )
     } else {
         return (
-            <SubmenuWrapper width={width} left={left}>
+            <SubmenuWrapper>
                 {data.map((e, i) => {
                     return (
                         <SubmenuListItem key={i}>
@@ -110,5 +110,10 @@ const Submenu = ({ krs, width, left, data }) => {
             </SubmenuWrapper>
         )
     }
+}
+
+Submenu.propTypes = {
+    krs: PropTypes.bool,
+    data: PropTypes.array,
 }
 export default Submenu

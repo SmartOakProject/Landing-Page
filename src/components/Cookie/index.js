@@ -44,6 +44,7 @@ const Btn = styled.button`
 `
 const Cookie = () => {
     const [isVisible, setIsVisible] = useState(false)
+
     useEffect(() => {
         let cookieStatus = cookies.get("cookieConsent_status")
 
@@ -51,10 +52,12 @@ const Cookie = () => {
             setIsVisible(true)
         }
     }, [])
+
     const onButtonClick = () => {
         cookies.set("cookieConsent_status", true, { path: "/" })
         setIsVisible(false)
     }
+
     return isVisible ? (
         <Container>
             <Text>

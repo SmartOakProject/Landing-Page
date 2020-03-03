@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 const CardElement = styled.div`
     margin: 0 0.5rem 3rem 0.5rem;
@@ -43,7 +44,7 @@ const Description = styled.p`
     }
 `
 
-const Card = ({ img, title, text }) => {
+const Card = ({ text, title, img }) => {
     return (
         <CardElement>
             <ImageWrapper>
@@ -56,4 +57,11 @@ const Card = ({ img, title, text }) => {
         </CardElement>
     )
 }
+
+Card.propTypes = {
+    text: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+}
+
 export default Card

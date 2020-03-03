@@ -1,9 +1,8 @@
-import React, { Component } from "react"
+import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
-
+import PropTypes from "prop-types"
 const Img = styled.img`
     display: block;
-
     height: ${props => (props.support ? "22rem" : "32rem")};
     border-radius: 2.5rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
@@ -16,30 +15,25 @@ const Img = styled.img`
         height: 22rem;
     }
 `
-class Image extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            rotate: -6,
-        }
-        this.rotate = React.createRef()
-    }
-    componentDidMount() {
-        if ((this.props.first && this.props.download) || this.props.support) {
-            this.rotate.current.style.transform = `rotate(0.8deg)`
-        }
-        window.addEventListener("scroll", this.handleNavigation)
-    }
+const Image = ({ first, download, support, isRight }) => {
+    const rotateRef = useRef()
 
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.handleNavigation)
-    }
+    useEffect(() => {
+        if ((first && download) || support) {
+            rotateRef.current.style.transform = `rotate(0.8deg)`
+        }
 
-    handleNavigation = () => {
+        window.addEventListener("scroll", handleNavigation)
+
+        return () => {
+            window.removeEventListener("scroll", handleNavigation)
+        }
+    }, [])
+    const handleNavigation = () => {
         window.requestAnimationFrame(() => {
-            if (this.rotate.current) {
+            if (rotateRef.current) {
                 let bodyBoundingClientRect = document.body.getBoundingClientRect()
-                let elementBoundingClientRect = this.rotate.current.getBoundingClientRect()
+                let elementBoundingClientRect = rotateRef.current.getBoundingClientRect()
                 let top = parseInt(
                     elementBoundingClientRect.top - bodyBoundingClientRect.top
                 )
@@ -61,28 +55,30 @@ class Image extends Component {
                 if (currentLandingAngle < 7 && currentLandingAngle > -7) {
                     // this.setState({ rotate: currentLandingAngle })
 
-                    this.rotate.current.style.transform = `rotate(${
-                        this.props.isRight
-                            ? -1 * currentLandingAngle
-                            : currentLandingAngle
+                    rotateRef.current.style.transform = `rotate(${
+                        isRight ? -1 * currentLandingAngle : currentLandingAngle
                     }deg)`
                 }
             }
         })
     }
-
-    render() {
-        return (
-            <Img
-                support={this.props.support}
-                imgHeight={this.props.imgHeight}
-                src="https://picsum.photos/250"
-                style={{
-                    transform: `rotate(${this.props.isRight ? 7 : -7}deg)`,
-                }}
-                ref={this.rotate}
-            />
-        )
-    }
+    return (
+        <Img
+            support={support}
+            src="https://picsum.photos/250"
+            style={{
+                transform: `rotate(${isRight ? 7 : -7}deg)`,
+            }}
+            ref={rotateRef}
+        />
+    )
 }
+
+Image.propTypes = {
+    isRight: PropTypes.bool,
+    first: PropTypes.bool,
+    download: PropTypes.bool,
+    support: PropTypes.bool,
+}
+
 export default Image

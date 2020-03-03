@@ -174,7 +174,7 @@ const SpinningHandCircle = styled.div`
     }
 `
 
-export default function SpinningHand() {
+const SpinningHand = () => {
     return (
         <SpinningHandContainer>
             <SpinningHandRectangle1 />
@@ -188,3 +188,4 @@ export default function SpinningHand() {
         </SpinningHandContainer>
     )
 }
+export default SpinningHand

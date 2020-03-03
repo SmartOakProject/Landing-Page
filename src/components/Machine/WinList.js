@@ -77,7 +77,7 @@ const ListValue = styled.div`
     font-size: 1.6rem;
 `
 
-export default function WinList() {
+const WinList = () => {
     return (
         <WinValuesBorder>
             <WinListContainer>
@@ -151,3 +151,4 @@ export default function WinList() {
         </WinValuesBorder>
     )
 }
+export default WinList

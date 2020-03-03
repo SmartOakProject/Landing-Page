@@ -7,7 +7,7 @@ import TextHeader from "../components/TextHeader"
 
 import Wrapper from "../components/Wrapper"
 import Footer from "../components/Footer/Footer"
-
+import { pageData } from "../components/common/pageData"
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         query Home {
@@ -43,6 +43,7 @@ const IndexPage = () => {
         }
     `)
     const intl = useIntl()
+    console.log(pageData(data.allInternalPl.edges, "home"))
 
     return (
         <>
@@ -51,11 +52,13 @@ const IndexPage = () => {
                     link
                     title={intl.formatMessage({ id: "home.header.title" })}
                     desc={intl.formatMessage({ id: "home.header.desc" })}
-                    btns={data.allInternalPl.edges[1].node.home.header.btns}
+                    btns={
+                        pageData(data.allInternalPl.edges, "home").header.btns
+                    }
                     btnPath={`home.header.btns`}
                 />
             </Header>
-            {data.allInternalPl.edges[1].node.home.content.map((e, i) => {
+            {pageData(data.allInternalPl.edges, "home").content.map((e, i) => {
                 return (
                     <Wrapper
                         isBlack={i % 2 === 0}
@@ -71,7 +74,7 @@ const IndexPage = () => {
                         isSecond={i === 0}
                         isLast={
                             i ===
-                            data.allInternalPl.edges[1].node.home.content
+                            pageData(data.allInternalPl.edges, "home").content
                                 .length -
                                 1
                         }
