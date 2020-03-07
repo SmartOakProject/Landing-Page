@@ -6,14 +6,14 @@ import {
     useIntl,
 } from "gatsby-plugin-intl"
 import styled, { keyframes } from "styled-components"
-
+import { FaAngleDown } from "react-icons/fa"
+import { MdPrint, MdEmail, MdFileDownload } from "react-icons/md"
 import MobileList from "./MobileList"
 import MobileNavBtn from "./MobileNavBtn"
 import Search from "../Nav/Search"
 import { subpageLinks } from "../common/subpageLinks"
 import { projectLinks } from "../common/projectLinks"
-import { FaAngleDown } from "react-icons/fa"
-import { MdPrint, MdEmail, MdFileDownload } from "react-icons/md"
+
 import logo from "../../images/logo-biale.png"
 
 const documentGlobal = typeof document !== "undefined"

@@ -1,6 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import { IntlContextConsumer, changeLocale } from "gatsby-plugin-intl"
+import React from 'react';
+import styled from 'styled-components';
+import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
+
 const SubmenuWrapper = styled.ul`
     width: 100%;
     left: 0;
@@ -11,7 +12,7 @@ const SubmenuWrapper = styled.ul`
     justify-content: center;
     align-items: center;
     flex-direction: column;
-`
+`;
 
 const SubmenuListItem = styled.li`
     margin: 1.6rem 0;
@@ -31,7 +32,7 @@ const SubmenuListItem = styled.li`
             color: #2a80f8;
         }
     }
-`
+`;
 
 const LanguageSubmenu = () => {
     return (
@@ -50,6 +51,6 @@ const LanguageSubmenu = () => {
                 }
             </IntlContextConsumer>
         </SubmenuWrapper>
-    )
-}
-export default LanguageSubmenu
+    );
+};
+export default LanguageSubmenu;

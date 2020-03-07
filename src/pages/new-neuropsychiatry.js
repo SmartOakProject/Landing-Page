@@ -8,6 +8,8 @@ import ContentItem from "../components/ContentItem"
 import Wrapper from "../components/Wrapper"
 import Footer from "../components/Footer/Footer"
 import Cards from "../components/Cards"
+import { pageData } from '../components/common/pageData';
+
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         query newNeuropsychiatry {
@@ -58,13 +60,12 @@ const IndexPage = () => {
                         id: "newNeuropsychiatry.header.desc",
                     })}
                     btns={
-                        data.allInternalPl.edges[1].node.newNeuropsychiatry
-                            .header.btns
+                        pageData(data.allInternalPl.edges, 'newNeuropsychiatry').header.btns
                     }
-                    btnPath={`newNeuropsychiatry.header.btns`}
+                    btnPath='newNeuropsychiatry.header.btns'
                 />
             </Header>
-            {data.allInternalPl.edges[1].node.newNeuropsychiatry.content.map(
+            {pageData(data.allInternalPl.edges, 'newNeuropsychiatry').content.map(
                 (e, i) => {
                     if (e.type === "item") {
                         return (
@@ -80,14 +81,14 @@ const IndexPage = () => {
                                 isRight={i % 2 === 0}
                                 btns={e.btns}
                                 btnPath={`newNeuropsychiatry.content.${i}.btns`}
-                                isBlack={true}
+                                isBlack
                             />
                         )
-                    } else {
+                    } 
                         return (
                             <Wrapper
                                 videoSrc={`NFoundation-${counter++}`}
-                                videoImg={"todo"}
+                                videoImg="todo"
                                 title={intl.formatMessage({
                                     id: `newNeuropsychiatry.content.${i}.title`,
                                 })}
@@ -100,7 +101,7 @@ const IndexPage = () => {
                                 btnPath={`newNeuropsychiatry.content.${i}.btns`}
                             />
                         )
-                    }
+                    
                 }
             )}
             <Cards />

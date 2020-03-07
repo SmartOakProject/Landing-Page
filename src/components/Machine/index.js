@@ -247,7 +247,7 @@ const Machine = ({ data }) => {
 
     function spin() {
         setIsWon(false)
-        let seed = Math.floor(Math.random() * 32)
+        const seed = Math.floor(Math.random() * 32)
         let arrayOfProperties = []
         for (let i = 0; i <= 32; i += 1) {
             arrayOfProperties.push(
@@ -284,7 +284,7 @@ const Machine = ({ data }) => {
                 }}
             >
                 <div className="slot1">
-                    <img src={`https://picsum.photos/id/${i}/250`} />
+                    <img src={`https://picsum.photos/id/${i}/250`} alt=""/>
                 </div>
             </div>
         )

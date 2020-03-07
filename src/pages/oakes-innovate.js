@@ -8,6 +8,8 @@ import ContentItem from "../components/ContentItem"
 import Wrapper from "../components/Wrapper"
 import Footer from "../components/Footer/Footer"
 import Cards from "../components/Cards"
+import { pageData } from '../components/common/pageData';
+
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         query oakesInnovate {
@@ -58,13 +60,13 @@ const IndexPage = () => {
                         id: "oakesInnovate.header.desc",
                     })}
                     btns={
-                        data.allInternalPl.edges[1].node.oakesInnovate.header
+                        pageData(data.allInternalPl.edges, 'oakesInnovate').header
                             .btns
                     }
-                    btnPath={`oakesInnovate.header.btns`}
+                    btnPath='oakesInnovate.header.btns'
                 />
             </Header>
-            {data.allInternalPl.edges[1].node.oakesInnovate.content.map(
+            {pageData(data.allInternalPl.edges, 'oakesInnovate').content.map(
                 (e, i) => {
                     if (e.type === "item") {
                         return (
@@ -80,14 +82,14 @@ const IndexPage = () => {
                                 isRight={i % 2 === 0}
                                 btns={e.btns}
                                 btnPath={`oakesInnovate.content.${i}.btns`}
-                                isBlack={true}
+                                isBlack
                             />
                         )
-                    } else {
+                    } 
                         return (
                             <Wrapper
                                 videoSrc={`NFoundation-${counter++}`}
-                                videoImg={"todo"}
+                                videoImg="todo"
                                 title={intl.formatMessage({
                                     id: `oakesInnovate.content.${i}.title`,
                                 })}
@@ -100,7 +102,7 @@ const IndexPage = () => {
                                 btnPath={`oakesInnovate.content.${i}.btns`}
                             />
                         )
-                    }
+                    
                 }
             )}
             <Cards />

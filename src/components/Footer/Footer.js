@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import { FormattedMessage, Link, useIntl } from "gatsby-plugin-intl"
+import React from 'react';
+import styled from 'styled-components';
+import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 
 import {
     FaApple,
@@ -10,10 +10,10 @@ import {
     FaLinkedin,
     FaYoutube,
     FaFacebookSquare,
-} from "react-icons/fa"
+} from 'react-icons/fa';
 
 const Container = styled.div`
-    background-color: ${props => (props.darkFooter ? "#000" : "#fff")};
+    background-color: ${({ darkFooter }) => (darkFooter ? '#000' : '#fff')};
     width: 100vw;
     max-width: 100%;
 
@@ -28,7 +28,7 @@ const Container = styled.div`
     @media screen and (max-width: 900px) {
         width: 100vw;
     }
-`
+`;
 
 const FooterLink = styled.a`
     text-decoration: none;
@@ -38,20 +38,19 @@ const FooterLink = styled.a`
     &:hover {
         text-decoration: underline;
     }
-`
+`;
 const Row = styled.div`
     display: flex;
     flex-flow: row wrap;
-    align-items: ${props => (props.alignCenter ? "center" : "flex-start")};
-    justify-content: ${props => (props.justifyEnd ? "flex-end" : "flex-start")};
+    align-items: ${({ alignCenter }) => (alignCenter ? 'center' : 'flex-start')};
+    justify-content: ${({ justifyEnd }) => (justifyEnd ? 'flex-end' : 'flex-start')};
     width: 100%;
-    padding: ${props => (props.p0 ? `0` : `1.5rem`)};
+    padding: ${({ p0 }) => (p0 ? `0` : `1.5rem`)};
     &.pb3 {
         padding-bottom: 3rem;
     }
     @media screen and (max-width: 900px) {
-        justify-content: ${props =>
-            props.justifyEnd ? "center" : "flex-start"};
+        justify-content: ${({ justifyEnd }) => (justifyEnd ? 'center' : 'flex-start')};
         &.pb3 {
             padding-bottom: 1.5rem;
         }
@@ -61,7 +60,7 @@ const Row = styled.div`
             padding-top: 0;
         }
     }
-`
+`;
 
 const Col = styled.div`
     flex: 1 1 50%;
@@ -108,11 +107,10 @@ const Col = styled.div`
             }
         }
     }
-`
+`;
 
 const ListLink = styled.a`
-    color: ${props =>
-        props.darkFooter ? "var(--color-white)" : "var(--color-black)"};
+    color: ${({ darkFooter }) => (darkFooter ? 'var(--color-white)' : 'var(--color-black)')};
     text-decoration: none;
     padding: 0 0.5rem;
     cursor: pointer;
@@ -120,14 +118,13 @@ const ListLink = styled.a`
         padding-left: 0;
     }
     &:hover {
-        color: ${props =>
-            props.darkFooter ? "var(--color-white)" : "var(--color-black)"};
+        color: ${({ darkFooter }) => (darkFooter ? 'var(--color-white)' : 'var(--color-black)')};
         transition: 250ms all ease;
     }
     svg {
         font-size: 1.5rem;
     }
-`
+`;
 
 // const SocialMediaLink = styled.a`
 //     color: var(--color-black);
@@ -140,7 +137,7 @@ const ListItem = styled.li`
     &:first-of-type {
         padding-left: 0;
     }
-`
+`;
 
 const ListItemWrapper = styled.ul`
     margin: 0;
@@ -178,18 +175,17 @@ const ListItemWrapper = styled.ul`
             }
         }
     }
-`
+`;
 
 const DownloadFromMarketplace = styled.div`
     margin: 0 1rem;
     padding: 0.75rem;
     align-items: center;
     justify-content: flex-start;
-    background-color: ${props => (props.darkFooter ? "#000" : "#fff")};
+    background-color: ${({ darkFooter }) => (darkFooter ? '#000' : '#fff')};
     display: flex;
     flex-flow: row wrap;
-    border: ${props =>
-        props.darkFooter ? null : "1px solid var(--color-black)"};
+    border: ${({ darkFooter }) => (darkFooter ? null : '1px solid var(--color-black)')};
     width: 175px;
     border-radius: 3px;
     transition: all 0.3s;
@@ -211,102 +207,92 @@ const DownloadFromMarketplace = styled.div`
             margin-left: 0;
         }
     }
-`
+`;
 
 const DownloadFromMarketplaceText = styled.p`
-    font-size: ${props => (props.small ? "1.2rem" : "1.6rem")};
-    color: ${props =>
-        props.darkFooter ? "var(--color-white)" : "var(--color-gray)"};
+    font-size: ${({ small }) => (small ? '1.2rem' : '1.6rem')};
+    color: ${({ darkFooter }) => (darkFooter ? 'var(--color-white)' : 'var(--color-gray)')};
     font-weight: 500;
     text-align: center;
     &:first-of-type {
         margin-bottom: 0.5rem;
     }
     @media screen and (max-width: 479px) {
-        font-size: ${props => (props.small ? "0.95rem" : "1.15rem")};
+        font-size: ${({ small }) => (small ? '0.95rem' : '1.15rem')};
     }
-`
+`;
 
 const FooterSmallText = styled.p`
     font-size: 1.04rem;
-    color: ${props =>
-        props.darkFooter ? "var(--color-white)" : "var(--color-black)"};
-    text-align: ${props => (props.textAlignLeft ? "left" : "right")};
+    color: ${({ darkFooter }) => (darkFooter ? 'var(--color-white)' : 'var(--color-black)')};
+    text-align: ${({ textAlignLeft }) => (textAlignLeft ? 'left' : 'right')};
 
     margin-bottom: 0.3rem;
     &:last-of-type {
         margin-bottom: 0;
     }
     @media screen and (max-width: 479px) {
-        text-align: ${props => (props.textAlignLeft ? "left" : "left")};
+        text-align: ${({ textAlignLeft }) => (textAlignLeft ? 'left' : 'left')};
         text-align: center;
     }
-`
+`;
 
 const menuItems = [
     {
-        name: "shop",
-        path: "",
+        name: 'shop',
+        path: '',
     },
     {
-        name: "download",
-        path: "",
+        name: 'download',
+        path: '',
     },
     {
-        name: "support",
-        path: "",
+        name: 'support',
+        path: '',
     },
     {
-        name: "contact",
-        path: "",
+        name: 'contact',
+        path: '',
     },
-]
+];
 
-function FooterTopLeftMenu(props) {
-    const menuList = props.menuItems.map((menuItem, index) => {
+function FooterTopLeftMenu({ menuItems, darkFooter }) {
+    const menuList = menuItems.map((menuItem, index) => {
         return (
             <ListItem key={index}>
-                <ListLink darkFooter={props.darkFooter} href={menuItem.path}>
+                <ListLink darkFooter={darkFooter} href={menuItem.path}>
                     <FormattedMessage id={`general.${menuItem.name}`} />
                 </ListLink>
             </ListItem>
-        )
-    })
-    return (
-        <ListItemWrapper className="mainFooterMenu">{menuList}</ListItemWrapper>
-    )
+        );
+    });
+    return <ListItemWrapper className="mainFooterMenu">{menuList}</ListItemWrapper>;
 }
+
 const DownloadFromMarketplaceWrapper = props => {
     const downloadFromMarketplaceContent = [
         {
             icon: FaApple,
-            downloadText: "Pobierz",
-            marketName: "App Store",
+            downloadText: 'Pobierz',
+            marketName: 'App Store',
         },
         {
             icon: FaGoogle,
-            downloadText: "Pobierz",
-            marketName: "Google Play",
+            downloadText: 'Pobierz',
+            marketName: 'Google Play',
         },
-    ]
+    ];
 
     return downloadFromMarketplaceContent.map((singleDownload, index) => {
         return (
             <DownloadFromMarketplace darkFooter={props.darkFooter} key={index}>
                 <Col className="imageCol">
-                    {
-                        <singleDownload.icon
-                            className={`svgMarketPlace ${
-                                props.darkFooter ? "white" : null
-                            }`}
-                        />
-                    }
+                    <singleDownload.icon
+                        className={`svgMarketPlace ${props.darkFooter ? 'white' : null}`}
+                    />
                 </Col>
                 <Col className="marketPlaceCol">
-                    <DownloadFromMarketplaceText
-                        darkFooter={props.darkFooter}
-                        small
-                    >
+                    <DownloadFromMarketplaceText darkFooter={props.darkFooter} small>
                         <FormattedMessage id="general.download" />
                     </DownloadFromMarketplaceText>
                     <DownloadFromMarketplaceText darkFooter={props.darkFooter}>
@@ -314,87 +300,79 @@ const DownloadFromMarketplaceWrapper = props => {
                     </DownloadFromMarketplaceText>
                 </Col>
             </DownloadFromMarketplace>
-        )
-    })
-}
+        );
+    });
+};
 
 const SocialmediaLinks = props => {
     const socialmediaMenu = [
         {
-            path: "",
+            path: '',
             icon: FaFacebookSquare,
         },
         {
-            path: "",
+            path: '',
             icon: FaTwitter,
         },
         {
-            path: "",
+            path: '',
             icon: FaInstagram,
         },
         {
-            path: "",
+            path: '',
             icon: FaYoutube,
         },
         {
-            path: "",
+            path: '',
             icon: FaLinkedin,
         },
-    ]
+    ];
 
     const menuItems = socialmediaMenu.map((menuItem, index) => {
         return (
             <ListItem key={index}>
-                <ListLink darkFooter={props.darkFooter}>
-                    {<menuItem.icon />}
-                </ListLink>
+                <ListLink darkFooter={props.darkFooter}>{<menuItem.icon />}</ListLink>
             </ListItem>
-        )
-    })
-    return (
-        <ListItemWrapper className="socialmedia">{menuItems}</ListItemWrapper>
-    )
-}
+        );
+    });
+    return <ListItemWrapper className="socialmedia">{menuItems}</ListItemWrapper>;
+};
 
-export default function Footer(props) {
-    const intl = useIntl()
+const Footer = ({ darkFooter }) => {
+    const intl = useIntl();
     return (
-        <Container darkFooter={props.darkFooter}>
+        <Container darkFooter={darkFooter}>
             <Row alignCenter className="pb3">
                 <Col>
-                    <FooterTopLeftMenu
-                        menuItems={menuItems}
-                        darkFooter={props.darkFooter}
-                    />
+                    <FooterTopLeftMenu menuItems={menuItems} darkFooter={darkFooter} />
                 </Col>
                 <Col>
                     <Row p0 justifyEnd>
-                        <DownloadFromMarketplaceWrapper
-                            darkFooter={props.darkFooter}
-                        />
+                        <DownloadFromMarketplaceWrapper darkFooter={darkFooter} />
                     </Row>
                 </Col>
             </Row>
             <Row className="footerBottom" alignCenter>
                 <Col className="footerBottomCol">
-                    <SocialmediaLinks darkFooter={props.darkFooter} />
+                    <SocialmediaLinks darkFooter={darkFooter} />
                 </Col>
                 <Col className="footerBottomCol">
-                    <FooterSmallText darkFooter={props.darkFooter}>
+                    <FooterSmallText darkFooter={darkFooter}>
                         &#9400; 2019 Smart Oak Project.
                         <FormattedMessage id="general.rights" />
                     </FooterSmallText>
 
-                    <FooterSmallText darkFooter={props.darkFooter}>
-                        <FormattedMessage id="general.websiteMadeBy" />{" "}
+                    <FooterSmallText darkFooter={darkFooter}>
+                        <FormattedMessage id="general.websiteMadeBy" />{' '}
                         <FooterLink href="/">Progressio</FooterLink>
                     </FooterSmallText>
 
-                    <FooterSmallText darkFooter={props.darkFooter}>
+                    <FooterSmallText darkFooter={darkFooter}>
                         <FormattedMessage id="general.privacyPolicy" />
                     </FooterSmallText>
                 </Col>
             </Row>
         </Container>
-    )
-}
+    );
+};
+export default Footer;

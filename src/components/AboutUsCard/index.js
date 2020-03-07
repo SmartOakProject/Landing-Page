@@ -1,6 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import PropTypes from "prop-types"
+import React from 'react';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
 const Col = styled.div`
     flex: 1 1 16.6666666667%;
     max-width: 16.6666666667%;
@@ -19,7 +20,7 @@ const Col = styled.div`
         max-width: 50%;
         margin: 0 0 2.5rem;
     }
-`
+`;
 
 const Img = styled.img`
     border-radius: 50%;
@@ -27,7 +28,7 @@ const Img = styled.img`
     height: auto;
     margin: 0 auto 2rem;
     display: block;
-`
+`;
 
 const Fullname = styled.p`
     font-size: 1.5rem;
@@ -35,32 +36,32 @@ const Fullname = styled.p`
     color: var(--color-black);
     text-align: center;
     margin-bottom: 2rem;
-`
+`;
 
 const Description = styled.p`
     font-size: 1.2rem;
     color: var(--color-black);
     text-align: center;
-`
+`;
 
 function AboutUsCard({ title, desc, img }) {
     return (
         <Col>
-            <Img src={img}></Img>
+            <Img src={img} />
             <Fullname>{title}</Fullname>
             <Description>{desc}</Description>
         </Col>
-    )
+    );
 }
 
 AboutUsCard.propTypes = {
     title: PropTypes.string.isRequired,
     desc: PropTypes.string,
     img: PropTypes.string,
-}
+};
 
 AboutUsCard.defaultProps = {
-    img: "https://via.placeholder.com/600/771796",
-}
+    img: 'https://via.placeholder.com/600/771796',
+};
 
-export default AboutUsCard
+export default AboutUsCard;

@@ -1,13 +1,14 @@
-import React from "react"
-import { useIntl } from "gatsby-plugin-intl"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from "../components/Header"
-import TextHeader from "../components/TextHeader"
-import ContentItem from "../components/ContentItem"
-import Wrapper from "../components/Wrapper"
-import Footer from "../components/Footer/Footer"
-import Cards from "../components/Cards"
+import Header from '../components/Header';
+import TextHeader from '../components/TextHeader';
+import ContentItem from '../components/ContentItem';
+import Wrapper from '../components/Wrapper';
+import Footer from '../components/Footer/Footer';
+import Cards from '../components/Cards';
+import { pageData } from '../components/common/pageData';
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -43,27 +44,27 @@ const IndexPage = () => {
                 }
             }
         }
-    `)
-    const intl = useIntl()
+    `);
+    const intl = useIntl();
 
-    let counter = 1
+    let counter = 1;
     return (
         <>
             <Header page="1">
                 <TextHeader
                     link
                     title={intl.formatMessage({
-                        id: "iMundus.header.title",
+                        id: 'iMundus.header.title',
                     })}
                     desc={intl.formatMessage({
-                        id: "iMundus.header.desc",
+                        id: 'iMundus.header.desc',
                     })}
-                    btns={data.allInternalPl.edges[1].node.iMundus.header.btns}
-                    btnPath={`iMundus.header.btns`}
+                    btns={pageData(data.allInternalPl.edges, 'iMundus').header.btns}
+                    btnPath="iMundus.header.btns"
                 />
             </Header>
-            {data.allInternalPl.edges[1].node.iMundus.content.map((e, i) => {
-                if (e.type === "item") {
+            {pageData(data.allInternalPl.edges, 'iMundus').content.map((e, i) => {
+                if (e.type === 'item') {
                     return (
                         <ContentItem
                             title={intl.formatMessage({
@@ -77,31 +78,30 @@ const IndexPage = () => {
                             isRight={i % 2 === 0}
                             btns={e.btns}
                             btnPath={`iMundus.content.${i}.btns`}
-                            isBlack={true}
+                            isBlack
                         />
-                    )
-                } else {
-                    return (
-                        <Wrapper
-                            videoSrc={`NFoundation-${counter++}`}
-                            videoImg={"todo"}
-                            title={intl.formatMessage({
-                                id: `iMundus.content.${i}.title`,
-                            })}
-                            desc={intl.formatMessage({
-                                id: `iMundus.content.${i}.desc`,
-                            })}
-                            z={i + 1}
-                            isSecond={i === 0}
-                            btns={e.btns}
-                            btnPath={`iMundus.content.${i}.btns`}
-                        />
-                    )
+                    );
                 }
+                return (
+                    <Wrapper
+                        videoSrc={`NFoundation-${counter++}`}
+                        videoImg="todo"
+                        title={intl.formatMessage({
+                            id: `iMundus.content.${i}.title`,
+                        })}
+                        desc={intl.formatMessage({
+                            id: `iMundus.content.${i}.desc`,
+                        })}
+                        z={i + 1}
+                        isSecond={i === 0}
+                        btns={e.btns}
+                        btnPath={`iMundus.content.${i}.btns`}
+                    />
+                );
             })}
             <Cards />
             <Footer />
         </>
-    )
-}
-export default IndexPage
+    );
+};
+export default IndexPage;

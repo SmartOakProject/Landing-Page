@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react"
-import styled, { keyframes, css } from "styled-components"
+import styled, { keyframes } from "styled-components"
 import {
     IntlContextConsumer,
     Link,
-    changeLocale,
     useIntl,
 } from "gatsby-plugin-intl"
-import SocialIcons from "./SocialIcons"
-
-import LanguageSubmenu from "./LanguageSubmenu"
 import {
     FaSearch,
     FaShoppingCart,
@@ -16,6 +12,8 @@ import {
     FaAngleDown,
     FaHeart,
 } from "react-icons/fa"
+import SocialIcons from "./SocialIcons"
+import LanguageSubmenu from "./LanguageSubmenu"
 import Search from "./Search"
 import Submenu from "./Submenu"
 import { projectLinks } from "../common/projectLinks"

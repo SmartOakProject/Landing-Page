@@ -1,11 +1,11 @@
-import React from "react"
-import { useIntl } from "gatsby-plugin-intl"
-import { useStaticQuery, graphql } from "gatsby"
-import Machine from "../components/Machine"
-import styled from "styled-components"
-
-import SupportItem from "../components/SupportItem"
-import Footer from "../components/Footer/Footer"
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
+import Machine from '../components/Machine';
+import SupportItem from '../components/SupportItem';
+import Footer from '../components/Footer/Footer';
+import { pageData } from '../components/common/pageData';
 
 const Title = styled.h2`
     font-size: 2.6rem;
@@ -18,7 +18,7 @@ const Title = styled.h2`
     @media screen and (max-width: 1100px) {
         padding-top: 3rem;
     }
-`
+`;
 const SupportItemContainer = styled.div`
     width: 90%;
     margin: 0 auto;
@@ -35,7 +35,7 @@ const SupportItemContainer = styled.div`
     @media screen and (max-width: 600px) {
         grid-template-columns: repeat(1, 1fr);
     } */
-`
+`;
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -61,62 +61,58 @@ const IndexPage = () => {
                 }
             }
         }
-    `)
-    const intl = useIntl()
-    const machineData = data.allInternalPl.edges[1].node.support.content.map(
-        (e, i) => {
-            return {
-                id: e.alternative_id,
-                title: intl.formatMessage({
-                    id: `support.content.${i}.title`,
-                }),
-                desc: intl.formatMessage({
-                    id: `support.content.${i}.desc`,
-                }),
-                img: intl.formatMessage({
-                    id: `support.content.${i}.img`,
-                }),
-                btns: intl.formatMessage({
-                    id: `support.content.${i}.btns`,
-                }),
-            }
-        }
-    )
+    `);
+    const intl = useIntl();
+    const machineData = pageData(data.allInternalPl.edges, 'support').content.map((e, i) => {
+        return {
+            id: e.alternative_id,
+            title: intl.formatMessage({
+                id: `support.content.${i}.title`,
+            }),
+            desc: intl.formatMessage({
+                id: `support.content.${i}.desc`,
+            }),
+            img: intl.formatMessage({
+                id: `support.content.${i}.img`,
+            }),
+            btns: intl.formatMessage({
+                id: `support.content.${i}.btns`,
+            }),
+        };
+    });
     return (
         <>
             <Machine data={machineData} />
             <Title>
                 {intl.formatMessage({
-                    id: "general.allProjectList",
+                    id: 'general.allProjectList',
                 })}
             </Title>
             <div></div>
             <SupportItemContainer>
-                {data.allInternalPl.edges[1].node.support.content.map(
-                    (e, i) => {
-                        return (
-                            <SupportItem
-                                support
-                                title={intl.formatMessage({
-                                    id: `support.content.${i}.title`,
-                                })}
-                                desc={intl.formatMessage({
-                                    id: `support.content.${i}.desc`,
-                                })}
-                                id={e.alternative_id}
-                                first={i === 0}
-                                isRight={i % 2 === 0}
-                                btns={e.btns}
-                                btnPath={`support.content.${i}.btns`}
-                                isBlack={true}
-                            />
-                        )
-                    }
-                )}
+                {pageData(data.allInternalPl.edges, 'support').content.map((e, i) => {
+                    return (
+                        <SupportItem
+                            support
+                            title={intl.formatMessage({
+                                id: `support.content.${i}.title`,
+                            })}
+                            desc={intl.formatMessage({
+                                id: `support.content.${i}.desc`,
+                            })}
+                            id={e.alternative_id}
+                            first={i === 0}
+                            isRight={i % 2 === 0}
+                            btns={e.btns}
+                            btnPath={`support.content.${i}.btns`}
+                            isBlack
+                        />
+                    );
+                })}
             </SupportItemContainer>
 
             <Footer />
         </>
-    )
-}
-export default IndexPage
+    );
+};
+export default IndexPage;

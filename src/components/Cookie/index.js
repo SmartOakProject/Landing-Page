@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
-import styled from "styled-components"
-import Cookies from "universal-cookie"
-const cookies = new Cookies()
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import Cookies from 'universal-cookie';
+
+const cookies = new Cookies();
 
 const Container = styled.div`
     /* height:; */
@@ -16,11 +17,11 @@ const Container = styled.div`
     align-items: center;
     transition: all 0.5s;
     padding: 1.5rem;
-`
+`;
 const Text = styled.p`
     color: #fff;
     margin-right: 2rem;
-`
+`;
 
 const Btn = styled.button`
     background-color: transparent;
@@ -41,33 +42,32 @@ const Btn = styled.button`
     :hover {
         background-color: #555555;
     }
-`
+`;
 const Cookie = () => {
-    const [isVisible, setIsVisible] = useState(false)
+    const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        let cookieStatus = cookies.get("cookieConsent_status")
+        const cookieStatus = cookies.get('cookieConsent_status');
 
         if (!cookieStatus) {
-            setIsVisible(true)
+            setIsVisible(true);
         }
-    }, [])
+    }, []);
 
     const onButtonClick = () => {
-        cookies.set("cookieConsent_status", true, { path: "/" })
-        setIsVisible(false)
-    }
+        cookies.set('cookieConsent_status', true, { path: '/' });
+        setIsVisible(false);
+    };
 
     return isVisible ? (
         <Container>
             <Text>
-                Ta strona korzysta z ciasteczek aby świadczyć usługi na
-                najwyższym poziomie. Dalsze korzystanie ze strony oznacza, że
-                zgadzasz się na ich użycie.
+                Ta strona korzysta z ciasteczek aby świadczyć usługi na najwyższym poziomie. Dalsze
+                korzystanie ze strony oznacza, że zgadzasz się na ich użycie.
             </Text>
             <Btn onClick={onButtonClick}>Zgoda</Btn>
         </Container>
-    ) : null
-}
+    ) : null;
+};
 
-export default Cookie
+export default Cookie;

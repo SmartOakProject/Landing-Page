@@ -1,7 +1,13 @@
 {
-    "endOfLine": "lf",
-    "semi": false,
-    "singleQuote": false,
+    "singleQuote": true,
+    "printWidth": 100,
+    "editor.formatOnSave": true,
+    "proseWrap": "always",
     "tabWidth": 4,
-    "trailingComma": "es5"
+    "requireConfig": false,
+    "useTabs": false,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "semi": true
 }

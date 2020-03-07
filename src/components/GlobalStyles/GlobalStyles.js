@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 :root{
@@ -28,7 +28,7 @@ html {
 
 body {
     font-family: 'Muli', sans-serif ;
-  font-size: 13px ;
+  font-size: 1.3rem ;
   font-weight: 300 ;
   touch-action: manipulation;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -46,6 +46,6 @@ video {
   width: 100%;
   height: auto;
 }
-`
+`;
 
-export default GlobalStyle
+export default GlobalStyle;

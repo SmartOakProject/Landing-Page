@@ -1,10 +1,9 @@
-import React from "react"
-import { useIntl } from "gatsby-plugin-intl"
-import { useStaticQuery, graphql } from "gatsby"
-
-import ContentItem from "../components/ContentItem"
-
-import Footer from "../components/Footer/Footer"
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import { useStaticQuery, graphql } from 'gatsby';
+import ContentItem from '../components/ContentItem';
+import Footer from '../components/Footer/Footer';
+import { pageData } from '../components/common/pageData';
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -26,12 +25,12 @@ const IndexPage = () => {
                 }
             }
         }
-    `)
-    const intl = useIntl()
+    `);
+    const intl = useIntl();
 
     return (
         <>
-            {data.allInternalPl.edges[1].node.download.content.map((e, i) => {
+            {pageData(data.allInternalPl.edges, 'download').content.map((e, i) => {
                 return (
                     <ContentItem
                         download
@@ -45,12 +44,12 @@ const IndexPage = () => {
                         first={i === 0}
                         // btns={e.btns}
                         // btnPath={`download.content.${i}.btns`}
-                        isBlack={true}
+                        isBlack
                     />
-                )
+                );
             })}
             <Footer />
         </>
-    )
-}
-export default IndexPage
+    );
+};
+export default IndexPage;

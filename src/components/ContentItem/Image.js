@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+
 const Img = styled.img`
     display: block;
-    height: ${props => (props.support ? "22rem" : "32rem")};
+    height: ${({support}) => (support ? "22rem" : "32rem")};
     border-radius: 2.5rem;
     box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.5);
     will-change: transform;
@@ -18,17 +19,6 @@ const Img = styled.img`
 const Image = ({ first, download, support, isRight }) => {
     const rotateRef = useRef()
 
-    useEffect(() => {
-        if ((first && download) || support) {
-            rotateRef.current.style.transform = `rotate(0.8deg)`
-        }
-
-        window.addEventListener("scroll", handleNavigation)
-
-        return () => {
-            window.removeEventListener("scroll", handleNavigation)
-        }
-    }, [])
     const handleNavigation = () => {
         window.requestAnimationFrame(() => {
             if (rotateRef.current) {
@@ -44,7 +34,7 @@ const Image = ({ first, download, support, isRight }) => {
                     document.documentElement.clientHeight,
                     window.innerHeight || 0
                 )
-                let maximumLandingAngle = 10
+                const maximumLandingAngle = 10
                 let rotationFix = 0.5 * maximumLandingAngle
                 let currentLandingAngle =
                     -1 *
@@ -62,6 +52,20 @@ const Image = ({ first, download, support, isRight }) => {
             }
         })
     }
+    
+    useEffect(() => {
+        if ((first && download) || support) {
+            rotateRef.current.style.transform = `rotate(0.8deg)`
+        }
+
+        window.addEventListener("scroll", handleNavigation)
+
+        return () => {
+            window.removeEventListener("scroll", handleNavigation)
+        }
+    }, [])
+
+    
     return (
         <Img
             support={support}

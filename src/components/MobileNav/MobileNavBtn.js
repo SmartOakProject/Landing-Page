@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react"
-import styled, { keyframes } from "styled-components"
-import { IoMdMenu, IoMdClose, IoMdHome } from "react-icons/io"
-import PropTypes from "prop-types"
+import React, { useState, useEffect } from 'react';
+import styled, { keyframes } from 'styled-components';
+import { IoMdMenu, IoMdClose, IoMdHome } from 'react-icons/io';
+import PropTypes from 'prop-types';
+
 const fadeInFromNone = keyframes`
     0% {
 
@@ -11,7 +12,7 @@ const fadeInFromNone = keyframes`
 
        opacity: 1;
    }
-`
+`;
 const MobileBtn = styled.div`
     display: flex;
     flex-direction: column;
@@ -28,13 +29,13 @@ const MobileBtn = styled.div`
         width: 26px;
         animation: ${fadeInFromNone} 0.7s linear;
     }
-`
+`;
 const MobileNavBtn = ({ open, onClick, homeBtn }) => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        setIsOpen(open)
-    }, [open])
+        setIsOpen(open);
+    }, [open]);
 
     return (
         <MobileBtn
@@ -42,19 +43,19 @@ const MobileNavBtn = ({ open, onClick, homeBtn }) => {
                 onClick
                     ? onClick
                     : () => {
-                          setIsOpen(!isOpen)
+                          setIsOpen(!isOpen);
                       }
             }
         >
             {open ? <IoMdClose /> : homeBtn ? <IoMdHome /> : <IoMdMenu />}
         </MobileBtn>
-    )
-}
+    );
+};
 
 MobileNavBtn.propTypes = {
     open: PropTypes.bool.isRequired,
     onClick: PropTypes.func,
     homeBtn: PropTypes.bool,
-}
+};
 
-export default MobileNavBtn
+export default MobileNavBtn;

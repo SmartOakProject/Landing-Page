@@ -1,13 +1,15 @@
-import React from "react"
-import { useIntl } from "gatsby-plugin-intl"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import { useStaticQuery, graphql } from 'gatsby';
 
-import Header from "../components/Header"
-import TextHeader from "../components/TextHeader"
-import ContentItem from "../components/ContentItem"
-import Wrapper from "../components/Wrapper"
-import Footer from "../components/Footer/Footer"
-import Cards from "../components/Cards"
+import Header from '../components/Header';
+import TextHeader from '../components/TextHeader';
+import ContentItem from '../components/ContentItem';
+import Wrapper from '../components/Wrapper';
+import Footer from '../components/Footer/Footer';
+import Cards from '../components/Cards';
+import { pageData } from '../components/common/pageData';
+
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         query oakAtlantis {
@@ -42,69 +44,64 @@ const IndexPage = () => {
                 }
             }
         }
-    `)
-    const intl = useIntl()
+    `);
+    const intl = useIntl();
 
-    let counter = 1
+    let counter = 1;
     return (
         <>
             <Header page="1">
                 <TextHeader
                     link
                     title={intl.formatMessage({
-                        id: "oakAtlantis.header.title",
+                        id: 'oakAtlantis.header.title',
                     })}
                     desc={intl.formatMessage({
-                        id: "oakAtlantis.header.desc",
+                        id: 'oakAtlantis.header.desc',
                     })}
-                    btns={
-                        data.allInternalPl.edges[1].node.oakAtlantis.header.btns
-                    }
-                    btnPath={`oakAtlantis.header.btns`}
+                    btns={pageData(data.allInternalPl.edges, 'oakAtlantis').header.btns}
+                    btnPath="oakAtlantis.header.btns"
                 />
             </Header>
-            {data.allInternalPl.edges[1].node.oakAtlantis.content.map(
-                (e, i) => {
-                    if (e.type === "item") {
-                        return (
-                            <ContentItem
-                                title={intl.formatMessage({
-                                    id: `oakAtlantis.content.${i}.title`,
-                                })}
-                                desc={intl.formatMessage({
-                                    id: `oakAtlantis.content.${i}.desc`,
-                                })}
-                                id={e.alternative_id}
-                                first={i === 0}
-                                isRight={i % 2 === 0}
-                                btns={e.btns}
-                                btnPath={`oakAtlantis.content.${i}.btns`}
-                                isBlack={true}
-                            />
-                        )
-                    } else {
-                        return (
-                            <Wrapper
-                                videoSrc={`NFoundation-${counter++}`}
-                                videoImg={"todo"}
-                                title={intl.formatMessage({
-                                    id: `oakAtlantis.content.${i}.title`,
-                                })}
-                                desc={intl.formatMessage({
-                                    id: `oakAtlantis.content.${i}.desc`,
-                                })}
-                                z={i + 1}
-                                isSecond={i === 0}
-                                btns={e.btns}
-                                btnPath={`oakAtlantis.content.${i}.btns`}
-                            />
-                        )
-                    }
+            {pageData(data.allInternalPl.edges, 'oakAtlantis').content.map((e, i) => {
+                if (e.type === 'item') {
+                    return (
+                        <ContentItem
+                            title={intl.formatMessage({
+                                id: `oakAtlantis.content.${i}.title`,
+                            })}
+                            desc={intl.formatMessage({
+                                id: `oakAtlantis.content.${i}.desc`,
+                            })}
+                            id={e.alternative_id}
+                            first={i === 0}
+                            isRight={i % 2 === 0}
+                            btns={e.btns}
+                            btnPath={`oakAtlantis.content.${i}.btns`}
+                            isBlack
+                        />
+                    );
                 }
-            )}
+                return (
+                    <Wrapper
+                        videoSrc={`NFoundation-${counter++}`}
+                        videoImg="todo"
+                        title={intl.formatMessage({
+                            id: `oakAtlantis.content.${i}.title`,
+                        })}
+                        desc={intl.formatMessage({
+                            id: `oakAtlantis.content.${i}.desc`,
+                        })}
+                        z={i + 1}
+                        isSecond={i === 0}
+                        btns={e.btns}
+                        btnPath={`oakAtlantis.content.${i}.btns`}
+                    />
+                );
+            })}
             <Cards />
             <Footer />
         </>
-    )
-}
-export default IndexPage
+    );
+};
+export default IndexPage;

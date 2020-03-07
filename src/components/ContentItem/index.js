@@ -1,19 +1,20 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import Buttons from "../common/Buttons"
-import Image from "./Image.js"
-import PropTypes from "prop-types"
+import React from 'react';
+import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
+import Buttons from '../common/Buttons';
+import Image from './Image';
+
 const Container = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    padding: ${props => (props.support ? "1rem 0" : "4.8rem 0")};
-    text-align: ${props => (props.isRight ? "right" : "left")};
+    padding: ${({ support }) => (support ? '1rem 0' : '4.8rem 0')};
+    text-align: ${({ isRight }) => (isRight ? 'right' : 'left')};
 
     &:nth-child(2n) {
-        flex-direction: ${props => (props.download ? "row" : "row-reverse")};
+        flex-direction: ${({ download }) => (download ? 'row' : 'row-reverse')};
     }
 
     @media (max-width: 767px) {
@@ -26,20 +27,18 @@ const Container = styled.div`
     @media only screen and (max-width: 901px) and (orientation: landscape) {
         flex-direction: row;
         &:nth-child(2n) {
-            flex-direction: ${props =>
-                props.download ? "row" : "row-reverse"};
+            flex-direction: ${({ download }) => (download ? 'row' : 'row-reverse')};
         }
     }
-`
+`;
 
 const ContentItemText = styled.div`
-    ${props =>
-        props.support
+    ${({ support }) =>
+        support
             ? null
             : css`
                   width: 50%;
-                  margin: ${props =>
-                      props.isRight ? "0 8rem 0 0" : "0 0 0 8rem"};
+                  margin: ${({ isRight }) => (isRight ? '0 8rem 0 0' : '0 0 0 8rem')};
                   padding: 0 4rem;
               `}
 
@@ -58,12 +57,12 @@ const ContentItemText = styled.div`
     @media only screen and (max-width: 901px) and (orientation: landscape) {
         width: 55%;
         padding: 0 1rem;
-        text-align: ${props => (props.isRight ? "right" : "left")};
+        text-align: ${({ isRight }) => (isRight ? 'right' : 'left')};
 
         /* height: 22rem; */
-        margin: ${props => (props.isRight ? "0 0rem 0 0" : "0 0 0 0rem")};
+        margin: ${({ isRight }) => (isRight ? '0 0rem 0 0' : '0 0 0 0rem')};
     }
-`
+`;
 
 const Title = styled.h2`
     font-size: 2.4rem;
@@ -77,19 +76,19 @@ const Title = styled.h2`
     @media only screen and (max-width: 901px) and (orientation: landscape) {
         margin-top: 0;
     }
-`
+`;
 
 const Description = styled.p`
     margin: 1.6rem 0;
     font-size: 1.3rem;
-`
+`;
 
 const Anchor = styled.div`
     display: block;
     height: 50vh; /*same height as header*/
     margin-top: -50vh; /*same height as header*/
     visibility: hidden;
-`
+`;
 
 const ContentItem = ({
     isRight,
@@ -106,12 +105,7 @@ const ContentItem = ({
     return (
         <Container isRight={isRight} support={support} download={download}>
             {support ? null : <Anchor id={id} />}
-            <Image
-                download={download}
-                isRight={isRight}
-                first={first}
-                support={support}
-            />
+            <Image download={download} isRight={isRight} first={first} support={support} />
             <ContentItemText support={support} isRight={isRight}>
                 <Title>{title}</Title>
                 <Description>{desc}</Description>
@@ -120,19 +114,18 @@ const ContentItem = ({
                           return (
                               <Buttons
                                   isMore={i !== 0}
-                                  btnLink={btn.link}
                                   isBlack={isBlack}
                                   btnLink={`${btnPath}.${i}.btnLink`}
                                   btnType={`${btnPath}.${i}.btnType`}
                                   btnText={`${btnPath}.${i}.btnText`}
                               />
-                          )
+                          );
                       })
                     : null}
             </ContentItemText>
         </Container>
-    )
-}
+    );
+};
 
 ContentItem.propTypes = {
     isRight: PropTypes.bool,
@@ -142,9 +135,9 @@ ContentItem.propTypes = {
     download: PropTypes.bool,
     first: PropTypes.bool,
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    btns: PropTypes.array,
+    btns: PropTypes.arrayOf(PropTypes.object),
     support: PropTypes.bool,
     btnPath: PropTypes.string,
-}
+};
 
-export default ContentItem
+export default ContentItem;

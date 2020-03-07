@@ -1,19 +1,20 @@
-import React from "react"
-import { useIntl } from "gatsby-plugin-intl"
-import { useStaticQuery, graphql } from "gatsby"
-import styled from "styled-components"
+import React from 'react';
+import { useIntl } from 'gatsby-plugin-intl';
+import { useStaticQuery, graphql } from 'gatsby';
+import styled from 'styled-components';
 
-import Header from "../components/Header"
-import TextHeader from "../components/TextHeader"
-import AboutUsCard from "../components/AboutUsCard"
-import Footer from "../components/Footer/Footer"
+import Header from '../components/Header';
+import TextHeader from '../components/TextHeader';
+import AboutUsCard from '../components/AboutUsCard';
+import Footer from '../components/Footer/Footer';
+import { pageData } from '../components/common/pageData';
 
 const Container = styled.div`
     display: block;
     max-width: 1100px;
     padding: 0px 1rem;
     margin: 10rem auto 0rem;
-`
+`;
 
 const Row = styled.div`
     display: flex;
@@ -22,7 +23,7 @@ const Row = styled.div`
     align-items: flex-start;
     width: 100%;
     margin: 2rem 0;
-`
+`;
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -53,8 +54,8 @@ const IndexPage = () => {
                 }
             }
         }
-    `)
-    const intl = useIntl()
+    `);
+    const intl = useIntl();
 
     return (
         <>
@@ -62,39 +63,37 @@ const IndexPage = () => {
                 <TextHeader
                     link
                     title={intl.formatMessage({
-                        id: "aboutUs.header.title",
+                        id: 'aboutUs.header.title',
                     })}
                     desc={intl.formatMessage({
-                        id: "aboutUs.header.desc",
+                        id: 'aboutUs.header.desc',
                     })}
-                    btns={data.allInternalPl.edges[1].node.aboutUs.header.btns}
-                    btnPath={`aboutUs.header.btns`}
+                    btns={pageData(data.allInternalPl.edges, 'aboutUs').header.btns}
+                    btnPath="aboutUs.header.btns"
                     isLast
                 />
             </Header>
             <Container>
                 <Row>
-                    {data.allInternalPl.edges[1].node.aboutUs.content.map(
-                        (e, i) => {
-                            return (
-                                <AboutUsCard
-                                    title={intl.formatMessage({
-                                        id: `aboutUs.content.${i}.title`,
-                                    })}
-                                    desc={intl.formatMessage({
-                                        id: `aboutUs.content.${i}.desc`,
-                                    })}
-                                    img={intl.formatMessage({
-                                        id: `aboutUs.content.${i}.img`,
-                                    })}
-                                />
-                            )
-                        }
-                    )}
+                    {pageData(data.allInternalPl.edges, 'aboutUs').content.map((e, i) => {
+                        return (
+                            <AboutUsCard
+                                title={intl.formatMessage({
+                                    id: `aboutUs.content.${i}.title`,
+                                })}
+                                desc={intl.formatMessage({
+                                    id: `aboutUs.content.${i}.desc`,
+                                })}
+                                img={intl.formatMessage({
+                                    id: `aboutUs.content.${i}.img`,
+                                })}
+                            />
+                        );
+                    })}
                 </Row>
             </Container>
             <Footer />
         </>
-    )
-}
-export default IndexPage
+    );
+};
+export default IndexPage;

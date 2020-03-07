@@ -1,11 +1,10 @@
-import React from "react"
-
-import { useStaticQuery, graphql } from "gatsby"
-
-import Item from "../components/Contact/Item"
-import Form from "../components/Contact/Form"
-import styled from "styled-components"
-import Footer from "../components/Footer/Footer"
+import React from 'react';
+import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
+import Item from '../components/Contact/Item';
+import Form from '../components/Contact/Form';
+import Footer from '../components/Footer/Footer';
+import { pageData } from '../components/common/pageData';
 
 const ContactWrapper = styled.div`
     display: grid;
@@ -23,7 +22,7 @@ const ContactWrapper = styled.div`
         margin: 5rem 2rem;
         margin-top: 3rem;
     }
-`
+`;
 
 const ContactItems = styled.div`
     display: grid;
@@ -43,7 +42,7 @@ const ContactItems = styled.div`
     @media screen and (max-width: 600px) {
         grid-template-columns: 1fr;
     }
-`
+`;
 
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
@@ -69,26 +68,22 @@ const IndexPage = () => {
                 }
             }
         }
-    `)
+    `);
 
     return (
         <>
             <ContactWrapper>
                 <ContactItems>
-                    {data.allInternalPl.edges[1].node.contact.content.map(e => {
+                    {pageData(data.allInternalPl.edges, 'contact').content.map(e => {
                         return (
-                            <Item
-                                title={e.title}
-                                phoneNumber={e.desc}
-                                email={e.btns[0].btnText}
-                            />
-                        )
+                            <Item title={e.title} phoneNumber={e.desc} email={e.btns[0].btnText} />
+                        );
                     })}
                 </ContactItems>
                 <Form />
             </ContactWrapper>
             <Footer />
         </>
-    )
-}
-export default IndexPage
+    );
+};
+export default IndexPage;
