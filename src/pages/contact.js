@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import Item from '../components/Contact/Item';
 import Form from '../components/Contact/Form';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import { pageData } from '../components/common/pageData';
 
 const ContactWrapper = styled.div`

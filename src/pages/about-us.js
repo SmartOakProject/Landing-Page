@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Header from '../components/Header';
 import TextHeader from '../components/TextHeader';
 import AboutUsCard from '../components/AboutUsCard';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import { pageData } from '../components/common/pageData';
 
 const Container = styled.div`

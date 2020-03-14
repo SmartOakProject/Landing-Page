@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import TextHeader from '../components/TextHeader';
 import ContentItem from '../components/ContentItem';
 import Wrapper from '../components/Wrapper';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import Cards from '../components/Cards';
 import { pageData } from '../components/common/pageData';
 
@@ -60,7 +60,7 @@ const IndexPage = () => {
                         id: 'oakesClinic.header.desc',
                     })}
                     btns={pageData(data.allInternalPl.edges, 'oakesClinic').header.btns}
-                    btnPath='oakesClinic.header.btns'
+                    btnPath="oakesClinic.header.btns"
                 />
             </Header>
             {pageData(data.allInternalPl.edges, 'oakesClinic').content.map((e, i) => {
@@ -85,7 +85,7 @@ const IndexPage = () => {
                 return (
                     <Wrapper
                         videoSrc={`NFoundation-${counter++}`}
-                        videoImg='todo'
+                        videoImg="todo"
                         title={intl.formatMessage({
                             id: `oakesClinic.content.${i}.title`,
                         })}

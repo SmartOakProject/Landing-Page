@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import TextHeader from '../components/TextHeader';
 import ContentItem from '../components/ContentItem';
 import Wrapper from '../components/Wrapper';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import Cards from '../components/Cards';
 import { pageData } from '../components/common/pageData';
 

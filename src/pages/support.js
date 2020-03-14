@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useStaticQuery, graphql } from 'gatsby';
 import Machine from '../components/Machine';
 import SupportItem from '../components/SupportItem';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import { pageData } from '../components/common/pageData';
 
 const Title = styled.h2`

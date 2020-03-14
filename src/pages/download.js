@@ -2,7 +2,7 @@ import React from 'react';
 import { useIntl } from 'gatsby-plugin-intl';
 import { useStaticQuery, graphql } from 'gatsby';
 import ContentItem from '../components/ContentItem';
-import Footer from '../components/Footer/Footer';
+import Footer from '../components/Footer';
 import { pageData } from '../components/common/pageData';
 
 const IndexPage = () => {
