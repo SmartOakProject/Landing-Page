@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react';
+import styled from 'styled-components';
 
-import { Link } from "gatsby-plugin-intl"
-import { subpageLinks } from "../common/subpageLinks"
+import { Link } from 'gatsby-plugin-intl';
+import { subpageLinks } from '../common/subpageLinks';
 
 const Container = styled.div`
     height: 5rem;
@@ -12,8 +12,6 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     position: sticky;
-    /* -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0); */
     top: 0;
     z-index: 100000;
     margin-top: -1px;
@@ -21,7 +19,7 @@ const Container = styled.div`
     @media screen and (max-width: 900px) {
         display: none;
     }
-`
+`;
 
 const StyledLink = styled(props => <Link {...props} />)`
     color: rgba(255, 255, 255, 0.85);
@@ -39,11 +37,11 @@ const StyledLink = styled(props => <Link {...props} />)`
     @media screen and (max-width: 1050px) {
         padding: 1.2rem 0.6rem;
     }
-`
+`;
 
 const activeStyles = {
-    borderBottomColor: "#2a80f8",
-}
+    borderBottomColor: '#2a80f8',
+};
 
 const NavSecondary = () => {
     return (
@@ -53,9 +51,9 @@ const NavSecondary = () => {
                     <StyledLink key={i} to={e.path} activeStyle={activeStyles}>
                         {e.text}
                     </StyledLink>
-                )
+                );
             })}
         </Container>
-    )
-}
-export default NavSecondary
+    );
+};
+export default NavSecondary;

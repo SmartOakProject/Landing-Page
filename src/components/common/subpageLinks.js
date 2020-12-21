@@ -1,38 +1,30 @@
 export const subpageLinks = [
     {
-        path: "/",
-        text: "Home",
+        path: '/',
+        text: 'Home',
     },
     {
-        path: "/neuron-foundation/",
-        text: "NeuroN Foundation",
+        path: '/platform/',
+        text: 'Platform',
     },
     {
-        path: "/new-neuropsychiatry/",
-        text: "New Neuropsychiatry",
+        path: '/neuron-foundation/',
+        text: 'NeuroN Foundation',
     },
     {
-        path: "/i-mundus/",
-        text: "iMundus",
+        path: '/notioN-association/',
+        text: 'NotioN Association',
     },
     {
-        path: "/oakes-innovate/",
-        text: "Oakes Innovate",
+        path: '/noumn-innovation/',
+        text: 'NoumN Innovation',
     },
     {
-        path: "/n-media/",
-        text: "N Media",
+        path: '/so-media/',
+        text: 'SO Media',
     },
     {
-        path: "/oakes-clinic/",
-        text: "Oakes Clinic",
+        path: '/oak-atlantis/',
+        text: 'Oak Atlantis',
     },
-    {
-        path: "/oak-atlantis/",
-        text: "Oak Atlantis",
-    },
-    {
-        path: "/neuron-currency/",
-        text: "NeuroN Currency",
-    },
-]
+];

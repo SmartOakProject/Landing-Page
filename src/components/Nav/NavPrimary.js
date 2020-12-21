@@ -134,64 +134,14 @@ const NavPrimary = ({ projectsList }) => {
     return (
         <Container>
             {showSearch ? null : <SocialMediaIcons darkFooter anim={firstLoad} />}
-            {showSearch ? (
-                <Search onInputClose={onInputClose} isDesktop projectsList={projectsList} />
-            ) : (
-                <MiddleNav anim={firstLoad}>
-                    <SearchBtn onClick={() => setShowSearch(true)}>
-                        {intl.formatMessage({
-                            id: `general.search`,
-                        })}
-                        <FaSearch />
-                    </SearchBtn>
-                    <StyledLink to="/">
-                        {intl.formatMessage({
-                            id: `general.shop`,
-                        })}
-                        <FaShoppingCart />
-                    </StyledLink>
-                    <StyledLink to="/support/">
-                        {intl.formatMessage({
-                            id: `general.support`,
-                        })}
-                        <FaHeart />
-                    </StyledLink>
+
+            {showSearch ? null : (
+                <RightNav anim={firstLoad}>
                     <StyledLink to="/download/">
                         {intl.formatMessage({
                             id: `general.download`,
                         })}
-                        <FaDownload />
                     </StyledLink>
-                    <IntlContextConsumer>
-                        {({ languages, language: currentLocale }) => {
-                            if (currentLocale === 'pl') {
-                                return (
-                                    <DropdownLink
-                                        onMouseLeave={() => setShowKRSMenu(false)}
-                                        onMouseEnter={() => setShowKRSMenu(true)}
-                                    >
-                                        <DropdownLinkItem krs>
-                                            Przekaż
-                                            <img src={oneIcon} alt="" srcset="" />
-                                        </DropdownLinkItem>
-                                        {showKRSMenu && (
-                                            <Submenu
-                                                krs
-                                                data={[
-                                                    { text: 'Nasz numer KRS:' },
-                                                    { text: '0000123512' },
-                                                ]}
-                                            />
-                                        )}
-                                    </DropdownLink>
-                                );
-                            }
-                        }}
-                    </IntlContextConsumer>
-                </MiddleNav>
-            )}
-            {showSearch ? null : (
-                <RightNav anim={firstLoad}>
                     <StyledLink rightNav to="/contact/">
                         {intl.formatMessage({
                             id: `general.contact`,
@@ -215,7 +165,9 @@ const NavPrimary = ({ projectsList }) => {
                         </DropdownLinkItem>
                         {showProjectMenu && <Submenu data={projectLinks} />}
                     </DropdownLink>
-
+                    <SearchBtn onClick={() => setShowSearch(true)}>
+                        <FaSearch />
+                    </SearchBtn>
                     <DropdownLink
                         rightNav
                         onMouseLeave={() => setShowLangMenu(false)}

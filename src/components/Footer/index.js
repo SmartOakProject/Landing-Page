@@ -163,12 +163,12 @@ const Footer = ({ darkFooter }) => {
             <Row alignCenter className="pb3">
                 <Col>
                     <ListItemWrapper className="mainFooterMenu">
-                        <TopLeftMenu darkFooter={darkFooter} />
+                        {/* <TopLeftMenu darkFooter={darkFooter} /> */}
                     </ListItemWrapper>
                 </Col>
                 <Col>
                     <Row p0 justifyEnd>
-                        <DownloadFromMarketplaceWrapper darkFooter={darkFooter} />
+                        {/* <DownloadFromMarketplaceWrapper darkFooter={darkFooter} /> */}
                     </Row>
                 </Col>
             </Row>
@@ -180,18 +180,18 @@ const Footer = ({ darkFooter }) => {
                 </Col>
                 <Col className="footerBottomCol">
                     <FooterSmallText darkFooter={darkFooter}>
-                        &#9400; 2019 Smart Oak Project.
+                        &#9400; 2020 Smart Oak Project. {''}
                         <FormattedMessage id="general.rights" />
                     </FooterSmallText>
 
-                    <FooterSmallText darkFooter={darkFooter}>
+                    {/* <FooterSmallText darkFooter={darkFooter}>
                         <FormattedMessage id="general.websiteMadeBy" />{' '}
                         <FooterLink href="/">Progressio</FooterLink>
-                    </FooterSmallText>
+                    </FooterSmallText> */}
 
-                    <FooterSmallText darkFooter={darkFooter}>
+                    {/* <FooterSmallText darkFooter={darkFooter}>
                         <FormattedMessage id="general.privacyPolicy" />
-                    </FooterSmallText>
+                    </FooterSmallText> */}
                 </Col>
             </Row>
         </Container>
